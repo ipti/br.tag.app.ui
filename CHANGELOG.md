@@ -1,3 +1,3 @@
-## [0.0.1] - TODO: Add release date.
+## [0.18.0] - Componentes iniciais para merenda
 
-* TODO: Describe initial release.
+* Primeira versão compartilhavel, precisa de melhorias individuais em cada componente

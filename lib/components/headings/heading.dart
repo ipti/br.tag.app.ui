@@ -1,4 +1,3 @@
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/widgets.dart';
 import 'package:tag_ui/design_tokens/colors.dart';
 import 'package:tag_ui/design_tokens/font_size.dart';
@@ -98,7 +97,7 @@ class Heading extends StatelessWidget {
     }
 
     return Container(
-      child: AutoSizeText(
+      child: Text(
         text,
         style: style,
       ),
