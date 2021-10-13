@@ -36,7 +36,7 @@ class TagMenu extends StatelessWidget {
                     topRight: Radius.circular(16),
                   ),
                 ),
-                child: const LogoTag(
+                child: const TagLogo(
                   width: 64,
                 ),
               ),

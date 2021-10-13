@@ -2,8 +2,8 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:tag_ui/strings/file_paths.dart';
 
-class LogoTag extends StatelessWidget {
-  const LogoTag({
+class TagLogo extends StatelessWidget {
+  const TagLogo({
     Key? key,
     this.color,
     this.width,

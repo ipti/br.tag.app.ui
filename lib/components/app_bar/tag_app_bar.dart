@@ -26,7 +26,7 @@ class TagAppBar extends StatelessWidget implements PreferredSize {
       margin: EdgeInsets.all(14),
       height: TagSizes.heightServiceLogoMedium,
       child: const Center(
-        child: LogoTag(
+        child: TagLogo(
           alignment: Alignment.centerLeft,
         ),
       ),

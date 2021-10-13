@@ -35,7 +35,7 @@ class TagTextField extends StatefulWidget {
   final int minLines;
   final List<TextInputFormatter>? formatters;
   final Function? validator;
-  final Function? onChanged;
+  final Function(String)? onChanged;
   final Function? onEditingComplete;
 
   @override
@@ -70,7 +70,7 @@ class _TagTextFieldState extends State<TagTextField> {
             style: textStyle,
             validator: widget.validator as String? Function(String?)?,
             decoration: buildInputDecoration(widget.hint),
-            onChanged: widget.onChanged as void Function(String)?,
+            onChanged: widget.onChanged,
             onEditingComplete: widget.onEditingComplete as void Function()?,
             onTap: widget.onEditingComplete as void Function()?,
           ),

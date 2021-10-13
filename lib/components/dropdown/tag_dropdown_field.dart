@@ -85,7 +85,7 @@ class _TagDropdownFieldState extends State<TagDropdownField> {
             validator: (dynamic value) => widget.validator != null
                 ? widget.validator!(value?.toString() ?? "")
                 : null,
-            onChanged: widget.onChanged as void Function(int?)?,
+            onChanged: (value) => widget.onChanged,
             onTap: () => FocusScope.of(context).requestFocus(FocusNode()),
           ),
         ),
