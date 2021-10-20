@@ -15,7 +15,7 @@ class TagLabel extends StatelessWidget {
   Widget build(BuildContext context) {
     const style = TextStyle(
       fontSize: TagFontSize.fontSizeFormLabel,
-      fontWeight: TagFontWeight.fontWeightBold,
+      fontWeight: TagFontWeight.fontWeightNormal,
       height: TagLineHeight.lineHeightHeading,
     );
 

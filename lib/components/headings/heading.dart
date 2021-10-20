@@ -18,52 +18,54 @@ class Heading extends StatelessWidget {
     Key? key,
     required this.text,
     required this.type,
+    this.color = TagColors.colorBaseInkNormal,
   }) : super(key: key);
 
   final String text;
   final HeadingType type;
+  final Color color;
 
   @override
   Widget build(BuildContext context) {
     final TextStyle textStyleDefault = TextStyle(
-      color: TagColors.colorBaseInkNormal,
+      color: color,
     );
 
-    const TextStyle textStyleDisplayTitle = TextStyle(
-      color: TagColors.colorBaseInkNormal,
+    TextStyle textStyleDisplayTitle = TextStyle(
+      color: color,
       fontSize: TagFontSize.fontSizeHeadingDisplay,
       fontWeight: TagFontWeight.fontWeightHeadingDisplay,
     );
 
-    const TextStyle textStyleDisplaySubtitle = TextStyle(
-      color: TagColors.colorBaseInkNormal,
+    TextStyle textStyleDisplaySubtitle = TextStyle(
+      color: color,
       fontSize: TagFontSize.fontSizeHeadingDisplaySubtitle,
       fontWeight: TagFontWeight.fontWeightHeadingDisplaySubtitle,
     );
 
-    const TextStyle textStyleTitle1 = TextStyle(
-      color: TagColors.colorBaseInkNormal,
+    TextStyle textStyleTitle1 = TextStyle(
+      color: color,
       fontSize: TagFontSize.fontSizeHeadingTitle1,
       fontWeight: TagFontWeight.fontWeightHeadingTitle1,
     );
 
-    const TextStyle textStyleTitle2 = TextStyle(
+    TextStyle textStyleTitle2 = TextStyle(
       color: TagColors.colorBaseCloudLightActive,
       fontSize: TagFontSize.fontSizeHeadingTitle2,
       fontWeight: TagFontWeight.fontWeightHeadingTitle2,
     );
-    const TextStyle textStyleTitle3 = TextStyle(
-      color: TagColors.colorBaseInkNormal,
+    TextStyle textStyleTitle3 = TextStyle(
+      color: color,
       fontSize: TagFontSize.fontSizeHeadingTitle3,
       fontWeight: TagFontWeight.fontWeightHeadingTitle3,
     );
-    const TextStyle textStyleTitle4 = TextStyle(
-      color: TagColors.colorBaseInkNormal,
+    TextStyle textStyleTitle4 = TextStyle(
+      color: color,
       fontSize: TagFontSize.fontSizeHeadingTitle4,
       fontWeight: TagFontWeight.fontWeightHeadingTitle4,
     );
-    const TextStyle textStyleTitle5 = TextStyle(
-      color: TagColors.colorBaseInkNormal,
+    TextStyle textStyleTitle5 = TextStyle(
+      color: color,
       fontSize: TagFontSize.fontSizeHeadingTitle5,
       fontWeight: TagFontWeight.fontWeightHeadingTitle5,
     );

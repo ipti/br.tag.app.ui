@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
+import '../../tag_ui.dart';
+
 class LayoutLeftBodyRight extends StatelessWidget {
   const LayoutLeftBodyRight({
     Key? key,
@@ -16,6 +18,7 @@ class LayoutLeftBodyRight extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: TagColors.colorBaseWhiteNormal,
       body: SizedBox(
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,

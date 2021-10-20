@@ -15,7 +15,7 @@ class TagDropdownField extends StatefulWidget {
     this.maxLength,
     this.formatters,
     this.validator,
-    this.onChanged,
+    required this.onChanged,
     this.onEditingComplete,
     required this.label,
     this.items,
@@ -32,7 +32,7 @@ class TagDropdownField extends StatefulWidget {
   final int? value;
   final List<TextInputFormatter>? formatters;
   final Function? validator;
-  final Function? onChanged;
+  final void Function(int) onChanged;
   final Function? onEditingComplete;
 
   @override
@@ -85,7 +85,7 @@ class _TagDropdownFieldState extends State<TagDropdownField> {
             validator: (dynamic value) => widget.validator != null
                 ? widget.validator!(value?.toString() ?? "")
                 : null,
-            onChanged: (value) => widget.onChanged,
+            onChanged: (int? value) => widget.onChanged(value!),
             onTap: () => FocusScope.of(context).requestFocus(FocusNode()),
           ),
         ),
