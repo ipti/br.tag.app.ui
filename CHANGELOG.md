@@ -14,3 +14,7 @@
 * fix: Correção de cor de background das páginas
 * fix: alteração em padrão de cores dos títulos
 * fix: remoção de negrito para labels
+
+## [0.19.7] - Adição de novos componentes, correção na logo e componentes afetados pela migração
+
+* fix: corrigindo posição da barra colorida do menu 
