@@ -14,4 +14,9 @@ class TagMasks {
       "2": RegExp(r'[0-2]'),
     },
   );
+
+  static final maskCPF = new MaskTextInputFormatter(
+    mask: '###.###.###-##',
+    filter: {"#": RegExp(r'[0-9]')},
+  );
 }

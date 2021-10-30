@@ -13,6 +13,7 @@ export 'logo/logo.dart';
 export 'logo/logo_grey.dart';
 export 'logo/logo_light.dart';
 export 'link_button/tag_link_button.dart';
+export 'shared/masks.dart';
 export 'menu/tag_menu.dart';
 export 'menu/menu_item/tag_menu_item.dart';
 export 'menu/menu_group/tag_menu_group.dart';
