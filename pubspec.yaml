@@ -1,6 +1,6 @@
 name: tag_ui
 description: Componentes de interface de usuário do TAG (Tecnologia de apoio a gestão).
-version: 0.19.9
+version: 0.19.10
 repository: https://github.com/ipti/br.tag.app.ui
 
 environment:
@@ -26,8 +26,9 @@ flutter:
 
   # To add assets to your package, add an assets section, like this:
   assets:    
-    - assets/logo/logo_grey_tag.svg
-    - assets/logo/logo_light_tag.svg
+    - packages/tag_ui/assets/logo/logo_grey_tag.svg
+    - packages/tag_ui/assets/logo/logo_light_tag.svg
+    - packages/tag_ui/assets/logo/logo_tag.svg
   # For details regarding assets in packages, see
   # https://flutter.dev/assets-and-images/#from-packages
   #

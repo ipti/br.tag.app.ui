@@ -60,7 +60,7 @@ class _TagTextFieldState extends State<TagTextField> {
           constraints: fieldBoxConstraints,
           child: TextFormField(
             autovalidateMode: AutovalidateMode.onUserInteraction,
-            initialValue: widget.value ?? "",
+            initialValue: widget.value,
             maxLines: widget.maxLines,
             minLines: widget.minLines,
             controller: widget.controller,

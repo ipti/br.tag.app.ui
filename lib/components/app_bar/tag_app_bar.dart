@@ -4,7 +4,9 @@ import 'package:tag_ui/components/logo/logo.dart';
 import 'package:tag_ui/design_tokens/tokens.dart';
 
 class TagAppBar extends StatelessWidget implements PreferredSize {
-  const TagAppBar({Key? key}) : super(key: key);
+  const TagAppBar({Key? key, this.title}) : super(key: key);
+
+  final Widget? title;
 
   @override
   Widget build(BuildContext context) {
@@ -21,14 +23,12 @@ class TagAppBar extends StatelessWidget implements PreferredSize {
       onPressed: () => Scaffold.of(context).openDrawer(),
     );
 
-    final Widget title = Container(
+    final Widget centerTitle = Container(
       width: 54,
       margin: EdgeInsets.all(14),
       height: TagSizes.heightServiceLogoMedium,
-      child: const Center(
-        child: TagLogo(
-          alignment: Alignment.centerLeft,
-        ),
+      child: Center(
+        child: title ?? const TagLogo(alignment: Alignment.centerLeft),
       ),
     );
 
@@ -37,7 +37,7 @@ class TagAppBar extends StatelessWidget implements PreferredSize {
       iconTheme: iconTheme,
       elevation: 0,
       centerTitle: true,
-      title: title,
+      title: centerTitle,
       leading: leading,
       backgroundColor: TagColors.colorBaseWhiteNormal,
     );

@@ -25,6 +25,7 @@ class TagLogo extends StatelessWidget {
       height: height,
       width: width,
       color: color,
+      package: 'tag_ui',
     );
   }
 }

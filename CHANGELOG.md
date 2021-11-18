@@ -18,3 +18,11 @@
 ## [0.19.7] - Adição de novos componentes, correção na logo e componentes afetados pela migração
 
 * fix: corrigindo posição da barra colorida do menu 
+
+## [0.19.9] - Adição de novos componentes, correção na logo e componentes afetados pela migração
+
+* fix: corrigindo tamanhos de botoes 
+
+## [0.19.10] - Correções de text field
+
+* fix: corrigindo condicional do controller de text 
