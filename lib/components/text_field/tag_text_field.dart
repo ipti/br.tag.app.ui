@@ -64,6 +64,7 @@ class _TagTextFieldState extends State<TagTextField> {
             maxLines: widget.maxLines,
             minLines: widget.minLines,
             controller: widget.controller,
+            obscureText: widget.obscureText ?? false,
             inputFormatters: widget.formatters,
             maxLength: widget.maxLength,
             keyboardType: widget.inputType,

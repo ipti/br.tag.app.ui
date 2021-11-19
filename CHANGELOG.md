@@ -26,3 +26,11 @@
 ## [0.19.10] - Correções de text field
 
 * fix: corrigindo condicional do controller de text 
+
+## [0.19.11] - Correção de path de logo
+
+* fix: corrigindo path de caminhos
+
+## [0.19.12] - Correção obscureText
+
+* fix: adicionando campo para ocultar senha
