@@ -20,7 +20,7 @@ class TagTextField extends StatefulWidget {
     this.onChanged,
     this.onEditingComplete,
     this.value,
-    this.maxLines,
+    this.maxLines = 1,
     this.minLines = 1,
   }) : super(key: key);
 
@@ -31,7 +31,7 @@ class TagTextField extends StatefulWidget {
   final TextInputType? inputType;
   final bool? obscureText;
   final int? maxLength;
-  final int? maxLines;
+  final int maxLines;
   final int minLines;
   final List<TextInputFormatter>? formatters;
   final Function? validator;
