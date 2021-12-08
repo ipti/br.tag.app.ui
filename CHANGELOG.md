@@ -34,3 +34,8 @@
 ## [0.19.12] - Correção obscureText
 
 * fix: adicionando campo para ocultar senha
+
+## [0.19.14] - Correção obscureText
+
+* fix: alterando dropdown para tipos genericos
+* fix: corrigindo de valor padrão de maxlines no textfield
