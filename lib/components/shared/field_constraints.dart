@@ -4,5 +4,5 @@ import 'package:tag_ui/design_tokens/sizes.dart';
 
 const fieldBoxConstraints = BoxConstraints(
   minHeight: TagSizes.heightInputNormal,
-  maxHeight: TagSizes.heightInputLarge + TagLineHeight.lineHeightTextNormal,
+  maxHeight: TagSizes.heightInputNormal,
 );

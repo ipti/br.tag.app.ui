@@ -1,6 +1,7 @@
 export 'app_bar/tag_app_bar.dart';
 export 'breadcrumb/tag_breadcrumb.dart';
 export 'button/tag_button.dart';
+export 'button/tag_button_secondary.dart';
 export 'box/tag_box.dart';
 export 'data_table/tag_data_table.dart';
 export 'datepicker/tag_datepicker_field.dart';

@@ -21,4 +21,6 @@ class TagColors {
   static const Color colorBaseWhiteNormal = const Color(0XFFFFFFFF);
 
   static const Color colorBaseBlueNormal = const Color(0XFF0172CB);
+
+  static const Color colorOrangeNormal = const Color(0xFFE98305);
 }
