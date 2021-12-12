@@ -39,3 +39,8 @@
 
 * fix: alterando dropdown para tipos genericos
 * fix: corrigindo de valor padrão de maxlines no textfield
+
+
+## [0.19.15] - Correção obscureText
+
+* fix: adicionando campo de cor em botões
