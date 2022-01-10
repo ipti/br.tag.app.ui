@@ -1,4 +1,4 @@
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
 
 class TagRainbowBar extends StatelessWidget {
   const TagRainbowBar({Key? key}) : super(key: key);

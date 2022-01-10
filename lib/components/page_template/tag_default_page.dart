@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-import 'package:tag_ui/components/components.dart';
 import 'package:tag_ui/tag_ui.dart';
 
 class TagDefaultPage extends StatelessWidget {
