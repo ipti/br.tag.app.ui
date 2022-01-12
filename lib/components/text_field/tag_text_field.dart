@@ -48,7 +48,6 @@ class _TagTextFieldState extends State<TagTextField> {
     final textStyle = TextStyle(
       fontSize: TagFontSize.fontSizeInputNormal,
     );
-    final _textEditingController = TextEditingController();
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -60,11 +59,12 @@ class _TagTextFieldState extends State<TagTextField> {
         Container(
           constraints: fieldBoxConstraints,
           child: TextFormField(
+            key: UniqueKey(),
             autovalidateMode: AutovalidateMode.onUserInteraction,
+            initialValue: widget.value,
             maxLines: widget.maxLines,
             minLines: widget.minLines,
-            controller: widget.controller ?? _textEditingController
-              ..text = widget.value ?? "",
+            controller: widget.controller,
             obscureText: widget.obscureText ?? false,
             inputFormatters: widget.formatters,
             maxLength: widget.maxLength,
