@@ -3,11 +3,18 @@ import 'package:flutter/widgets.dart';
 import 'package:tag_ui/design_tokens/tokens.dart';
 
 class TagButton extends StatelessWidget {
-  const TagButton({Key? key, required this.text, required this.onPressed})
-      : super(key: key);
+  const TagButton({
+    Key? key,
+    required this.text,
+    required this.onPressed,
+    this.primary = TagColors.colorBaseProductNormal,
+    this.onPrimary = TagColors.colorBaseWhiteNormal,
+  }) : super(key: key);
 
   final String text;
   final Function onPressed;
+  final Color primary;
+  final Color onPrimary;
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +22,7 @@ class TagButton extends StatelessWidget {
       elevation: 0,
       padding: TagSpancing.paddingButtonNormal,
       minimumSize: const Size(40, TagSizes.heightButtonNormal),
-      primary: TagColors.colorBaseProductNormal,
+      primary: primary,
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.all(
           Radius.circular(
@@ -27,7 +34,10 @@ class TagButton extends StatelessWidget {
 
     return Container(
       child: ElevatedButton(
-        child: Text(text),
+        child: Text(
+          text,
+          style: TextStyle(color: onPrimary),
+        ),
         onPressed: onPressed as void Function()?,
         style: elevatedButtonTheme,
       ),
