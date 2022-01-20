@@ -18,7 +18,7 @@ class TagDropdownField<T> extends StatefulWidget {
     required this.onChanged,
     this.onEditingComplete,
     required this.label,
-    this.items,
+    required this.items,
     this.value,
   }) : super(key: key);
 
