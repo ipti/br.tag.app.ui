@@ -37,7 +37,7 @@ class TagButton extends StatelessWidget {
       ),
     );
 
-    return Flexible(
+    return Container(
       child: icon == null
           ? ElevatedButton(
               child: Text(
