@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 import 'package:tag_ui/design_tokens/tokens.dart';
 
@@ -8,10 +9,16 @@ class TagButton extends StatelessWidget {
     required this.text,
     required this.onPressed,
     this.backgroundColor = TagColors.colorBaseProductNormal,
+    this.buttonStyle,
+    this.icon,
+    this.textStyle,
   }) : super(key: key);
 
+  final Function() onPressed;
   final String text;
-  final Function onPressed;
+  final String? icon;
+  final ButtonStyle? buttonStyle;
+  final TextStyle? textStyle;
   final Color backgroundColor;
 
   @override
@@ -30,12 +37,27 @@ class TagButton extends StatelessWidget {
       ),
     );
 
-    return Container(
-      child: ElevatedButton(
-        child: Text(text),
-        onPressed: onPressed as void Function()?,
-        style: elevatedButtonTheme,
-      ),
+    return Flexible(
+      child: icon == null
+          ? ElevatedButton(
+              child: Text(text),
+              onPressed: onPressed,
+              style: buttonStyle ?? elevatedButtonTheme,
+            )
+          : ElevatedButton.icon(
+              style: buttonStyle ?? elevatedButtonTheme,
+              onPressed: onPressed,
+              icon: SvgPicture.asset(
+                icon!,
+              ),
+              label: Text(
+                text,
+                style: textStyle ??
+                    const TextStyle(
+                      color: TagColors.colorBaseInkNormal,
+                    ),
+              ),
+            ),
     );
   }
 }
