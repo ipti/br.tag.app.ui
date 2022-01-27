@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-
-import 'package:tag_ui/design_tokens/tokens.dart';
+import 'package:tag_ui/styles/styles.dart';
 
 class TagButton extends StatelessWidget {
   const TagButton({
     Key? key,
     required this.text,
     required this.onPressed,
-    this.backgroundColor = TagColors.colorBaseProductNormal,
+    this.backgroundColor,
     this.buttonStyle,
     this.icon,
     this.textStyle,
+    this.textButtonColor,
   }) : super(key: key);
 
   final Function() onPressed;
@@ -19,55 +19,94 @@ class TagButton extends StatelessWidget {
   final String? icon;
   final ButtonStyle? buttonStyle;
   final TextStyle? textStyle;
-  final Color backgroundColor;
+  final Color? backgroundColor;
+  final Color? textButtonColor;
 
   @override
   Widget build(BuildContext context) {
-    final elevatedButtonTheme = ElevatedButton.styleFrom(
-      elevation: 0,
-      padding: TagSpancing.paddingButtonNormal,
-      minimumSize: const Size(40, TagSizes.heightButtonNormal),
-      primary: backgroundColor,
-      shape: const RoundedRectangleBorder(
-        borderRadius: BorderRadius.all(
-          Radius.circular(
-            TagBorderRadiusValues.borderRadiusNormal,
-          ),
-        ),
+    var defaultButtonStyle = buttonStyle ?? TagButtonStyles.primary;
+    var defaultTextStyle = textStyle ?? TagTextStyles.textButtonPrimary;
+
+    if (backgroundColor != null) {
+      defaultButtonStyle = defaultButtonStyle.copyWith(
+        backgroundColor: MaterialStateProperty.all(backgroundColor),
+      );
+    }
+
+    if (textButtonColor != null) {
+      defaultTextStyle = defaultTextStyle.copyWith(color: textButtonColor);
+    }
+
+    final buttonText = _ButtonText(
+      text: text,
+      defaultTextStyle: defaultTextStyle,
+      onPressed: onPressed,
+      defaultButtonStyle: defaultButtonStyle,
+    );
+
+    final buttonIcon = _ButtonIconText(
+      defaultButtonStyle: defaultButtonStyle,
+      onPressed: onPressed,
+      icon: icon,
+      text: text,
+      defaultTextStyle: defaultTextStyle,
+    );
+
+    final buttonRendered = icon == null ? buttonText : buttonIcon;
+
+    return Container(child: buttonRendered);
+  }
+}
+
+class _ButtonText extends StatelessWidget {
+  const _ButtonText({
+    Key? key,
+    required this.text,
+    required this.defaultTextStyle,
+    required this.onPressed,
+    required this.defaultButtonStyle,
+  }) : super(key: key);
+
+  final String text;
+  final TextStyle defaultTextStyle;
+  final Function() onPressed;
+  final ButtonStyle defaultButtonStyle;
+
+  @override
+  Widget build(BuildContext context) {
+    return ElevatedButton(
+      child: Text(text, style: defaultTextStyle),
+      onPressed: onPressed,
+      style: defaultButtonStyle,
+    );
+  }
+}
+
+class _ButtonIconText extends StatelessWidget {
+  const _ButtonIconText({
+    Key? key,
+    required this.defaultButtonStyle,
+    required this.onPressed,
+    required this.icon,
+    required this.text,
+    required this.defaultTextStyle,
+  }) : super(key: key);
+
+  final ButtonStyle defaultButtonStyle;
+  final Function() onPressed;
+  final String? icon;
+  final String text;
+  final TextStyle defaultTextStyle;
+
+  @override
+  Widget build(BuildContext context) {
+    return ElevatedButton.icon(
+      style: defaultButtonStyle,
+      onPressed: onPressed,
+      icon: SvgPicture.asset(
+        icon!,
       ),
-    );
-
-    final defaultTextStyle = TextStyle(
-      color: TagColors.colorBaseWhiteNormal,
-      fontWeight: FontWeight.w500,
-      fontSize: 14,
-      height: 1.2,
-    );
-
-    return Container(
-      child: icon == null
-          ? ElevatedButton(
-              child: Text(
-                text,
-                style: textStyle ?? defaultTextStyle,
-              ),
-              onPressed: onPressed,
-              style: buttonStyle ?? elevatedButtonTheme,
-            )
-          : ElevatedButton.icon(
-              style: buttonStyle ?? elevatedButtonTheme,
-              onPressed: onPressed,
-              icon: SvgPicture.asset(
-                icon!,
-              ),
-              label: Text(
-                text,
-                style: textStyle ??
-                    const TextStyle(
-                      color: TagColors.colorBaseInkNormal,
-                    ),
-              ),
-            ),
+      label: Text(text, style: defaultTextStyle),
     );
   }
 }

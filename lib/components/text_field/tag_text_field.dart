@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -43,6 +45,15 @@ class TagTextField extends StatefulWidget {
 }
 
 class _TagTextFieldState extends State<TagTextField> {
+  Timer? _debounce;
+
+  void _onValueChanged(String value) {
+    if (_debounce?.isActive ?? false) _debounce!.cancel();
+    _debounce = Timer(const Duration(milliseconds: 2000), () {
+      widget.onChanged!(value);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     final textStyle = TextStyle(
@@ -59,7 +70,6 @@ class _TagTextFieldState extends State<TagTextField> {
         Container(
           constraints: fieldBoxConstraints,
           child: TextFormField(
-            key: UniqueKey(),
             autovalidateMode: AutovalidateMode.onUserInteraction,
             initialValue: widget.value,
             maxLines: widget.maxLines,
@@ -72,7 +82,7 @@ class _TagTextFieldState extends State<TagTextField> {
             style: textStyle,
             validator: widget.validator as String? Function(String?)?,
             decoration: buildInputDecoration(widget.hint),
-            onChanged: widget.onChanged,
+            onChanged: _onValueChanged,
             onEditingComplete: widget.onEditingComplete as void Function()?,
             onTap: widget.onEditingComplete as void Function()?,
           ),
