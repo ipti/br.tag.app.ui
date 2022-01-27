@@ -50,3 +50,10 @@
 * fix: parametros de personalização dos buttons
 * fix: correções em widgets e tamanho flexivel
 
+## [0.21.2] - Criação de parametro header para paginas e correções de parametros
+
+* feat: criando categoria de styles no design system para compartilhar obetos de
+        estilo entre componentes
+* fix: parametros de personalização dos buttons
+* fix: corrigindo problema ao digitar no textfield
+
