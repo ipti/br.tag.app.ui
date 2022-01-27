@@ -1,6 +1,4 @@
 import 'package:flutter/widgets.dart';
-import 'package:tag_ui/design_tokens/colors.dart';
-import 'package:tag_ui/design_tokens/font_size.dart';
 import 'package:tag_ui/design_tokens/tokens.dart';
 
 enum HeadingType {

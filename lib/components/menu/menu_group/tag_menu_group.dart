@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+
 import 'package:tag_ui/components/menu/menu_item/tag_menu_item.dart';
-import 'package:tag_ui/design_tokens/colors.dart';
 import 'package:tag_ui/design_tokens/tokens.dart';
 
 import '../i_tag_menu_item.dart';

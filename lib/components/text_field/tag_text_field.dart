@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter/widgets.dart';
+
 import 'package:tag_ui/components/label/tag_label.dart';
 import 'package:tag_ui/components/shared/field_constraints.dart';
 import 'package:tag_ui/components/shared/tag_input_decoration.dart';
@@ -59,6 +59,7 @@ class _TagTextFieldState extends State<TagTextField> {
         Container(
           constraints: fieldBoxConstraints,
           child: TextFormField(
+            key: UniqueKey(),
             autovalidateMode: AutovalidateMode.onUserInteraction,
             initialValue: widget.value,
             maxLines: widget.maxLines,

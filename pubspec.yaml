@@ -1,6 +1,10 @@
 name: tag_ui
 description: Componentes de interface de usuário do TAG (Tecnologia de apoio a gestão).
+<<<<<<< HEAD
 version: 0.19.16
+=======
+version: 0.19.15
+>>>>>>> main
 repository: https://github.com/ipti/br.tag.app.ui
 
 environment:

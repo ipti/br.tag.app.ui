@@ -1,4 +1,4 @@
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
 
 class RowToColumn extends StatelessWidget {
   const RowToColumn({Key? key, this.children}) : super(key: key);
