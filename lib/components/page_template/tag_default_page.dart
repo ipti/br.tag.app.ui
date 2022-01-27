@@ -10,6 +10,7 @@ class TagDefaultPage extends StatelessWidget {
   final List<Widget> body;
   final Widget menu;
   final Widget? aside;
+  final Widget? header;
 
   const TagDefaultPage({
     Key? key,
@@ -19,6 +20,7 @@ class TagDefaultPage extends StatelessWidget {
     required this.body,
     required this.menu,
     this.aside,
+    this.header,
   }) : super(key: key);
 
   @override
@@ -26,42 +28,48 @@ class TagDefaultPage extends StatelessWidget {
     return SafeArea(
       child: MainLayoutAdaptativy(
         left: menu,
-        body: ConstrainedBox(
-          constraints:
-              BoxConstraints(minHeight: MediaQuery.of(context).size.height),
-          child: SingleChildScrollView(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  SizedBox(
-                    height: 50,
-                    child: TagBreadcrumb(
-                      rootItem: "Tag",
-                      paths: path,
-                    ),
+        body: LayoutBuilder(builder: (context, constraints) {
+          return Align(
+            alignment: Alignment.topLeft,
+            child: ConstrainedBox(
+              constraints: constraints,
+              child: SingleChildScrollView(
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      header ?? Container(),
+                      SizedBox(
+                        height: 50,
+                        child: TagBreadcrumb(
+                          rootItem: "Tag",
+                          paths: path,
+                        ),
+                      ),
+                      Heading(
+                        text: title,
+                        type: HeadingType.Title1,
+                      ),
+                      Text(
+                        description,
+                        style: TextStyle(
+                          color: TagColors.colorBaseInkLight,
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 28,
+                      ),
+                      ...body
+                    ],
                   ),
-                  Heading(
-                    text: title,
-                    type: HeadingType.Title1,
-                  ),
-                  Text(
-                    description,
-                    style: TextStyle(
-                      color: TagColors.colorBaseInkLight,
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 28,
-                  ),
-                  ...body
-                ],
+                ),
               ),
             ),
-          ),
-        ),
+          );
+        }),
         right: aside,
       ),
     );

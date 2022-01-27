@@ -19,15 +19,16 @@ class LayoutLeftBodyRight extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: TagColors.colorBaseWhiteNormal,
-      body: SizedBox(
-        height: MediaQuery.of(context).size.height,
-        width: MediaQuery.of(context).size.width,
-        child: _LayoutPages(
-          left: left,
-          center: body,
-          right: right,
-        ),
-      ),
+      body: LayoutBuilder(builder: (context, constrainst) {
+        return ConstrainedBox(
+          constraints: constrainst,
+          child: _LayoutPages(
+            left: left,
+            center: body,
+            right: right,
+          ),
+        );
+      }),
     );
   }
 }
@@ -50,7 +51,7 @@ class _LayoutPages extends StatelessWidget {
           Flexible(
             flex: right != null ? 12 : 16,
             child: Padding(
-              padding: const EdgeInsets.all(32),
+              padding: const EdgeInsets.symmetric(horizontal: 32),
               child: center,
             ),
           ),
