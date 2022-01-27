@@ -39,8 +39,14 @@
 
 * fix: alterando dropdown para tipos genericos
 * fix: corrigindo de valor padrão de maxlines no textfield
-
 ## [0.19.16] - Adição de parametro em TagButton e correção em Dropdown
 
 * fix: campo de cor adicionado ao componente botão 
 * fix: correção no tipo de valor do dropdown para funcionar de forma generica
+
+## [0.20.1] - Criação de parametro header para paginas e correções de parametros
+
+* feat: parametro header para body de páginas
+* fix: parametros de personalização dos buttons
+* fix: correções em widgets e tamanho flexivel
+
