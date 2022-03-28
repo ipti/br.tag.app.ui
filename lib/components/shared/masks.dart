@@ -19,4 +19,9 @@ class TagMasks {
     mask: '###.###.###-##',
     filter: {"#": RegExp(r'[0-9]')},
   );
+
+  static final maskCEP = new MaskTextInputFormatter(
+    mask: '#####-###',
+    filter: {"#": RegExp(r'[0-9]')},
+  );
 }
