@@ -24,6 +24,7 @@ class TagTextField extends StatefulWidget {
     this.value,
     this.maxLines = 1,
     this.minLines = 1,
+    this.padding = TagSpancing.paddingTextField,
   }) : super(key: key);
 
   final String? hint;
@@ -38,20 +39,27 @@ class TagTextField extends StatefulWidget {
   final List<TextInputFormatter>? formatters;
   final Function? validator;
   final Function(String)? onChanged;
-  final Function? onEditingComplete;
+  final void Function()? onEditingComplete;
+  final EdgeInsets padding;
 
   @override
   _TagTextFieldState createState() => _TagTextFieldState();
 }
 
 class _TagTextFieldState extends State<TagTextField> {
-  Timer? _debounce;
-
   void _onValueChanged(String value) {
-    if (_debounce?.isActive ?? false) _debounce!.cancel();
-    _debounce = Timer(const Duration(milliseconds: 2000), () {
-      widget.onChanged!(value);
-    });
+    final _debouncer = Debouncer(delay: Duration(milliseconds: 250));
+    _debouncer.call(() => widget.onChanged!(value));
+  }
+
+  late TextEditingController _controller;
+
+  @override
+  void initState() {
+    _controller = widget.controller ?? TextEditingController();
+    _controller.text = widget.value.toString();
+
+    super.initState();
   }
 
   @override
@@ -60,34 +68,54 @@ class _TagTextFieldState extends State<TagTextField> {
       fontSize: TagFontSize.fontSizeInputNormal,
     );
 
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Padding(
-          padding: const EdgeInsets.only(bottom: 4),
-          child: TagLabel(widget.label),
-        ),
-        Container(
-          constraints: fieldBoxConstraints,
-          child: TextFormField(
-            autovalidateMode: AutovalidateMode.onUserInteraction,
-            initialValue: widget.value,
-            maxLines: widget.maxLines,
-            minLines: widget.minLines,
-            controller: widget.controller,
-            obscureText: widget.obscureText ?? false,
-            inputFormatters: widget.formatters,
-            maxLength: widget.maxLength,
-            keyboardType: widget.inputType,
-            style: textStyle,
-            validator: widget.validator as String? Function(String?)?,
-            decoration: buildInputDecoration(widget.hint),
-            onChanged: _onValueChanged,
-            onEditingComplete: widget.onEditingComplete as void Function()?,
-            onTap: widget.onEditingComplete as void Function()?,
+    return Padding(
+      padding: widget.padding,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Padding(
+            padding: const EdgeInsets.only(bottom: 4),
+            child: TagLabel(widget.label),
           ),
-        ),
-      ],
+          Container(
+            constraints: fieldBoxConstraints,
+            child: TextFormField(
+              key: Key(widget.label),
+              autovalidateMode: AutovalidateMode.onUserInteraction,
+              maxLines: widget.maxLines,
+              minLines: widget.minLines,
+              controller: _controller,
+              obscureText: widget.obscureText ?? false,
+              inputFormatters: widget.formatters,
+              maxLength: widget.maxLength,
+              keyboardType: widget.inputType,
+              style: textStyle,
+              validator: widget.validator as String? Function(String?)?,
+              decoration: buildInputDecoration(widget.hint),
+              onChanged: _onValueChanged,
+              onEditingComplete: () => _onValueChanged(_controller.text),
+            ),
+          ),
+        ],
+      ),
     );
+  }
+}
+
+class Debouncer {
+  Debouncer({this.delay = const Duration(milliseconds: 300)});
+
+  final Duration delay;
+  Timer? _timer;
+
+  void call(void Function() callback) {
+    _timer?.cancel();
+    _timer = Timer(delay, callback);
+  }
+
+  void dispose() {
+    _timer
+        ?.cancel(); // You can comment-out this line if you want. I am not sure if this call brings any value.
+    _timer = null;
   }
 }
