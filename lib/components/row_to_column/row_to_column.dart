@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 class RowToColumn extends StatelessWidget {
-  const RowToColumn({Key? key, this.children}) : super(key: key);
+  const RowToColumn({Key? key, required this.children}) : super(key: key);
 
-  final List<Widget>? children;
+  final List<Widget> children;
 
   @override
   Widget build(BuildContext context) {
@@ -13,9 +13,9 @@ class RowToColumn extends StatelessWidget {
         builder: (context, constraints) {
           final isDesktop = MediaQuery.of(context).size.width > 992;
           final items = [
-            for (var i = 0; i < children!.length; i++) ...[
-              children![i],
-              if (i != children!.length - 1)
+            for (var i = 0; i < children.length; i++) ...[
+              children[i],
+              if (i != children.length - 1)
                 SizedBox(
                   width: 16,
                 ),
