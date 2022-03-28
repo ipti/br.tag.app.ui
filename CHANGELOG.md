@@ -57,3 +57,13 @@
 * fix: parametros de personalização dos buttons
 * fix: corrigindo problema ao digitar no textfield
 
+
+## [0.23.2] - Correções de espaçamento e nova máscara 
+
+### Novas Features
+* feat: adicionando mascara de CEP;
+* feat: adicionando padding automático para campos de texto
+### Correções
+* fix: correção de debounce no input
+* fix: remoção de widgets desnecessários em RowToColumn
+
