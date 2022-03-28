@@ -21,6 +21,7 @@ class TagDatePickerField extends StatefulWidget {
     this.onEditingComplete,
     required this.label,
     this.value,
+    this.padding = TagSpancing.paddingTextField,
   }) : super(key: key);
 
   final String? hint;
@@ -34,6 +35,7 @@ class TagDatePickerField extends StatefulWidget {
   final Function? validator;
   final void Function(String) onChanged;
   final Function? onEditingComplete;
+  final EdgeInsets padding;
 
   @override
   _TagDatePickerFieldState createState() => _TagDatePickerFieldState();
@@ -46,34 +48,37 @@ const textStyle = TextStyle(
 class _TagDatePickerFieldState extends State<TagDatePickerField> {
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Padding(
-          padding: const EdgeInsets.only(bottom: 4),
-          child: TagLabel(widget.label),
-        ),
-        Container(
-          constraints: fieldBoxConstraints,
-          child: TextFormField(
-            autovalidateMode: AutovalidateMode.onUserInteraction,
-            initialValue: widget.value ?? "",
-            controller: widget.controller,
-            inputFormatters: [
-              ...(widget.formatters ?? []),
-              TagMasks.maskDate,
-            ],
-            maxLength: widget.maxLength,
-            keyboardType: widget.inputType,
-            style: textStyle,
-            validator: widget.validator as String? Function(String?)?,
-            decoration: buildInputDecoration(widget.hint),
-            onChanged: widget.onChanged,
-            onEditingComplete: widget.onEditingComplete as void Function()?,
-            onTap: widget.onEditingComplete as void Function()?,
+    return Padding(
+      padding: widget.padding,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Padding(
+            padding: const EdgeInsets.only(bottom: 4),
+            child: TagLabel(widget.label),
           ),
-        ),
-      ],
+          Container(
+            constraints: fieldBoxConstraints,
+            child: TextFormField(
+              autovalidateMode: AutovalidateMode.onUserInteraction,
+              initialValue: widget.value ?? "",
+              controller: widget.controller,
+              inputFormatters: [
+                ...(widget.formatters ?? []),
+                TagMasks.maskDate,
+              ],
+              maxLength: widget.maxLength,
+              keyboardType: widget.inputType,
+              style: textStyle,
+              validator: widget.validator as String? Function(String?)?,
+              decoration: buildInputDecoration(widget.hint),
+              onChanged: widget.onChanged,
+              onEditingComplete: widget.onEditingComplete as void Function()?,
+              onTap: widget.onEditingComplete as void Function()?,
+            ),
+          ),
+        ],
+      ),
     );
   }
 

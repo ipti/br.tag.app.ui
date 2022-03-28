@@ -1,45 +1,47 @@
 import 'package:flutter/rendering.dart';
 
 class TagSpancing {
-  static final paddingAlert = EdgeInsets.all(16);
-  static final paddingAlertWithIcon = EdgeInsets.all(12);
-  static final paddingBadge = EdgeInsets.symmetric(horizontal: 8);
-  static final paddingButtonWithoutText = EdgeInsets.all(0);
-  static final paddingButtonSmall = EdgeInsets.symmetric(horizontal: 12);
-  static final paddingButtonNormal = EdgeInsets.symmetric(horizontal: 16);
-  static final paddingButtonLarge = EdgeInsets.symmetric(horizontal: 28);
-  static final paddingButtonSmallWithIcons =
+  static const paddingTextField =
+      EdgeInsets.symmetric(vertical: 8, horizontal: 4);
+  static const paddingAlert = EdgeInsets.all(16);
+  static const paddingAlertWithIcon = EdgeInsets.all(12);
+  static const paddingBadge = EdgeInsets.symmetric(horizontal: 8);
+  static const paddingButtonWithoutText = EdgeInsets.all(0);
+  static const paddingButtonSmall = EdgeInsets.symmetric(horizontal: 12);
+  static const paddingButtonNormal = EdgeInsets.symmetric(horizontal: 16);
+  static const paddingButtonLarge = EdgeInsets.symmetric(horizontal: 28);
+  static const paddingButtonSmallWithIcons =
       EdgeInsets.symmetric(horizontal: 8);
-  static final paddingButtonNormalWithIcons =
+  static const paddingButtonNormalWithIcons =
       EdgeInsets.symmetric(horizontal: 12);
-  static final paddingButtonLargeWithIcons =
+  static const paddingButtonLargeWithIcons =
       EdgeInsets.symmetric(horizontal: 16);
-  static final paddingButtonSmallWithLeftIcon =
+  static const paddingButtonSmallWithLeftIcon =
       EdgeInsets.fromLTRB(8, 0, 12, 0);
-  static final paddingButtonNormalWithLeftIcon =
+  static const paddingButtonNormalWithLeftIcon =
       EdgeInsets.fromLTRB(12, 0, 16, 0);
-  static final paddingButtonLargeWithLeftIcon =
+  static const paddingButtonLargeWithLeftIcon =
       EdgeInsets.fromLTRB(16, 0, 28, 0);
-  static final paddingButtonSmallWithRightIcon =
+  static const paddingButtonSmallWithRightIcon =
       EdgeInsets.fromLTRB(12, 0, 8, 0);
-  static final paddingButtonNormalWithRightIcon =
+  static const paddingButtonNormalWithRightIcon =
       EdgeInsets.fromLTRB(16, 0, 12, 0);
-  static final paddingButtonLargeWithRightIcon =
+  static const paddingButtonLargeWithRightIcon =
       EdgeInsets.fromLTRB(28, 0, 16, 0);
-  static final paddingTextareaSmall =
+  static const paddingTextareaSmall =
       EdgeInsets.symmetric(horizontal: 12, vertical: 8);
-  static final paddingTextareaNormal = EdgeInsets.all(12);
-  static final paddingInputSmall = EdgeInsets.symmetric(horizontal: 12);
-  static final paddingInputNormal = EdgeInsets.symmetric(horizontal: 12);
-  static final marginButtonIconSmall = EdgeInsets.all(8);
-  static final marginButtonIconNormal = EdgeInsets.all(8);
-  static final marginButtonIconLarge = EdgeInsets.all(12);
-  static final marginButtonGroupConnected = EdgeInsets.fromLTRB(0, 0, 1, 0);
-  static final marginButtonGroup = EdgeInsets.fromLTRB(0, 0, 1, 0);
-  static final marginTopFormFeedback = EdgeInsets.all(2);
-  static final marginBottomSelectSuffix = EdgeInsets.all(2);
-  static final paddingInputFile = EdgeInsets.fromLTRB(6, 0, 0, 0);
-  static final paddingLeftSelectPrefix = EdgeInsets.all(48);
+  static const paddingTextareaNormal = EdgeInsets.all(12);
+  static const paddingInputSmall = EdgeInsets.symmetric(horizontal: 12);
+  static const paddingInputNormal = EdgeInsets.symmetric(horizontal: 12);
+  static const marginButtonIconSmall = EdgeInsets.all(8);
+  static const marginButtonIconNormal = EdgeInsets.all(8);
+  static const marginButtonIconLarge = EdgeInsets.all(12);
+  static const marginButtonGroupConnected = EdgeInsets.fromLTRB(0, 0, 1, 0);
+  static const marginButtonGroup = EdgeInsets.fromLTRB(0, 0, 1, 0);
+  static const marginTopFormFeedback = EdgeInsets.all(2);
+  static const marginBottomSelectSuffix = EdgeInsets.all(2);
+  static const paddingInputFile = EdgeInsets.fromLTRB(6, 0, 0, 0);
+  static const paddingLeftSelectPrefix = EdgeInsets.all(48);
   static const paddingLoading = EdgeInsets.all(12);
   static const paddingTable =
       EdgeInsets.symmetric(horizontal: 16, vertical: 12);
