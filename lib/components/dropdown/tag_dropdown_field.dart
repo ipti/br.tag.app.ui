@@ -80,6 +80,7 @@ class _TagDropdownFieldState<T> extends State<TagDropdownField> {
           Container(
             constraints: fieldBoxConstraints,
             child: DropdownButtonFormField<T>(
+              key: widget.key,
               autovalidateMode: AutovalidateMode.onUserInteraction,
               isExpanded: true,
               isDense: false,

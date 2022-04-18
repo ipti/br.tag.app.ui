@@ -60,6 +60,7 @@ class _TagDatePickerFieldState extends State<TagDatePickerField> {
           Container(
             constraints: fieldBoxConstraints,
             child: TextFormField(
+              key: widget.key,
               autovalidateMode: AutovalidateMode.onUserInteraction,
               initialValue: widget.value ?? "",
               controller: widget.controller,
