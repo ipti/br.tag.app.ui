@@ -18,10 +18,12 @@ class TagMasks {
   static final maskCPF = new MaskTextInputFormatter(
     mask: '###.###.###-##',
     filter: {"#": RegExp(r'[0-9]')},
+    type: MaskAutoCompletionType.eager,
   );
 
   static final maskCEP = new MaskTextInputFormatter(
     mask: '#####-###',
     filter: {"#": RegExp(r'[0-9]')},
+    type: MaskAutoCompletionType.eager,
   );
 }
