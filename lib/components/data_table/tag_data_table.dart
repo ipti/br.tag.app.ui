@@ -43,25 +43,28 @@ class _TagTable extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDesktop = MediaQuery.of(context).size.width > 992;
     return Column(
       children: [
-        SizedBox(
-          height: 30,
-          child: Builder(builder: (context) {
-            final headers = columns
-                .map(
-                  (e) => _Header(child: e.label),
-                )
-                .toList();
-            return Row(
-              children: [...headers, SizedBox(width: 50)],
-            );
-          }),
-        ),
-        Divider(
-          height: 1,
-          color: TagColors.colorBaseInkLight,
-        ),
+        if (isDesktop)
+          SizedBox(
+            height: 30,
+            child: Builder(builder: (context) {
+              final headers = columns
+                  .map(
+                    (e) => _Header(child: e.label),
+                  )
+                  .toList();
+              return Row(
+                children: [...headers, SizedBox(width: 50)],
+              );
+            }),
+          ),
+        if (isDesktop)
+          Divider(
+            height: 1,
+            color: TagColors.colorBaseInkLight,
+          ),
         SizedBox(
           height: 500,
           child: ListView.builder(
@@ -76,11 +79,12 @@ class _TagTable extends StatelessWidget {
                   ..addAll(
                     [
                       element,
-                      Container(
-                        height: 30,
-                        width: 2,
-                        color: TagColors.colorBaseCloudLightHover,
-                      ),
+                      if (isDesktop)
+                        Container(
+                          height: 30,
+                          width: 2,
+                          color: TagColors.colorBaseCloudLightHover,
+                        ),
                     ],
                   ),
               );
