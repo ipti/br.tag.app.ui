@@ -22,9 +22,13 @@ class MainLayoutAdaptativy extends StatelessWidget {
             right: right,
           );
         }
-        return LayoutTopBarAndBody(
-          body: body,
-          drawer: left,
+        return SizedBox(
+          height: constraints.maxHeight,
+          width: constraints.maxWidth,
+          child: LayoutTopBarAndBody(
+            body: body,
+            drawer: left,
+          ),
         );
       },
     );

@@ -15,4 +15,11 @@ abstract class TagTextStyles {
     fontSize: 14,
     height: 1.2,
   );
+
+  static const textTableColumnHeader = TextStyle(
+    color: TagColors.colorBaseInkNormal,
+    fontWeight: FontWeight.w700,
+    fontSize: 14,
+    height: 1.2,
+  );
 }

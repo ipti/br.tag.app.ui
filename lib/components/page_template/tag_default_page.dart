@@ -26,48 +26,43 @@ class TagDefaultPage extends StatelessWidget {
     return SafeArea(
       child: MainLayoutAdaptativy(
         left: menu,
-        body: LayoutBuilder(builder: (context, constraints) {
-          return Align(
-            alignment: Alignment.topLeft,
-            child: ConstrainedBox(
-              constraints: constraints,
-              child: SingleChildScrollView(
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    mainAxisSize: MainAxisSize.max,
-                    children: [
-                      header ?? Container(),
-                      SizedBox(
-                        height: 50,
-                        child: TagBreadcrumb(
-                          rootItem: "Tag",
-                          paths: path,
-                        ),
-                      ),
-                      Heading(
-                        text: title,
-                        type: HeadingType.Title1,
-                      ),
-                      Text(
-                        description,
-                        style: TextStyle(
-                          color: TagColors.colorBaseInkLight,
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 28,
-                      ),
-                      ...body
-                    ],
+        body: Align(
+          alignment: Alignment.topLeft,
+          child: SingleChildScrollView(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.start,
+                mainAxisSize: MainAxisSize.max,
+                children: [
+                  header ?? Container(),
+                  SizedBox(
+                    height: 50,
+                    child: TagBreadcrumb(
+                      rootItem: "Tag",
+                      paths: path,
+                    ),
                   ),
-                ),
+                  Heading(
+                    text: title,
+                    type: HeadingType.Title1,
+                  ),
+                  Text(
+                    description,
+                    style: TextStyle(
+                      color: TagColors.colorBaseInkLight,
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 28,
+                  ),
+                  ...body
+                ],
               ),
             ),
-          );
-        }),
+          ),
+        ),
         right: aside,
       ),
     );
