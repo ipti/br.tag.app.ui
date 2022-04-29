@@ -16,4 +16,22 @@ void main() {
 
     expect(titleFinder, findsOneWidget);
   });
+
+  testWidgets("Render TextField test", (WidgetTester tester) async {
+    await tester.pumpWidget(
+      MaterialApp(
+        home: Material(
+          child: Center(
+            child: TagTextField(
+              label: "input",
+            ),
+          ),
+        ),
+      ),
+    );
+
+    final titleFinder = find.text('input');
+
+    expect(titleFinder, findsOneWidget);
+  });
 }

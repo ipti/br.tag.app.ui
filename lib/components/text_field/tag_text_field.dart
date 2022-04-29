@@ -9,7 +9,7 @@ import 'package:tag_ui/components/shared/tag_input_decoration.dart';
 import 'package:tag_ui/design_tokens/tokens.dart';
 
 class TagTextField extends StatefulWidget {
-  TagTextField({
+  const TagTextField({
     Key? key,
     required this.label,
     this.hint,
