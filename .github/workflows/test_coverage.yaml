@@ -23,4 +23,9 @@ jobs:
         run: sh test/helpers/scripts/coverage_imports.sh tag_ui
       - name: Run tests
         run: flutter test --coverage
+      - name: Upload Coverage to Codecov
+        uses: codecov/codecov-action@v2
+        with:
+          file: coverage/lcov.info
+          token: ${{ secrets.CODECOV_TOKEN }}
 
