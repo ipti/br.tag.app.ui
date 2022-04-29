@@ -1,8 +1,7 @@
-name: Flutter_Tests
+name: Tests and coverage
 
 on:
-  push:
-    branches: *
+  push:    
   pull_request:
     branches: [main]
 
@@ -19,8 +18,10 @@ jobs:
           channel: 'stable'
       - name: Restore packages
         run: flutter pub get
-      - name: Analyze
-        run: flutter analyze
+      # - name: Analyze
+        # run: flutter analyze
+      - name: Import files to coverage
+        run: sh test/helpers/scripts/coverage_imports.sh tag_ui
       - name: Run tests
         run: flutter test --coverage
 
