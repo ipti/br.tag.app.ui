@@ -16,22 +16,74 @@ void main() {
 
     expect(titleFinder, findsOneWidget);
   });
-
-  testWidgets("Render TextField test", (WidgetTester tester) async {
-    await tester.pumpWidget(
-      MaterialApp(
-        home: Material(
-          child: Center(
-            child: TagTextField(
-              label: "input",
+  group("TagTextField: ", () {
+    testWidgets("Render test", (WidgetTester tester) async {
+      await tester.pumpWidget(
+        MaterialApp(
+          home: Material(
+            child: Center(
+              child: TagTextField(
+                label: "input",
+              ),
             ),
           ),
         ),
-      ),
-    );
+      );
 
-    final titleFinder = find.text('input');
+      final titleFinder = find.text('input');
 
-    expect(titleFinder, findsOneWidget);
+      expect(titleFinder, findsOneWidget);
+    });
+
+    testWidgets("changeValue test", (WidgetTester tester) async {
+      late String value;
+      const key = Key("TAG_TEXT_FIELD");
+      await tester.pumpWidget(
+        MaterialApp(
+          home: Material(
+            child: Center(
+              child: TagTextField(
+                key: key,
+                label: "input",
+                onChanged: (v) => value = v,
+              ),
+            ),
+          ),
+        ),
+      );
+
+      await tester.enterText(find.byKey(key), 'Soup');
+
+      await tester.pump(Duration(milliseconds: 250));
+
+      expect(value, 'Soup');
+    });
+    testWidgets("onEditingComplete test", (WidgetTester tester) async {
+      late String value;
+      const key = Key("TAG_TEXT_FIELD");
+      await tester.pumpWidget(
+        MaterialApp(
+          home: Material(
+            child: Center(
+              child: TagTextField(
+                key: key,
+                label: "input",
+                onEditingComplete: () => value = 'Soup',
+              ),
+            ),
+          ),
+        ),
+      );
+
+      final field = find.byKey(key);
+
+      await tester.enterText(field, 'Soup');
+
+      await tester.testTextInput.receiveAction(TextInputAction.done);
+
+      await tester.pump(Duration(milliseconds: 250));
+
+      expect(value, 'Soup');
+    });
   });
 }
