@@ -22,6 +22,7 @@ class TagLabel extends StatelessWidget {
     return Text(
       text,
       style: style,
+      textDirection: TextDirection.ltr,
     );
   }
 }
