@@ -25,7 +25,6 @@ class RowToColumn extends StatelessWidget {
       });
       return ConstrainedBox(
         constraints: constraints.copyWith(
-          minHeight: 50,
           minWidth: 50,
         ),
         child: ToggleMobileDesktop(

@@ -106,12 +106,19 @@ class _TableBody extends StatelessWidget {
         if (dataRow == null) return Container();
         final row = _mapCellsChild(dataRow);
 
-        return LimitedBox(
-          maxHeight: 50,
-          child: _TableRow(
+        return ToggleMobileDesktop(
+          mobile: _TableRow(
             index: index,
             onTapRow: onTapRow,
             children: row,
+          ),
+          desktop: LimitedBox(
+            maxHeight: 50,
+            child: _TableRow(
+              index: index,
+              onTapRow: onTapRow,
+              children: row,
+            ),
           ),
         );
       },
