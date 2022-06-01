@@ -61,7 +61,7 @@ class _TagTextFieldState extends State<TagTextField> {
   @override
   void initState() {
     _controller = widget.controller ?? TextEditingController();
-    _controller.text = widget.value.toString();
+    _controller.text = widget.value ?? "";
 
     super.initState();
   }
