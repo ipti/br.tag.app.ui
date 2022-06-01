@@ -7,11 +7,13 @@ class TagDataTable extends StatelessWidget {
     required this.columns,
     required this.source,
     this.onTapRow,
+    this.bodyHeight,
   }) : super(key: key);
 
   final List<DataColumn> columns;
   final DataTableSource source;
-  final void Function(int)? onTapRow;
+  final void Function(int rowIndex)? onTapRow;
+  final double? bodyHeight;
 
   @override
   Widget build(BuildContext context) {
@@ -22,6 +24,7 @@ class TagDataTable extends StatelessWidget {
           onTapRow: onTapRow,
           columns: columns,
           source: source,
+          bodyHeight: bodyHeight,
         ),
       ),
     );
@@ -34,18 +37,23 @@ class _TagTable extends StatelessWidget {
     required this.columns,
     required this.source,
     this.onTapRow,
+    this.bodyHeight,
   }) : super(key: key);
 
   final List<DataColumn> columns;
   final DataTableSource source;
-  final void Function(int)? onTapRow;
+  final void Function(int rowIndex)? onTapRow;
+  final double? bodyHeight;
 
   @override
   Widget build(BuildContext context) {
+    final defaultBodyHeight = (MediaQuery.of(context).size.height / 4) * 3;
+
     return Column(
       children: [
         ShowOnDesktop(
           child: Column(
+            mainAxisSize: MainAxisSize.min,
             children: [
               SizedBox(
                 height: 30,
@@ -60,9 +68,12 @@ class _TagTable extends StatelessWidget {
             ],
           ),
         ),
-        SizedBox(
-          height: 500,
-          child: _TableBody(source: source, onTapRow: onTapRow),
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: LimitedBox(
+            maxHeight: bodyHeight ?? defaultBodyHeight,
+            child: _TableBody(source: source, onTapRow: onTapRow),
+          ),
         ),
       ],
     );
@@ -77,21 +88,31 @@ class _TableBody extends StatelessWidget {
   }) : super(key: key);
 
   final DataTableSource source;
-  final void Function(int p1)? onTapRow;
+  final void Function(int rowIndex)? onTapRow;
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
+    return ListView.separated(
+      shrinkWrap: true,
+      separatorBuilder: (context, index) => ShowOnDesktop(
+        child: Container(
+          height: 10,
+          width: 2,
+        ),
+      ),
       itemCount: source.rowCount,
       itemBuilder: (context, index) {
         final dataRow = source.getRow(index);
         if (dataRow == null) return Container();
         final row = _mapCellsChild(dataRow);
 
-        return _TableRow(
-          index: index,
-          onTapRow: onTapRow,
-          children: row,
+        return LimitedBox(
+          maxHeight: 50,
+          child: _TableRow(
+            index: index,
+            onTapRow: onTapRow,
+            children: row,
+          ),
         );
       },
     );
@@ -99,25 +120,7 @@ class _TableBody extends StatelessWidget {
 
   List<Widget> _mapCellsChild(DataRow data) {
     final cells = data.cells.map((e) => _Cell(child: e.child));
-
-    final cellsDivided = cells.fold<List<Widget>>(
-      [],
-      (previousValue, element) => previousValue
-        ..addAll(
-          [
-            element,
-            ShowOnDesktop(
-              child: Container(
-                height: 30,
-                width: 2,
-                color: TagColors.colorBaseCloudLightHover,
-              ),
-            ),
-          ],
-        ),
-    );
-
-    return cellsDivided..removeLast();
+    return cells.toList();
   }
 }
 
@@ -154,8 +157,7 @@ class _TableRow extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       color: TagColors.colorBaseProductLighter,
-      margin: const EdgeInsets.all(8.0),
-      padding: const EdgeInsets.all(8.0),
+      padding: const EdgeInsets.all(14.0),
       child: InkWell(
         onTap: () => onTapRow != null ? onTapRow!(index) : null,
         child: LayoutBuilder(builder: (context, constraints) {
@@ -172,7 +174,7 @@ class _TableRow extends StatelessWidget {
                   ),
                 ),
                 SizedBox(
-                  width: 50,
+                  width: 32,
                   child: Icon(Icons.keyboard_arrow_right),
                 )
               ],
@@ -195,7 +197,7 @@ class _Cell extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
       child: Padding(
-        padding: EdgeInsets.all(6),
+        padding: EdgeInsets.all(0),
         child: child,
       ),
     );
