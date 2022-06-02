@@ -32,7 +32,8 @@ class TagSpancing {
       EdgeInsets.symmetric(horizontal: 12, vertical: 8);
   static const paddingTextareaNormal = EdgeInsets.all(12);
   static const paddingInputSmall = EdgeInsets.symmetric(horizontal: 12);
-  static const paddingInputNormal = EdgeInsets.symmetric(horizontal: 12);
+  static const paddingInputNormal =
+      EdgeInsets.symmetric(horizontal: 12, vertical: 0);
   static const marginButtonIconSmall = EdgeInsets.all(8);
   static const marginButtonIconNormal = EdgeInsets.all(8);
   static const marginButtonIconLarge = EdgeInsets.all(12);

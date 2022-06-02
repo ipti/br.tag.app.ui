@@ -85,6 +85,12 @@ class _TagDropdownFieldState<T> extends State<TagDropdownField> {
               isDense: false,
               value: widget.value,
               items: items,
+              itemHeight: TagSizes.heightInputLarge,
+              alignment: Alignment.centerLeft,
+              hint: Text(
+                widget.hint ?? "",
+                overflow: TextOverflow.ellipsis,
+              ),
               style: TagTextStyles.textFieldStyle,
               decoration: buildInputDecoration(widget.hint),
               validator: (dynamic value) => widget.validator != null

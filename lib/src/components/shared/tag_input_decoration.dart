@@ -18,6 +18,8 @@ final buildInputDecoration = (String? hint) => InputDecoration(
       floatingLabelBehavior: FloatingLabelBehavior.never,
       hintText: hint,
       filled: true,
+      hintMaxLines: 1,
+      hintStyle: TextStyle(height: 1.2),
       fillColor: TagColors.colorBaseWhiteNormal,
       contentPadding: TagSpancing.paddingInputNormal,
       enabledBorder: border.copyWith(
