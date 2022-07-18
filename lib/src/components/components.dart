@@ -20,5 +20,6 @@ export 'number_field/tag_number_field.dart';
 export 'page_template/tag_default_page.dart';
 export 'rainbow_bar/tag_rainbow_bar.dart';
 export 'shared/masks.dart';
+export 'scaffold/tag_scaffold.dart';
 export 'templates/main_layout_adaptativy.dart';
 export 'text_field/tag_text_field.dart';
