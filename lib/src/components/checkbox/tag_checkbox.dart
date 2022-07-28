@@ -34,25 +34,20 @@ class _TagCheckboxState extends State<TagCheckbox> {
     super.initState();
   }
 
+  void change([bool? optValue]) {
+    setState(() {
+      _value = optValue ?? !_value;
+    });
+    if (!widget.disabled) widget.onChanged(_value);
+  }
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {
-        setState(() {
-          _value = !_value;
-        });
-        if (!widget.disabled) widget.onChanged(_value);
-      },
+      onTap: () => change(),
       child: Row(
         children: [
-          Checkbox(
-            value: _value,
-            onChanged: (value) {
-              setState(() {
-                _value = value!;
-              });
-            },
-          ),
+          Checkbox(value: _value, onChanged: (value) => change(value)),
           Expanded(
             child: TagLabel(widget.label),
           ),

@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:mocktail/mocktail.dart';
 import 'package:tag_ui/src/strings/file_paths.dart';
 import 'package:tag_ui/tag_ui.dart';
 
 import '../../helpers/methods/prepare_widget.dart';
+import '../../helpers/mock/dumb.dart';
 
 void main() {
   group("When TagButton render", () {
@@ -91,6 +93,21 @@ void main() {
 
       expect(button.buttonStyle, equals(TagButtonStyles.secondary));
     });
-  });
+    testWidgets("tap it", (WidgetTester tester) async {
+      final dumb = MockDumb();
+      when(() => dumb.call()).thenAnswer((invocation) {});
+      final tagButton = TagButton(
+        text: "MyButton",
+        onPressed: () {
+          dumb.call();
+        },
+      );
+      await tester.pumpWidget(wrapDirectionaly(tagButton));
 
+      final Finder resultSearch = find.byType(TagButton);
+      await tester.tap(resultSearch);
+      await tester.pumpAndSettle();
+      verify(() => dumb.call()).called(1);
+    });
+  });
 }

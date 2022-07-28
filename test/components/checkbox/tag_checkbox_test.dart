@@ -1,15 +1,9 @@
-import 'dart:ffi';
-
+import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:tag_ui/src/components/checkbox/tag_checkbox.dart';
 import '../../helpers/methods/prepare_widget.dart';
-
-class Dumb {
-  void call(param) {}
-}
-
-class MockDumb extends Mock implements Dumb {}
+import '../../helpers/mock/dumb.dart';
 
 void main() {
   group("When TagCheckbox render", () {
@@ -18,7 +12,7 @@ void main() {
     });
     testWidgets("With VALUE false ", (WidgetTester tester) async {
       final tagCheckbox = TagCheckbox(
-        onChanged: ( valor) {},
+        onChanged: (valor) {},
         label: "MyCheckbox",
         value: false,
       );
@@ -32,9 +26,9 @@ void main() {
     });
     testWidgets("when value changed", (WidgetTester tester) async {
       final dumb = MockDumb();
-      when(() => dumb.call(any())).thenAnswer((invocation) {});
+      when(() => dumb.callWithParam1(any())).thenAnswer((invocation) {});
       final tagCheckbox = TagCheckbox(
-        onChanged: (value) => dumb.call(value),
+        onChanged: (value) => dumb.callWithParam1(value),
         label: "MyCheckbox",
       );
 
@@ -44,18 +38,18 @@ void main() {
       await tester.tap(resultSearch);
       await tester.pumpAndSettle();
 
-      verify(() => dumb.call(any(that: isTrue))).called(1);
+      verify(() => dumb.callWithParam1(any(that: isTrue))).called(1);
 
       await tester.tap(resultSearch);
       await tester.pumpAndSettle();
 
-      verify(() => dumb.call(any(that: isFalse))).called(1);
+      verify(() => dumb.callWithParam1(any(that: isFalse))).called(1);
     });
     testWidgets("With DISABLED true", (WidgetTester tester) async {
       final dumb = MockDumb();
-      when(() => dumb.call(any())).thenAnswer((invocation) {});
+      when(() => dumb.callWithParam1(any())).thenAnswer((invocation) {});
       final tagCheckbox = TagCheckbox(
-        onChanged: (value) => dumb.call(value),
+        onChanged: (value) => dumb.callWithParam1(value),
         label: "MyCheckbox",
         disabled: true,
       );
@@ -66,9 +60,9 @@ void main() {
       await tester.tap(resultSearch);
       await tester.pumpAndSettle();
 
-      verifyNever(() => dumb.call(any()));
+      verifyNever(() => dumb.callWithParam1(any()));
     });
-    testWidgets("Oly with text", (WidgetTester tester) async {
+    testWidgets("Only with text", (WidgetTester tester) async {
       final tagCheckbox = TagCheckbox(
         onChanged: (bool? valor) {},
         label: "MyCheckbox",
@@ -79,6 +73,28 @@ void main() {
       final Finder resultSearch = find.byType(TagCheckbox);
 
       expect(resultSearch, findsOneWidget);
+    });
+    testWidgets("when value changed  in checkbox", (WidgetTester tester) async {
+      final dumb = MockDumb();
+      when(() => dumb.callWithParam1(any())).thenAnswer((invocation) {});
+      final tagCheckbox = TagCheckbox(
+        onChanged: (value) => dumb.callWithParam1(value),
+        label: "MyCheckbox",
+      );
+
+      await tester.pumpWidget(wrapMaterial(tagCheckbox));
+
+      final Finder resultSearch = find.byType(Checkbox);
+      await tester.tap(resultSearch);
+      await tester.pumpAndSettle();
+
+      await tester.tap(resultSearch);
+      await tester.pumpAndSettle();
+
+      verifyInOrder([
+        () => dumb.callWithParam1(any(that: isTrue)),
+        () => dumb.callWithParam1(any(that: isFalse))
+      ]);
     });
   });
 }
