@@ -3,7 +3,7 @@ import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter/widgets.dart';
+
 
 const fakeSVG = '''
 <svg viewBox="0 0 10 10">
@@ -22,6 +22,12 @@ Widget wrapMaterialAndBundle(widget) => MaterialApp(
       home: DefaultAssetBundle(
         bundle: TestAssetBundle(),
         child: widget,
+      ),
+    );
+
+Widget wrapMaterial(widget) => MaterialApp(
+      home: Scaffold(
+        body: widget,
       ),
     );
 
