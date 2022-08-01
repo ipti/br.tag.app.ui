@@ -11,11 +11,13 @@ class LayoutTopBarAndBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: TagColors.colorBaseWhiteNormal,
-      drawer: drawer,
-      appBar: TagAppBar(),
-      body: body,
+    return SafeArea(
+      child: Scaffold(
+        backgroundColor: TagColors.colorBaseWhiteNormal,
+        drawer: drawer,
+        appBar: TagAppBar(),
+        body: body,
+      ),
     );
   }
 }

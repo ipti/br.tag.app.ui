@@ -17,16 +17,11 @@ class TagDataTable extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return LayoutBuilder(
-      builder: (context, constraints) => ConstrainedBox(
-        constraints: BoxConstraints(minWidth: constraints.maxWidth),
-        child: _TagTable(
-          onTapRow: onTapRow,
-          columns: columns,
-          source: source,
-          bodyHeight: bodyHeight,
-        ),
-      ),
+    return _TagTable(
+      onTapRow: onTapRow,
+      columns: columns,
+      source: source,
+      bodyHeight: bodyHeight,
     );
   }
 }
@@ -49,34 +44,59 @@ class _TagTable extends StatelessWidget {
   Widget build(BuildContext context) {
     final defaultBodyHeight = (MediaQuery.of(context).size.height / 4) * 3;
 
-    return Column(
-      children: [
-        ShowOnDesktop(
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              SizedBox(
-                height: 30,
-                child: _TableHead(
-                  columns: columns,
-                ),
-              ),
-              Divider(
+    return LimitedBox(
+      maxHeight: bodyHeight ?? defaultBodyHeight,
+      child: CustomScrollView(
+        slivers: [
+          SliverPersistentHeader(
+            delegate: _SliverheaderDelegate(columns),
+            pinned: true,
+          ),
+          SliverToBoxAdapter(
+            child: ShowOnDesktop(
+              child: Divider(
                 height: 1,
                 color: TagColors.colorBaseInkLight,
               ),
-            ],
+            ),
           ),
-        ),
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: LimitedBox(
-            maxHeight: bodyHeight ?? defaultBodyHeight,
-            child: _TableBody(source: source, onTapRow: onTapRow),
-          ),
-        ),
-      ],
+          _TableBody(source: source, onTapRow: onTapRow),
+        ],
+      ),
     );
+  }
+}
+
+class _SliverheaderDelegate extends SliverPersistentHeaderDelegate {
+  _SliverheaderDelegate(this.columns);
+
+  final List<DataColumn> columns;
+
+  @override
+  Widget build(
+    BuildContext context,
+    double shrinkOffset,
+    bool overlapsContent,
+  ) {
+    return ShowOnDesktop(
+      child: SizedBox(
+        height: 30,
+        child: _TableHead(
+          columns: columns,
+        ),
+      ),
+    );
+  }
+
+  @override
+  double get maxExtent => 30;
+
+  @override
+  double get minExtent => 30;
+
+  @override
+  bool shouldRebuild(covariant SliverPersistentHeaderDelegate oldDelegate) {
+    return false;
   }
 }
 
@@ -92,36 +112,32 @@ class _TableBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.separated(
-      shrinkWrap: true,
-      separatorBuilder: (context, index) => ShowOnDesktop(
-        child: Container(
-          height: 10,
-          width: 2,
-        ),
-      ),
-      itemCount: source.rowCount,
-      itemBuilder: (context, index) {
-        final dataRow = source.getRow(index);
-        if (dataRow == null) return Container();
-        final row = _mapCellsChild(dataRow);
+    return SliverFixedExtentList(
+      itemExtent: 100,
+      delegate: SliverChildBuilderDelegate(
+        (context, index) {
+          final dataRow = source.getRow(index);
+          if (dataRow == null) return Container();
+          final row = _mapCellsChild(dataRow);
 
-        return ToggleMobileDesktop(
-          mobile: _TableRow(
-            index: index,
-            onTapRow: onTapRow,
-            children: row,
-          ),
-          desktop: LimitedBox(
-            maxHeight: 50,
-            child: _TableRow(
+          return ToggleMobileDesktop(
+            mobile: _TableRow(
               index: index,
               onTapRow: onTapRow,
               children: row,
             ),
-          ),
-        );
-      },
+            desktop: LimitedBox(
+              maxHeight: 50,
+              child: _TableRow(
+                index: index,
+                onTapRow: onTapRow,
+                children: row,
+              ),
+            ),
+          );
+        },
+        childCount: source.rowCount,
+      ),
     );
   }
 
