@@ -3,7 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:tag_ui/tag_ui.dart';
 
 class TagLinkButton extends StatelessWidget {
-  const TagLinkButton({Key? key, required this.text, required this.onPressed})
+  const TagLinkButton({
+    Key? key, 
+    required this.text, 
+    required this.onPressed})
       : super(key: key);
 
   final String text;
