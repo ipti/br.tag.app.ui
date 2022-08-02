@@ -3,16 +3,17 @@ import 'package:flutter/material.dart';
 import 'tag_breadcrumb_item.dart';
 
 class TagBreadcrumb extends StatelessWidget {
-  const TagBreadcrumb({Key? key, this.rootItem, this.paths}) : super(key: key);
+  const TagBreadcrumb({Key? key, this.rootItem, required this.paths})
+      : super(key: key);
 
   final String? rootItem;
-  final List<String>? paths;
+  final List<String> paths;
 
   @override
   Widget build(BuildContext context) {
     return ListView.separated(
       scrollDirection: Axis.horizontal,
-      itemCount: paths!.length,
+      itemCount: paths.length,
       separatorBuilder: (BuildContext context, int index) {
         return Container(
           alignment: Alignment.center,
@@ -26,8 +27,8 @@ class TagBreadcrumb extends StatelessWidget {
         return Container(
           alignment: Alignment.centerLeft,
           child: TagBreadcrumbItem(
-            title: paths![index],
-            isLast: paths!.length - 1 == index,
+            title: paths[index],
+            isLast: paths.length - 1 == index,
             action: () {},
           ),
         );
