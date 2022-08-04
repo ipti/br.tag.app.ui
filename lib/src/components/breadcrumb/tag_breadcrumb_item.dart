@@ -1,6 +1,5 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-
 import 'package:tag_ui/tag_ui.dart';
 
 class TagBreadcrumbItem extends StatefulWidget {
@@ -24,13 +23,13 @@ class _TagBreadcrumbItemState extends State<TagBreadcrumbItem> {
     fontWeight: TagFontWeight.fontWeightLinks,
     fontSize: TagFontSize.fontSizeTextNormal,
     color: TagColors.colorBaseProductNormal,
-    // decoration: TextDecoration.underline,
   );
 
   final textStyleHover = TextStyle(
     fontWeight: TagFontWeight.fontWeightLinks,
     fontSize: TagFontSize.fontSizeTextNormal,
     color: TagColors.colorBaseProductNormal,
+    decoration: TextDecoration.underline,
   );
 
   final textStylActive = TextStyle(
