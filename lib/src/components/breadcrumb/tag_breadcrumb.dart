@@ -3,8 +3,10 @@ import 'package:flutter/material.dart';
 import 'tag_breadcrumb_item.dart';
 
 class TagBreadcrumb extends StatelessWidget {
-  const TagBreadcrumb({Key? key, this.rootItem, required this.paths})
-      : super(key: key);
+  const TagBreadcrumb({
+    Key? key, this.rootItem, 
+    required this.paths
+    }) : super(key: key);
 
   final String? rootItem;
   final List<String> paths;

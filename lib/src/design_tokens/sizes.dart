@@ -1,4 +1,4 @@
-class TagSizes {
+ class TagSizes {
   static const double widthIconSmall = 16;
   static const double heightIconSmall = 16;
   static const double widthIconMedium = 24;
