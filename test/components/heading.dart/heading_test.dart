@@ -14,7 +14,7 @@ void main() {
         text: "Texto",
         type: HeadingType.DisplayTitle,
       );
-      await tester.pumpWidget(wrapMaterial(heading));
+      await tester.pumpWidget(wrapWithBaseApp(heading));
       final Finder resultSearch = find.text("Texto");
       final textoHeading = tester.widget<Text>(resultSearch);
       expect(textoHeading.style?.fontSize,
@@ -32,7 +32,7 @@ void main() {
         text: "Texto",
         type: HeadingType.DisplaySubtitle,
       );
-      await tester.pumpWidget(wrapMaterial(heading));
+      await tester.pumpWidget(wrapWithBaseApp(heading));
       final Finder resultSearch = find.text("Texto");
       final textoHeading = tester.widget<Text>(resultSearch);
       expect(textoHeading.style?.fontSize,
@@ -50,7 +50,7 @@ void main() {
         text: "Texto",
         type: HeadingType.Title1,
       );
-      await tester.pumpWidget(wrapMaterial(heading));
+      await tester.pumpWidget(wrapWithBaseApp(heading));
       final Finder resultSearch = find.text("Texto");
       final textoHeading = tester.widget<Text>(resultSearch);
       expect(textoHeading.style?.fontSize,
@@ -68,7 +68,7 @@ void main() {
         text: "Texto",
         type: HeadingType.Title2,
       );
-      await tester.pumpWidget(wrapMaterial(heading));
+      await tester.pumpWidget(wrapWithBaseApp(heading));
       final Finder resultSearch = find.text("Texto");
       final textoHeading = tester.widget<Text>(resultSearch);
       expect(textoHeading.style?.fontSize,
@@ -86,7 +86,7 @@ void main() {
         text: "Texto",
         type: HeadingType.Title3,
       );
-      await tester.pumpWidget(wrapMaterial(heading));
+      await tester.pumpWidget(wrapWithBaseApp(heading));
       final Finder resultSearch = find.text("Texto");
       final textoHeading = tester.widget<Text>(resultSearch);
       expect(textoHeading.style?.fontSize,
@@ -104,7 +104,7 @@ void main() {
         text: "Texto",
         type: HeadingType.Title4,
       );
-      await tester.pumpWidget(wrapMaterial(heading));
+      await tester.pumpWidget(wrapWithBaseApp(heading));
       final Finder resultSearch = find.text("Texto");
       final textoHeading = tester.widget<Text>(resultSearch);
       expect(textoHeading.style?.fontSize,
@@ -117,12 +117,12 @@ void main() {
       expect(textoHeading.style?.fontWeight,
           equals(TagFontWeight.fontWeightHeadingTitle4));
     });
-        testWidgets("Title5", (WidgetTester tester) async {
+    testWidgets("Title5", (WidgetTester tester) async {
       final heading = Heading(
         text: "Texto",
         type: HeadingType.Title5,
       );
-      await tester.pumpWidget(wrapMaterial(heading));
+      await tester.pumpWidget(wrapWithBaseApp(heading));
       final Finder resultSearch = find.text("Texto");
       final textoHeading = tester.widget<Text>(resultSearch);
       expect(textoHeading.style?.fontSize,

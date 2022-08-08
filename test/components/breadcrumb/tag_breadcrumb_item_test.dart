@@ -17,7 +17,7 @@ void main() {
       final tagBreadcrumbItem = TagBreadcrumbItem(
         title: 'home',
       );
-      await tester.pumpWidget(wrapMaterial(tagBreadcrumbItem));
+      await tester.pumpWidget(wrapWithBaseApp(tagBreadcrumbItem));
       final Finder resultSearch = find.byType(TagBreadcrumbItem);
 
       expect(resultSearch, findsOneWidget);
@@ -31,7 +31,7 @@ void main() {
         },
       );
       when(() => dumb.call()).thenAnswer((invocation) {});
-      await tester.pumpWidget(wrapMaterial(tagBreadcrumbItem));
+      await tester.pumpWidget(wrapWithBaseApp(tagBreadcrumbItem));
       final Finder resultSearch = find.byType(TagBreadcrumbItem);
 
       await tester.tap(resultSearch);
@@ -42,7 +42,7 @@ void main() {
       final tagBreadcrumbItem = TagBreadcrumbItem(
         title: 'home',
       );
-      await tester.pumpWidget(wrapMaterial(tagBreadcrumbItem));
+      await tester.pumpWidget(wrapWithBaseApp(tagBreadcrumbItem));
       final Finder resultSearch = find.byType(RichText);
 
       await tester.tap(resultSearch);
@@ -59,7 +59,7 @@ void main() {
       final tagBreadcrumbItem = TagBreadcrumbItem(
         title: 'home',
       );
-      await tester.pumpWidget(wrapMaterial(tagBreadcrumbItem));
+      await tester.pumpWidget(wrapWithBaseApp(tagBreadcrumbItem));
       final Finder resultSearch = find.byType(TagBreadcrumbItem);
 
       await hoverAutoRemove(tester, resultSearch);
@@ -72,7 +72,7 @@ void main() {
       final tagBreadcrumbItem = TagBreadcrumbItem(
         title: 'home',
       );
-      await tester.pumpWidget(wrapMaterial(tagBreadcrumbItem));
+      await tester.pumpWidget(wrapWithBaseApp(tagBreadcrumbItem));
       final Finder resultSearch = find.byType(TagBreadcrumbItem);
       final gestureIn = await hoverIn(tester, resultSearch);
       await gestureIn.removePointer();

@@ -11,7 +11,7 @@ void main() {
     });
     testWidgets("render", (WidgetTester tester) async {
       final tagRainbowBar = TagRainbowBar();
-      await tester.pumpWidget(wrapMaterial(tagRainbowBar));
+      await tester.pumpWidget(wrapWithBaseApp(tagRainbowBar));
       final Finder resultSearch = find.ancestor(
         of: find.byType(Flexible),
         matching: find.byType(Container),
@@ -32,7 +32,7 @@ void main() {
     });
     testWidgets("render color Blue", (WidgetTester tester) async {
       final tagRainbowBar = TagRainbowBar();
-      await tester.pumpWidget(wrapMaterial(tagRainbowBar));
+      await tester.pumpWidget(wrapWithBaseApp(tagRainbowBar));
       final Finder resultSearch = find.descendant(
         of: find.byType(Flexible),
         matching: find.byType(Container),
@@ -43,7 +43,7 @@ void main() {
     });
     testWidgets("render color Red", (WidgetTester tester) async {
       final tagRainbowBar = TagRainbowBar();
-      await tester.pumpWidget(wrapMaterial(tagRainbowBar));
+      await tester.pumpWidget(wrapWithBaseApp(tagRainbowBar));
       final Finder resultSearch = find.descendant(
         of: find.byType(Flexible),
         matching: find.byType(Container),
@@ -54,7 +54,7 @@ void main() {
     });
     testWidgets("render color Green", (WidgetTester tester) async {
       final tagRainbowBar = TagRainbowBar();
-      await tester.pumpWidget(wrapMaterial(tagRainbowBar));
+      await tester.pumpWidget(wrapWithBaseApp(tagRainbowBar));
       final Finder resultSearch = find.descendant(
         of: find.byType(Flexible),
         matching: find.byType(Container),
@@ -65,7 +65,7 @@ void main() {
     });
     testWidgets("render color Yellow", (WidgetTester tester) async {
       final tagRainbowBar = TagRainbowBar();
-      await tester.pumpWidget(wrapMaterial(tagRainbowBar));
+      await tester.pumpWidget(wrapWithBaseApp(tagRainbowBar));
       final Finder resultSearch = find.descendant(
         of: find.byType(Flexible),
         matching: find.byType(Container),

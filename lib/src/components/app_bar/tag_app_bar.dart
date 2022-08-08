@@ -2,7 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:tag_ui/tag_ui.dart';
 
 class TagAppBar extends StatelessWidget implements PreferredSize {
-  const TagAppBar({Key? key, this.title}) : super(key: key);
+  const TagAppBar({
+    Key? key, 
+    this.title
+    }) : super(key: key);
 
   final Widget? title;
 

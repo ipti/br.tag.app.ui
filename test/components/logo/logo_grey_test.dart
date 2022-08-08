@@ -14,7 +14,7 @@ void main() {
     testWidgets("LOGO_PATH_SVG", (WidgetTester tester) async {
       final logoGreyTag = LogoGreyTag();
 
-      await tester.pumpWidget(wrapMaterialAndBundle(logoGreyTag));
+      await tester.pumpWidget(wrapWithBaseAppAndBundle(logoGreyTag));
       final Finder resultSearch = find.byType(SvgPicture);
 
       expect(resultSearch, findsOneWidget);
@@ -27,7 +27,7 @@ void main() {
         height: 40,
       );
 
-      await tester.pumpWidget(wrapMaterialAndBundle(logoGreyTag));
+      await tester.pumpWidget(wrapWithBaseAppAndBundle(logoGreyTag));
       final Finder resultSearch = find.byType(LogoGreyTag);
 
       final LogoGreyTag cor = tester.widget<LogoGreyTag>(resultSearch);
@@ -43,7 +43,7 @@ void main() {
         height: 40,
       );
 
-      await tester.pumpWidget(wrapMaterialAndBundle(logoGreyTag));
+      await tester.pumpWidget(wrapWithBaseAppAndBundle(logoGreyTag));
       final Finder resultSearch = find.byType(LogoGreyTag);
 
       final LogoGreyTag widthTest = tester.widget<LogoGreyTag>(resultSearch);

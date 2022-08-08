@@ -10,16 +10,15 @@ void main() {
       TestWidgetsFlutterBinding.ensureInitialized();
     });
 
-    testWidgets("", (WidgetTester tester) async {
+    testWidgets(" with text", (WidgetTester tester) async {
       final tagLabel = TagLabel("Texto");
-      await tester.pumpWidget(wrapMaterial(tagLabel));
+      await tester.pumpWidget(wrapWithBaseApp(tagLabel));
       final Finder resultSearch = find.text("Texto");
       final textoLabel = tester.widget<Text>(resultSearch);
-      expect(textoLabel.style?.fontSize,equals(TagFontSize.fontSizeFormLabel));
-      expect(textoLabel.style?.height,equals(TagLineHeight.lineHeightHeading));
-      expect(textoLabel.style?.fontWeight,equals(TagFontWeight.fontWeightNormal));
-      
-
+      expect(textoLabel.style?.fontSize, equals(TagFontSize.fontSizeFormLabel));
+      expect(textoLabel.style?.height, equals(TagLineHeight.lineHeightHeading));
+      expect(
+          textoLabel.style?.fontWeight, equals(TagFontWeight.fontWeightNormal));
     });
   });
 }
