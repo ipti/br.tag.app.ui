@@ -12,7 +12,9 @@ const fakeSVG = '''
 Widget wrapWithBaseAppAndBundle(widget) => MaterialApp(
       home: DefaultAssetBundle(
         bundle: TestAssetBundle(),
-        child: widget,
+        child: Scaffold(
+          body: widget,
+        ),
       ),
     );
 

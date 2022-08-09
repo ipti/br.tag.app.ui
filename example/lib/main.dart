@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tag_ui/src/components/checkbox/tag_checkbox.dart';
+import 'package:tag_ui/tag_ui.dart';
 
 void main() {
   runApp(const MyApp());

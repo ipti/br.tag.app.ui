@@ -20,7 +20,7 @@ class TagMenuItem extends StatelessWidget implements ITagMenuItem {
   final String route;
   final TagIcon? icon;
   final bool isActive;
-  final Function onTap;
+  final void Function(String route) onTap;
   final MenuItemState? menuItemState;
 
   @override
@@ -75,7 +75,7 @@ class TagMenuItem extends StatelessWidget implements ITagMenuItem {
                   constraints: constraints,
                   child: Row(
                     children: [
-                      icon!..disabled = !isActive,
+                      if (icon != null) icon!..disabled = !isActive,
                       Expanded(
                         child: Padding(
                           padding: const EdgeInsets.only(left: 8.0),
