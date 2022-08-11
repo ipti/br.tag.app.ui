@@ -10,12 +10,9 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return  MaterialApp(
       home: Scaffold(
-        body: TagCheckbox(
-          onChanged: (isChecked) {},
-          label: "Testado?",
-        ),
+        body: TagTextField(label: "Tesxtinho",  controller: TextEditingController(),),
       ),
     );
   }

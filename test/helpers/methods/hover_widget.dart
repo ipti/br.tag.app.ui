@@ -10,7 +10,7 @@ Future<TestGesture> hoverIn(WidgetTester tester, Finder item) async {
   return gesture;
 }
 
-hoverAutoRemove(WidgetTester tester, Finder item) async {
+Future<void> hoverAutoRemove(WidgetTester tester, Finder item) async {
   final gesture = await tester.createGesture(kind: PointerDeviceKind.mouse);
   addTearDown(gesture.removePointer);
   await gesture.addPointer(location: Offset.zero);

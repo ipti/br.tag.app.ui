@@ -37,7 +37,7 @@ class TagTextField extends StatefulWidget {
   final int maxLines;
   final int minLines;
   final List<TextInputFormatter>? formatters;
-  final Function? validator;
+  final String? Function(String?)? validator;
   final Function(String)? onChanged;
   final void Function()? onEditingComplete;
   final EdgeInsets padding;
@@ -94,7 +94,7 @@ class _TagTextFieldState extends State<TagTextField> {
                 maxLength: widget.maxLength,
                 keyboardType: widget.inputType,
                 style: textStyle,
-                validator: widget.validator as String? Function(String?)?,
+                validator: widget.validator,
                 decoration: buildInputDecoration(widget.hint),
                 onChanged: _onValueChanged,
                 onEditingComplete: () {
