@@ -1,10 +1,8 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:tag_ui/src/components/text_field/tag_text_field.dart';
 
-import '../../helpers/methods/hover_widget.dart';
 import '../../helpers/methods/prepare_widget.dart';
 import '../../helpers/mock/dumb.dart';
 
@@ -135,23 +133,28 @@ void main() {
       await tester.pumpAndSettle();
       verify(() => dumb.call()).called(2);
     });
-    // testWidgets("when text is invalid", (WidgetTester tester) async {
-    //   final dumb = MockDumb();
-    //   when(() => dumb.call()).thenAnswer((invocation) {});
-    //   final tagTextField = TagTextField(
-    //     label: "Label",
-    //     validator: (value) => value!.isEmpty ? "Ta pegando fogo bicho" : null,
-    //   );
-    //   await tester.pumpWidget(wrapWithBaseApp(tagTextField));
-    //   final Finder resultSearch = find.byType(TagTextField);
+    testWidgets("when text is invalid", (WidgetTester tester) async {
+      final controller = TextEditingController();
 
-    //   await tester.enterText(resultSearch, '');
-    //   await tester.pumpAndSettle();
+      final tagTextField = TagTextField(
+        label: "Label",
+        controller: controller,
+        value: "",
+        validator: (value) =>
+            (value?.isEmpty ?? true) ? "Por favor retorne um valor" : null,
+      );
+      await tester.pumpWidget(wrapWithBaseApp(tagTextField));
+      final Finder resultSearch = find.byType(TextField);
+      await tester.enterText(resultSearch, 'Teste com texto');
+      await tester.pumpAndSettle();
+      await tester.enterText(resultSearch, '');
+      await tester.pumpAndSettle();
+      await tester.testTextInput.receiveAction(TextInputAction.done);
+      await tester.pumpAndSettle();
 
-    //   await tester.testTextInput.receiveAction(TextInputAction.);
-    //   await tester.pumpAndSettle();
-    //   final Finder errorMessageSearch = find.text("Ta pegando fogo bicho");
-    //   expect(errorMessageSearch, findsOneWidget);
-    // });
+      final Finder errorMessageSearch = find.text("Por favor retorne um valor");
+
+      expect(errorMessageSearch, findsOneWidget);
+    });
   });
 }

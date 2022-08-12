@@ -12,7 +12,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return  MaterialApp(
       home: Scaffold(
-        body: TagTextField(label: "Tesxtinho",  controller: TextEditingController(),),
+        body: TagTextField(label: "Tesxtinho",  controller: TextEditingController(), validator: (value) =>
+            (value?.isEmpty ?? true) ? "Por favor retorne um valor" : null),
       ),
     );
   }
