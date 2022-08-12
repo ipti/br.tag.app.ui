@@ -63,7 +63,7 @@ void main() {
       final Finder valorResult = find.text("TextinhoValor");
       expect(valorResult, findsOneWidget);
     });
-    testWidgets("with maxLength and minLines", (WidgetTester tester) async {
+    testWidgets("with maxLines and minLines", (WidgetTester tester) async {
       final tagTextField = TagTextField(
         label: "Label",
         minLines: 1,
@@ -155,6 +155,25 @@ void main() {
       final Finder errorMessageSearch = find.text("Por favor retorne um valor");
 
       expect(errorMessageSearch, findsOneWidget);
+    });
+    testWidgets("with maxLength", (WidgetTester tester) async {
+      final tagTextField = TagTextField(
+        label: "Label",
+        maxLength: 10,
+      );
+      await tester.pumpWidget(wrapWithBaseApp(tagTextField));
+      final Finder resultSearch = find.byType(TextField);
+      expect(resultSearch, findsOneWidget);
+      final TextField maxLengthResult = tester.widget<TextField>(resultSearch);
+
+      expect(maxLengthResult.maxLength, equals(10));
+    });
+    testWidgets("with formatters", (WidgetTester tester) async {
+      final tagTextField = TagTextField(
+        label: "Label",
+        formatters: [],
+      );
+      
     });
   });
 }

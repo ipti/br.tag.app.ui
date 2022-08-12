@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
     return  MaterialApp(
       home: Scaffold(
         body: TagTextField(label: "Tesxtinho",  controller: TextEditingController(), validator: (value) =>
-            (value?.isEmpty ?? true) ? "Por favor retorne um valor" : null),
+            (value?.isEmpty ?? true) ? "Por favor retorne um valor" : null, formatters: const [],),
       ),
     );
   }
