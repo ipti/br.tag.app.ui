@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:tag_ui/src/components/text_field/tag_text_field.dart';
@@ -169,11 +170,14 @@ void main() {
       expect(maxLengthResult.maxLength, equals(10));
     });
     testWidgets("with formatters", (WidgetTester tester) async {
+      final controller = TextEditingController();
       final tagTextField = TagTextField(
-        label: "Label",
-        formatters: [],
-      );
-      
+          label: "Label",
+          controller: controller,
+          formatters: <TextInputFormatter>[
+            FilteringTextInputFormatter.digitsOnly
+          ]);
+          
     });
   });
 }

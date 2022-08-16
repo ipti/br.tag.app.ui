@@ -103,7 +103,6 @@ void main() {
         },
       );
       await tester.pumpWidget(wrapWithBaseApp(tagButton));
-
       final Finder resultSearch = find.byType(TagButton);
       await tester.tap(resultSearch);
       await tester.pumpAndSettle();

@@ -10,10 +10,16 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  MaterialApp(
+    return MaterialApp(
       home: Scaffold(
-        body: TagTextField(label: "Tesxtinho",  controller: TextEditingController(), validator: (value) =>
-            (value?.isEmpty ?? true) ? "Por favor retorne um valor" : null, formatters: const [],),
+        body: TagNumberField(onChanged: (value){},),
+        // TagTextField(
+        //   label: "Tesxtinho",
+        //   controller: TextEditingController(),
+        //   validator: (value) =>
+        //       (value?.isEmpty ?? true) ? "Por favor retorne um valor" : null,
+        //   formatters: const [],
+        // ),
       ),
     );
   }

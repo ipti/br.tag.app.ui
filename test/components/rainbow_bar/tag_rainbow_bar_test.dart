@@ -18,17 +18,6 @@ void main() {
       );
 
       expect(resultSearch, findsNWidgets(4));
-
-      // final box1 = tester.widget<Container>(resultSearch.at(0));
-      // expect(box1.color, equals(const Color(0xFF667DF4)));
-
-      // final box2 = tester.widget<Container>(resultSearch.at(1));
-      // expect(box1.color, equals(const Color(0xFFF45A5A)));
-
-      // final box3 = tester.widget<Container>(resultSearch.at(2));
-      // expect(box1.color, equals(const Color(0xFFF45A5A)));
-      // final box4 = tester.widget<Container>(resultSearch.at(3));
-      // expect(box1.color, equals(const Color(0xFFF45A5A)));
     });
     testWidgets("render color Blue", (WidgetTester tester) async {
       final tagRainbowBar = TagRainbowBar();
