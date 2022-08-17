@@ -12,15 +12,25 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        body: TagNumberField(onChanged: (value){},),
-        // TagTextField(
-        //   label: "Tesxtinho",
-        //   controller: TextEditingController(),
-        //   validator: (value) =>
-        //       (value?.isEmpty ?? true) ? "Por favor retorne um valor" : null,
-        //   formatters: const [],
-        // ),
-      ),
+          body: TagDropdownField(
+              onChanged: () {},
+              label: "Textinho",
+              items: const {
+                'chave1': 'valor1',
+                'chave2': 'valor2',
+                'chave3': 'valor3'
+              },
+              hint: "textinho hint",
+              onEditingComplete: () {})
+          //TagNumberField(onChanged: (value){},),
+          // TagTextField(
+          //   label: "Tesxtinho",
+          //   controller: TextEditingController(),
+          //   validator: (value) =>
+          //       (value?.isEmpty ?? true) ? "Por favor retorne um valor" : null,
+          //   formatters: const [],
+          // ),
+          ),
     );
   }
 }

@@ -8,6 +8,9 @@ import 'package:tag_ui/tag_ui.dart';
 class TagDropdownField<T> extends StatefulWidget {
   TagDropdownField({
     Key? key,
+    required this.onChanged,
+    required this.label,
+    required this.items,
     this.hint,
     this.controller,
     this.inputType,
@@ -15,10 +18,7 @@ class TagDropdownField<T> extends StatefulWidget {
     this.maxLength,
     this.formatters,
     this.validator,
-    required this.onChanged,
     this.onEditingComplete,
-    required this.label,
-    required this.items,
     this.value,
     this.padding = TagSpancing.paddingTextField,
   }) : super(key: key);
@@ -93,9 +93,7 @@ class _TagDropdownFieldState<T> extends State<TagDropdownField> {
               ),
               style: TagTextStyles.textFieldStyle,
               decoration: buildInputDecoration(widget.hint),
-              validator: (dynamic value) => widget.validator != null
-                  ? widget.validator!(value?.toString() ?? "")
-                  : null,
+              validator: (dynamic value) => widget.validator != null ? widget.validator!(value?.toString() ?? "") : null,
               onChanged: (T? value) => widget.onChanged(value),
               onTap: () => FocusScope.of(context).requestFocus(FocusNode()),
             ),
