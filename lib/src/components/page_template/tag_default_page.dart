@@ -9,6 +9,7 @@ class TagDefaultPage extends StatelessWidget {
   final Widget menu;
   final Widget? aside;
   final Widget? header;
+  final PreferredSize? appBar;
 
   const TagDefaultPage({
     Key? key,
@@ -19,12 +20,14 @@ class TagDefaultPage extends StatelessWidget {
     required this.menu,
     this.aside,
     this.header,
+    this.appBar,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: MainLayoutAdaptativy(
+        appBar: appBar,
         left: menu,
         body: Align(
           alignment: Alignment.topLeft,
