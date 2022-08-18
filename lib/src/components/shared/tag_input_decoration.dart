@@ -19,7 +19,10 @@ final buildInputDecoration = (String? hint) => InputDecoration(
       hintText: hint,
       filled: true,
       hintMaxLines: 1,
-      hintStyle: TextStyle(height: 1.2),
+      hintStyle: TextStyle(
+        height: 1.2,
+        overflow: TextOverflow.ellipsis,
+      ),
       fillColor: TagColors.colorBaseWhiteNormal,
       contentPadding: TagSpancing.paddingInputNormal,
       enabledBorder: border.copyWith(

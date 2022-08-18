@@ -12,15 +12,22 @@ class TagDropdownField<T> extends StatefulWidget {
     required this.label,
     required this.items,
     this.hint,
-    this.controller,
-    this.inputType,
-    this.obscureText,
-    this.maxLength,
-    this.formatters,
-    this.validator,
-    this.onEditingComplete,
     this.value,
     this.padding = TagSpancing.paddingTextField,
+    this.validator,
+    this.controller,
+    // TODO: Remover campos não utilizados
+    this.inputType,
+    // TODO: Remover campos não utilizados
+    this.obscureText,
+    // TODO: Remover campos não utilizados
+    this.maxLength,
+    // TODO: Remover campos não utilizados
+    this.formatters,
+    // TODO: Remover campos não utilizados
+    this.onEditingComplete,
+    this.autovalidateMode = AutovalidateMode.onUserInteraction,
+    // TODO: Remover campos não utilizados
   }) : super(key: key);
 
   final String? hint;
@@ -36,6 +43,7 @@ class TagDropdownField<T> extends StatefulWidget {
   final Function onChanged;
   final Function? onEditingComplete;
   final EdgeInsets padding;
+  final AutovalidateMode autovalidateMode;
 
   @override
   _TagDropdownFieldState createState() => _TagDropdownFieldState<T>();
@@ -80,20 +88,18 @@ class _TagDropdownFieldState<T> extends State<TagDropdownField> {
             constraints: fieldBoxConstraints,
             child: DropdownButtonFormField<T>(
               key: widget.key,
-              autovalidateMode: AutovalidateMode.onUserInteraction,
+              autovalidateMode: widget.autovalidateMode,
               isExpanded: true,
               isDense: false,
               value: widget.value,
               items: items,
               itemHeight: TagSizes.heightInputLarge,
               alignment: Alignment.centerLeft,
-              hint: Text(
-                widget.hint ?? "",
-                overflow: TextOverflow.ellipsis,
-              ),
               style: TagTextStyles.textFieldStyle,
               decoration: buildInputDecoration(widget.hint),
-              validator: (dynamic value) => widget.validator != null ? widget.validator!(value?.toString() ?? "") : null,
+              validator: (dynamic value) => widget.validator != null
+                  ? widget.validator!(value?.toString() ?? "")
+                  : null,
               onChanged: (T? value) => widget.onChanged(value),
               onTap: () => FocusScope.of(context).requestFocus(FocusNode()),
             ),
