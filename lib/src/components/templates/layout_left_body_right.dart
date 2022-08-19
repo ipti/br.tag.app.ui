@@ -19,13 +19,10 @@ class LayoutLeftBodyRight extends StatelessWidget {
     return Scaffold(
       backgroundColor: TagColors.colorBaseWhiteNormal,
       body: LayoutBuilder(builder: (context, constrainst) {
-        return ConstrainedBox(
-          constraints: constrainst,
-          child: _LayoutPages(
-            left: left,
-            center: body,
-            right: right,
-          ),
+        return _LayoutPages(
+          left: left,
+          center: body,
+          right: right,
         );
       }),
     );
