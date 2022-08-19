@@ -1,5 +1,6 @@
 // Helper file to make coverage work for all dart files\n
 // ignore_for_file: unused_import
+import 'package:tag_ui/src/components/app_bar/objeto.dart';
 import 'package:tag_ui/src/components/app_bar/tag_app_bar.dart';
 import 'package:tag_ui/src/components/box/tag_box.dart';
 import 'package:tag_ui/src/components/breadcrumb/tag_breadcrumb.dart';

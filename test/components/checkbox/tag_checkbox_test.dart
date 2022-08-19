@@ -17,7 +17,7 @@ void main() {
         value: false,
       );
 
-      await tester.pumpWidget(wrapMaterial(tagCheckbox));
+      await tester.pumpWidget(wrapWithBaseApp(tagCheckbox));
 
       final Finder resultSearch = find.byType(TagCheckbox);
       final TagCheckbox checkbox = tester.widget<TagCheckbox>(resultSearch);
@@ -32,7 +32,7 @@ void main() {
         label: "MyCheckbox",
       );
 
-      await tester.pumpWidget(wrapMaterial(tagCheckbox));
+      await tester.pumpWidget(wrapWithBaseApp(tagCheckbox));
 
       final Finder resultSearch = find.byType(TagCheckbox);
       await tester.tap(resultSearch);
@@ -54,7 +54,7 @@ void main() {
         disabled: true,
       );
 
-      await tester.pumpWidget(wrapMaterial(tagCheckbox));
+      await tester.pumpWidget(wrapWithBaseApp(tagCheckbox));
 
       final Finder resultSearch = find.byType(TagCheckbox);
       await tester.tap(resultSearch);
@@ -68,7 +68,7 @@ void main() {
         label: "MyCheckbox",
       );
 
-      await tester.pumpWidget(wrapMaterial(tagCheckbox));
+      await tester.pumpWidget(wrapWithBaseApp(tagCheckbox));
 
       final Finder resultSearch = find.byType(TagCheckbox);
 
@@ -82,7 +82,7 @@ void main() {
         label: "MyCheckbox",
       );
 
-      await tester.pumpWidget(wrapMaterial(tagCheckbox));
+      await tester.pumpWidget(wrapWithBaseApp(tagCheckbox));
 
       final Finder resultSearch = find.byType(Checkbox);
       await tester.tap(resultSearch);

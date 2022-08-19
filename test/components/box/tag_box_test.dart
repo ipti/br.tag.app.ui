@@ -18,7 +18,7 @@ void main() {
         background: Color(0xAA),
         padding: EdgeInsets.all(16.0),
       );
-      await tester.pumpWidget(wrapDirectionaly(tagBox));
+      await tester.pumpWidget(wrapWithBaseApp(tagBox));
 
       final Finder resultSearch = find.byType(TagBox);
 
@@ -28,18 +28,16 @@ void main() {
       expect(box.minWidth, equals(0));
       expect(box.background, equals(Color(0xAA)));
       expect(box.padding, equals(EdgeInsets.all(16.0)));
-      
     });
-        testWidgets("A nomear", (WidgetTester tester) async {
+    testWidgets("A nomear", (WidgetTester tester) async {
       final tagBox = TagBox(
         child: Text("Texto"),
       );
-      await tester.pumpWidget(wrapDirectionaly(tagBox));
+      await tester.pumpWidget(wrapWithBaseApp(tagBox));
 
       final Finder resultSearch = find.byType(TagBox);
 
       expect(resultSearch, findsOneWidget);
-      
     });
   });
 }

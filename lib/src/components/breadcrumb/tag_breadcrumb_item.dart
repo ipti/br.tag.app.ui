@@ -1,18 +1,17 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-
 import 'package:tag_ui/tag_ui.dart';
 
 class TagBreadcrumbItem extends StatefulWidget {
   const TagBreadcrumbItem({
     Key? key,
-    this.title,
+    required this.title,
     this.action,
     this.isLast = false,
   }) : super(key: key);
 
-  final String? title;
-  final Function? action;
+  final String title;
+  final void Function()? action;
   final bool isLast;
 
   @override
@@ -24,13 +23,13 @@ class _TagBreadcrumbItemState extends State<TagBreadcrumbItem> {
     fontWeight: TagFontWeight.fontWeightLinks,
     fontSize: TagFontSize.fontSizeTextNormal,
     color: TagColors.colorBaseProductNormal,
-    // decoration: TextDecoration.underline,
   );
 
   final textStyleHover = TextStyle(
     fontWeight: TagFontWeight.fontWeightLinks,
     fontSize: TagFontSize.fontSizeTextNormal,
     color: TagColors.colorBaseProductNormal,
+    decoration: TextDecoration.underline,
   );
 
   final textStylActive = TextStyle(
@@ -51,8 +50,7 @@ class _TagBreadcrumbItemState extends State<TagBreadcrumbItem> {
   Widget build(BuildContext context) {
     final textButton = RichText(
       text: TextSpan(
-        recognizer: TapGestureRecognizer()
-          ..onTap = widget.action as void Function()?,
+        recognizer: TapGestureRecognizer()..onTap = widget.action,
         text: widget.title,
         style: widget.isLast ? textStylActive : style,
       ),

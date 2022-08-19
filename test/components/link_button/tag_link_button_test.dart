@@ -1,5 +1,3 @@
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:tag_ui/tag_ui.dart';
 
@@ -15,7 +13,7 @@ void main() {
         text: "MyButton",
         onPressed: () {},
       );
-      await tester.pumpWidget(wrapMaterial(tagLinkButton));
+      await tester.pumpWidget(wrapWithBaseApp(tagLinkButton));
       final Finder resultSearch = find.text("MyButton");
 
       expect(resultSearch, findsOneWidget);

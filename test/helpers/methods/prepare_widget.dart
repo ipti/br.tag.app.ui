@@ -9,30 +9,25 @@ const fakeSVG = '''
   <rect x="0" y="0" width="10" height="10" />
 </svg>''';
 
-Widget wrapDirectionaly(widget) => Directionality(
-      child: MediaQuery(
-        data: MediaQueryData(),
-        child: widget,
-      ),
-      textDirection: TextDirection.ltr,
-    );
-
-Widget wrapMaterialAndBundle(widget) => MaterialApp(
+Widget wrapWithBaseAppAndBundle(widget) => MaterialApp(
       home: DefaultAssetBundle(
         bundle: TestAssetBundle(),
-        child: widget,
+        child: Scaffold(
+          body: widget,
+        ),
       ),
     );
 
-Widget wrapMaterial(widget) => MaterialApp(
+Widget wrapWithBaseApp(widget) => MaterialApp(
       home: Scaffold(
         body: widget,
       ),
     );
 
 class TestAssetBundle extends CachingAssetBundle {
-  final _fakeBytes =
-      ByteData.view(Uint8List.fromList(utf8.encode(fakeSVG)).buffer);
+  final _fakeBytes = ByteData.view(Uint8List.fromList(
+    utf8.encode(fakeSVG),
+  ).buffer);
   @override
   Future<ByteData> load(String key) async {
     if (key.endsWith('assets/logo/logo_tag.svg')) {

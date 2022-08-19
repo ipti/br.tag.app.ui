@@ -17,7 +17,7 @@ void main() {
     testWidgets("Only with text ", (WidgetTester tester) async {
       final tagButton = TagButton(text: "MyButton", onPressed: () {});
 
-      await tester.pumpWidget(wrapDirectionaly(tagButton));
+      await tester.pumpWidget(wrapWithBaseApp(tagButton));
 
       final Finder resultSearch = find.byType(TagButton);
 
@@ -30,7 +30,7 @@ void main() {
         backgroundColor: Colors.amber,
       );
 
-      await tester.pumpWidget(wrapDirectionaly(tagButton));
+      await tester.pumpWidget(wrapWithBaseApp(tagButton));
 
       final Finder resultSearch = find.byType(TagButton);
 
@@ -45,7 +45,7 @@ void main() {
         icon: FilePaths.LOGO_PATH_SVG,
       );
 
-      await tester.pumpWidget(wrapMaterialAndBundle(tagButton));
+      await tester.pumpWidget(wrapWithBaseAppAndBundle(tagButton));
 
       final Finder resultSearch = find.byType(SvgPicture);
 
@@ -57,7 +57,7 @@ void main() {
         onPressed: () {},
         textButtonColor: Colors.amber,
       );
-      await tester.pumpWidget(wrapDirectionaly(tagButton));
+      await tester.pumpWidget(wrapWithBaseApp(tagButton));
 
       final Finder resultSearch = find.byType(TagButton);
 
@@ -71,7 +71,7 @@ void main() {
         onPressed: () {},
         textStyle: TextStyle(fontWeight: FontWeight.bold),
       );
-      await tester.pumpWidget(wrapDirectionaly(tagButton));
+      await tester.pumpWidget(wrapWithBaseApp(tagButton));
 
       final Finder resultSearch = find.byType(TagButton);
 
@@ -85,7 +85,7 @@ void main() {
         onPressed: () {},
         buttonStyle: TagButtonStyles.secondary,
       );
-      await tester.pumpWidget(wrapDirectionaly(tagButton));
+      await tester.pumpWidget(wrapWithBaseApp(tagButton));
 
       final Finder resultSearch = find.byType(TagButton);
 
@@ -102,8 +102,7 @@ void main() {
           dumb.call();
         },
       );
-      await tester.pumpWidget(wrapDirectionaly(tagButton));
-
+      await tester.pumpWidget(wrapWithBaseApp(tagButton));
       final Finder resultSearch = find.byType(TagButton);
       await tester.tap(resultSearch);
       await tester.pumpAndSettle();
