@@ -24,7 +24,7 @@ class _MyAppState extends State<MyApp> {
         child: Column(
           children: [
             TagDropdownField<String>(
-              onChanged: () {},
+              onChanged: (value) {},
               label: "Textinho",
               items: const {
                 'chave1': 'valor1',
@@ -38,7 +38,7 @@ class _MyAppState extends State<MyApp> {
             ),
             ElevatedButton(
                 onPressed: () => formkey.currentState!.validate(),
-                child: Text("fsadsafds"))
+                child: const Text("fsadsafds"))
           ],
         ),
       )
