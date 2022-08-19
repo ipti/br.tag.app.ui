@@ -120,18 +120,21 @@ class _TableBody extends StatelessWidget {
           if (dataRow == null) return Container();
           final row = _mapCellsChild(dataRow);
 
-          return ToggleMobileDesktop(
-            mobile: _TableRow(
-              index: index,
-              onTapRow: onTapRow,
-              children: row,
-            ),
-            desktop: LimitedBox(
-              maxHeight: 50,
-              child: _TableRow(
+          return Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: ToggleMobileDesktop(
+              mobile: _TableRow(
                 index: index,
                 onTapRow: onTapRow,
                 children: row,
+              ),
+              desktop: LimitedBox(
+                maxHeight: 50,
+                child: _TableRow(
+                  index: index,
+                  onTapRow: onTapRow,
+                  children: row,
+                ),
               ),
             ),
           );
@@ -178,8 +181,8 @@ class _TableRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: TagColors.colorBaseProductLighter,
+    return TagBox(
+      background: TagColors.colorBaseProductLighter,
       padding: const EdgeInsets.all(14.0),
       child: InkWell(
         onTap: () => onTapRow != null ? onTapRow!(index) : null,

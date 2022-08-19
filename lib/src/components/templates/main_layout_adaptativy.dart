@@ -3,11 +3,13 @@ import 'layout_left_body_right.dart';
 import 'layout_topbar_and_body.dart';
 
 class MainLayoutAdaptativy extends StatelessWidget {
-  const MainLayoutAdaptativy({Key? key, this.left, this.body, this.right})
+  const MainLayoutAdaptativy(
+      {Key? key, this.left, this.body, this.right, this.appBar})
       : super(key: key);
 
   final Widget? left;
   final Widget? body;
+  final PreferredSize? appBar;
   final Widget? right;
 
   @override
@@ -26,6 +28,7 @@ class MainLayoutAdaptativy extends StatelessWidget {
           height: constraints.maxHeight,
           width: constraints.maxWidth,
           child: LayoutTopBarAndBody(
+            appBar: appBar,
             body: body,
             drawer: left,
           ),
