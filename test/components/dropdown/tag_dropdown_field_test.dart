@@ -30,8 +30,7 @@ void main() {
       await tester.pumpWidget(wrapWithBaseApp(tagDropdownField));
       final Finder hintResult = find.text("Dica");
       expect(hintResult, findsOneWidget);
-      //verificar porque aparece mais de um hint
-      //hint tem uma propriedad para encurtar caso fique muito grande
+
     });
     testWidgets("TagDropdownField render with padding",
         (WidgetTester tester) async {

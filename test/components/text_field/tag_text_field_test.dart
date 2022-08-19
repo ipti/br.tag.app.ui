@@ -89,7 +89,7 @@ void main() {
       expect(input.padding, equals(EdgeInsets.all(16.0)));
     });
     testWidgets("with controller change value", (WidgetTester tester) async {
-      final controller = TextEditingController();
+      final controller = TextEditingController(text: "");
 
       final tagTextField = TagTextField(
         label: "Label",
@@ -101,6 +101,7 @@ void main() {
       await tester.enterText(resultSearch, 'TextinhoControler');
       await tester.pump();
       expect(controller.text, equals('TextinhoControler'));
+     
     });
     testWidgets("when values change", (WidgetTester tester) async {
       final dumb = MockDumb();
@@ -169,34 +170,38 @@ void main() {
 
       expect(maxLengthResult.maxLength, equals(10));
     });
-    testWidgets("with formatters digit number", (WidgetTester tester) async {
-      final controller = TextEditingController();
-      final tagTextField = TagTextField(
-          label: "Label",
-          controller: controller,
-          formatters: <TextInputFormatter>[
-            FilteringTextInputFormatter.digitsOnly
-          ]);
-      await tester.pumpWidget(wrapWithBaseApp(tagTextField));
-      final Finder resultSearch = find.byType(TextField);
-      await tester.enterText(resultSearch, '12');
-      await tester.pumpAndSettle();
-      expect(find.text('12'), findsOneWidget);
-    });
-     testWidgets("with formatters digit ", (WidgetTester tester) async {
-      final controller = TextEditingController();
-      final tagTextField = TagTextField(
-          label: "Label",
-          controller: controller,
-          formatters: <TextInputFormatter>[
-            FilteringTextInputFormatter.digitsOnly
-          ]);
-      await tester.pumpWidget(wrapWithBaseApp(tagTextField));
-      final Finder resultSearch = find.byType(TextField);
-      await tester.enterText(resultSearch, 'aa');
-      await tester.pumpAndSettle();
-      expect(find.text(''), findsOneWidget);
-    });
+
+    group("with formatter", (() {
+      testWidgets("with formatters digit number", (WidgetTester tester) async {
+        final controller = TextEditingController();
+        final tagTextField = TagTextField(
+            label: "Label",
+            controller: controller,
+            formatters: <TextInputFormatter>[
+              FilteringTextInputFormatter.digitsOnly
+            ]);
+        await tester.pumpWidget(wrapWithBaseApp(tagTextField));
+        final Finder resultSearch = find.byType(TextField);
+        await tester.enterText(resultSearch, '12');
+        await tester.pumpAndSettle();
+        expect(find.text('12'), findsOneWidget);
+      });
+      testWidgets("with formatters digit ", (WidgetTester tester) async {
+        final controller = TextEditingController();
+        final tagTextField = TagTextField(
+            label: "Label",
+            controller: controller,
+            formatters: <TextInputFormatter>[
+              FilteringTextInputFormatter.digitsOnly
+            ]);
+        await tester.pumpWidget(wrapWithBaseApp(tagTextField));
+        final Finder resultSearch = find.byType(TextField);
+        await tester.enterText(resultSearch, 'aa');
+        await tester.pumpAndSettle();
+        expect(find.text(''), findsOneWidget);
+      });
+    }));
+
     // The WhitelistingTextInputFormatter.digitsOnly is deprecated. use FilteringTextInputFormatter.digitsOnly
   });
 }

@@ -25,6 +25,7 @@ import 'package:tag_ui/src/components/menu/tag_menu.dart';
 import 'package:tag_ui/src/components/number_field/tag_number_field.dart';
 import 'package:tag_ui/src/components/page_template/tag_default_page.dart';
 import 'package:tag_ui/src/components/rainbow_bar/tag_rainbow_bar.dart';
+import 'package:tag_ui/src/components/scaffold/tag_scaffold.dart';
 import 'package:tag_ui/src/components/shared/field_constraints.dart';
 import 'package:tag_ui/src/components/shared/masks.dart';
 import 'package:tag_ui/src/components/shared/tag_input_decoration.dart';

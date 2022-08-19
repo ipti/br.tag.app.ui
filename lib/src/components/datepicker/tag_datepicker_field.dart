@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
 import 'package:tag_ui/tag_ui.dart';
 
@@ -9,16 +8,13 @@ import '../shared/tag_input_decoration.dart';
 class TagDatePickerField extends StatefulWidget {
   TagDatePickerField({
     Key? key,
+    required this.onChanged,
+    required this.label,
     this.hint,
     this.controller,
     this.inputType,
-    this.obscureText,
-    this.maxLength,
-    this.formatters,
     this.validator,
-    required this.onChanged,
     this.onEditingComplete,
-    required this.label,
     this.value,
     this.padding = TagSpancing.paddingTextField,
   }) : super(key: key);
@@ -28,9 +24,6 @@ class TagDatePickerField extends StatefulWidget {
   final String? value;
   final TextEditingController? controller;
   final TextInputType? inputType;
-  final bool? obscureText;
-  final int? maxLength;
-  final List<TextInputFormatter>? formatters;
   final Function? validator;
   final void Function(String) onChanged;
   final Function? onEditingComplete;
@@ -57,13 +50,11 @@ class _TagDatePickerFieldState extends State<TagDatePickerField> {
             child: TextFormField(
               key: widget.key,
               autovalidateMode: AutovalidateMode.onUserInteraction,
-              initialValue: widget.value ?? "",
+              initialValue: widget.value,
               controller: widget.controller,
               inputFormatters: [
-                ...(widget.formatters ?? []),
                 TagMasks.maskDate,
               ],
-              maxLength: widget.maxLength,
               keyboardType: widget.inputType,
               style: TagTextStyles.textFieldStyle,
               validator: widget.validator as String? Function(String?)?,
