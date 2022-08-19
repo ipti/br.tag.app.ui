@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:tag_ui/src/components/shared/field_constraints.dart';
 import 'package:tag_ui/src/components/shared/tag_input_decoration.dart';
-
 import 'package:tag_ui/tag_ui.dart';
 
-class TagDropdownField<T> extends StatefulWidget {
+class TagDropdownField<T> extends StatelessWidget {
   TagDropdownField({
     Key? key,
     required this.onChanged,
@@ -16,91 +14,52 @@ class TagDropdownField<T> extends StatefulWidget {
     this.padding = TagSpancing.paddingTextField,
     this.validator,
     this.controller,
-    // TODO: Remover campos não utilizados
-    this.inputType,
-    // TODO: Remover campos não utilizados
-    this.obscureText,
-    // TODO: Remover campos não utilizados
-    this.maxLength,
-    // TODO: Remover campos não utilizados
-    this.formatters,
-    // TODO: Remover campos não utilizados
-    this.onEditingComplete,
     this.autovalidateMode = AutovalidateMode.onUserInteraction,
-    // TODO: Remover campos não utilizados
   }) : super(key: key);
 
-  final String? hint;
-  final Map<T, String>? items;
-  final String label;
-  final TextEditingController? controller;
-  final TextInputType? inputType;
-  final bool? obscureText;
-  final int? maxLength;
-  final T? value;
-  final List<TextInputFormatter>? formatters;
-  final Function? validator;
-  final Function onChanged;
-  final Function? onEditingComplete;
-  final EdgeInsets padding;
   final AutovalidateMode autovalidateMode;
-
-  @override
-  _TagDropdownFieldState createState() => _TagDropdownFieldState<T>();
-}
-
-class _TagDropdownFieldState<T> extends State<TagDropdownField> {
-  @override
-  void initState() {
-    super.initState();
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
-  }
+  final TextEditingController? controller;
+  final String? hint;
+  final Map<T, String> items;
+  final String label;
+  final FormFieldSetter<T> onChanged;
+  final EdgeInsets padding;
+  final FormFieldValidator<T>? validator;
+  final T? value;
 
   @override
   Widget build(BuildContext context) {
-    var items = widget.items!
-        .map((key, value) {
-          return MapEntry(
-            key,
-            DropdownMenuItem<T>(
-              child: Text(value),
-              value: key,
-            ),
-          );
-        })
-        .values
-        .toList();
-
+    final mappedItems = [
+      for (var item in items.entries)
+        DropdownMenuItem<T>(
+          child: Text(item.value),
+          value: item.key,
+        ),
+    ];
     return Padding(
-      padding: widget.padding,
+      padding: padding,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Padding(
             padding: const EdgeInsets.only(bottom: 4),
-            child: TagLabel(widget.label),
+            child: TagLabel(label),
           ),
           Container(
             constraints: fieldBoxConstraints,
             child: DropdownButtonFormField<T>(
-              key: widget.key,
-              autovalidateMode: widget.autovalidateMode,
+              key: key,
+              autovalidateMode: autovalidateMode,
               isExpanded: true,
               isDense: false,
-              value: widget.value,
-              items: items,
+              value: value,
+              items: mappedItems,
               itemHeight: TagSizes.heightInputLarge,
               alignment: Alignment.centerLeft,
               style: TagTextStyles.textFieldStyle,
-              decoration: buildInputDecoration(widget.hint),
-              validator: (dynamic value) => widget.validator != null
-                  ? widget.validator!(value?.toString() ?? "")
-                  : null,
-              onChanged: (T? value) => widget.onChanged(value),
+              decoration: buildInputDecoration(hint),
+              validator: validator,
+              onChanged: onChanged,
               onTap: () => FocusScope.of(context).requestFocus(FocusNode()),
             ),
           ),

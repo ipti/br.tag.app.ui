@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
@@ -14,16 +13,16 @@ void main() {
       TestWidgetsFlutterBinding.ensureInitialized();
     });
     testWidgets("TagDropdownField render", (WidgetTester tester) async {
-      final tagDropdownField = TagDropdownField(
-          onChanged: () {}, label: "Textinho", items: const {});
+      final tagDropdownField = TagDropdownField<dynamic>(
+          onChanged: (value) {}, label: "Textinho", items: const {});
       await tester.pumpWidget(wrapWithBaseApp(tagDropdownField));
       final Finder resultSearch = find.byType(TagDropdownField);
       expect(resultSearch, findsOneWidget);
     });
     testWidgets("TagDropdownField render with hint",
         (WidgetTester tester) async {
-      final tagDropdownField = TagDropdownField(
-        onChanged: () {},
+      final tagDropdownField = TagDropdownField<dynamic>(
+        onChanged: (value) {},
         label: "Textinho",
         items: const {},
         hint: "Dica",
@@ -36,8 +35,8 @@ void main() {
     });
     testWidgets("TagDropdownField render with padding",
         (WidgetTester tester) async {
-      final tagDropdownField = TagDropdownField(
-        onChanged: () {},
+      final tagDropdownField = TagDropdownField<dynamic>(
+        onChanged: (value) {},
         label: "Textinho",
         items: const {},
         padding: EdgeInsets.all(16.0),
@@ -51,7 +50,7 @@ void main() {
     testWidgets("TagDropdownField render with items",
         (WidgetTester tester) async {
       final tagDropdownField = TagDropdownField(
-        onChanged: () {},
+        onChanged: (value) {},
         label: "Textinho",
         items: const {
           'chave1': 'valor1',
@@ -66,7 +65,7 @@ void main() {
     testWidgets("TagDropdownField render with label",
         (WidgetTester tester) async {
       final tagDropdownField = TagDropdownField(
-        onChanged: () {},
+        onChanged: (value) {},
         label: "Textinho",
         items: const {
           'chave1': 'valor1',
@@ -83,7 +82,7 @@ void main() {
     testWidgets("TagDropdownField render with label",
         (WidgetTester tester) async {
       final tagDropdownField = TagDropdownField(
-        onChanged: () {},
+        onChanged: (value) {},
         label: "Textinho",
         items: const {
           'chave1': 'valor1',
@@ -100,7 +99,7 @@ void main() {
     testWidgets("TagDropdownField render whit value",
         (WidgetTester tester) async {
       final tagDropdownField = TagDropdownField<String>(
-        onChanged: () {},
+        onChanged: (value) {},
         label: "Textinho",
         items: const {
           'chave1': 'valor1',
@@ -148,7 +147,7 @@ void main() {
 
     testWidgets("when text is invalid", (WidgetTester tester) async {
       final tagDropdownField = TagDropdownField<String>(
-        onChanged: () {},
+        onChanged: (value) {},
         label: "Textinho",
         items: const {
           'chave1': 'valor1',
@@ -156,7 +155,9 @@ void main() {
           'chave3': 'valor3'
         },
         autovalidateMode: AutovalidateMode.always,
-        validator: (String? value) => value == null ? "Por favor retorne um valor" : null,
+        validator: (value) {
+          return value == "chave1" ? "Por favor retorne um valor" : null;
+        },
       );
 
       final Type dropdownButtonType = DropdownButtonFormField<String>(
@@ -172,7 +173,7 @@ void main() {
       await tester.pumpAndSettle();
 
       final Finder errorMessageSearch = find.text("Por favor retorne um valor");
-      expect(errorMessageSearch, findsWidgets);
+      expect(errorMessageSearch, findsOneWidget);
     });
   });
 }
