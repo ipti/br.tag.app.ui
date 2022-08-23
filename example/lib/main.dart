@@ -34,7 +34,18 @@ class _MyAppState extends State<MyApp> {
           body: Form(
         key: formkey,
         child: Column(
-           children: const [ TagAppBar( title: Text("titulo"), )],
+          children: const [
+            TagAppBar(
+              title: Text("titulo"),
+              leading: TagAppBarMenuIconButton(),
+            ),
+            TagMenu(
+              items: [],
+            ),
+            TagBox(
+              child: Text("Texto"),
+            ),
+          ],
         ),
       )),
     );
