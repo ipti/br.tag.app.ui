@@ -29,25 +29,8 @@ class _MyAppState extends State<MyApp> {
   // final source = DataTableSource();
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-          body: Form(
-        key: formkey,
-        child: Column(
-          children: const [
-            TagAppBar(
-              title: Text("titulo"),
-              leading: TagAppBarMenuIconButton(),
-            ),
-            TagMenu(
-              items: [],
-            ),
-            TagBox(
-              child: Text("Texto"),
-            ),
-          ],
-        ),
-      )),
+    return const MaterialApp(
+      home: MainLayoutAdaptativy()
     );
   }
 }
@@ -88,3 +71,17 @@ class _MyAppState extends State<MyApp> {
 //               controller.text,
 //               style: const TextStyle(color: Colors.black),
 //             )
+// TagAppBar(
+//               title: Text("titulo"),
+//               leading: TagAppBarMenuIconButton(),
+//             ),
+//             TagMenu(
+//               items: [],
+//             ),
+//             TagBox(
+//               child: Text("Texto"),
+//             ),
+// TagTextField(
+//               label: "Tesxtinho",
+//               formatters: [TagMasks.maskCPF],
+// ),
