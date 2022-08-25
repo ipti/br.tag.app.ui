@@ -9,6 +9,7 @@ class TagScaffold extends StatelessWidget {
   final Widget menu;
   final Widget? aside;
   final Widget? header;
+  //não utilizado
   final SliverPersistentHeaderDelegate? actionsHeader;
 
   final TabBar? tabBar;

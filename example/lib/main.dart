@@ -26,62 +26,46 @@ class _MyAppState extends State<MyApp> {
     super.initState();
   }
 
-  // final source = DataTableSource();
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: MainLayoutAdaptativy()
-    );
+    return MaterialApp(
+        home: TagScaffold(
+      title: "titulo",
+      path: const ["menu", "mangás"],
+      description: "descrição",
+      body: Container(
+        key: Key("Body"),
+      ),
+      menu: Container(
+        key: Key("menu"),
+      ),
+      header: Container(
+        key: Key("header"),
+      ),
+      actionsHeader: QualquerNome(),
+    ));
   }
 }
-//TagDataTable(columns: const [], source: source)
-//TagNumberField(onChanged: (value){},),
-// TagTextField(
-//   label: "Tesxtinho",
-//   controller: TextEditingController(),
-//   validator: (value) =>
-//       (value?.isEmpty ?? true) ? "Por favor retorne um valor" : null,
-//   formatters: const [],
-// ),
-// TagDropdownField<String>(
-//     onChanged: (value) {},
-//     label: "Textinho",
-//     items: const {
-//       'chave1': 'valor1',
-//       'chave2': 'valor2',
-//       'chave3': 'valor3'
-//     },
-//     validator: (String? value) {
-//       return value == "" ? "Erro" : null;
-//     },
-//     hint: "textinho hint",
-//   ),
-//   ElevatedButton(
-//       onPressed: () => formkey.currentState!.validate(),
-//       child: const Text("fsadsafds"))
-// TagDatePickerField(
-//               onChanged: (value) {
-//                 setState(() {});
-//               },
-//               controller: controller,
-//               label: "Textinho",
-//               inputType: TextInputType.datetime,
-//             ),
-//             Text(
-//               controller.text,
-//               style: const TextStyle(color: Colors.black),
-//             )
-// TagAppBar(
-//               title: Text("titulo"),
-//               leading: TagAppBarMenuIconButton(),
-//             ),
-//             TagMenu(
-//               items: [],
-//             ),
-//             TagBox(
-//               child: Text("Texto"),
-//             ),
-// TagTextField(
-//               label: "Tesxtinho",
-//               formatters: [TagMasks.maskCPF],
-// ),
+
+class QualquerNome extends SliverPersistentHeaderDelegate {
+  @override
+  Widget build(
+      BuildContext context, double shrinkOffset, bool overlapsContent) {
+    return Container(
+      color: Colors.amber,
+      height: maxExtent,
+      child: const Text("batata"),
+    );
+  }
+
+  @override
+  double get maxExtent => 100;
+
+  @override
+  double get minExtent => 50;
+
+  @override
+  bool shouldRebuild(covariant SliverPersistentHeaderDelegate oldDelegate) {
+    return false;
+  }
+}
