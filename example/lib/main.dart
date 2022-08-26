@@ -14,17 +14,35 @@ class MyApp extends StatefulWidget {
   State<MyApp> createState() => _MyAppState();
 }
 
-class _MyAppState extends State<MyApp> {
+class _MyAppState extends State<MyApp> with TickerProviderStateMixin {
   final formkey = GlobalKey<FormState>();
 
   final controller = TextEditingController();
+
+  get tabController => null;
+  
   @override
   void initState() {
+   
     controller.addListener(() {
       log(controller.text);
     });
     super.initState();
   }
+
+  //   @override
+  // void initState() {
+  //   super.initState();
+  //    TabController _tabController = TabController(
+  //     length: 2,
+  //     vsync: this
+  //   );
+  // }
+  //  @override
+  // void dispose() {
+  //   _tabController.dispose();
+  //   super.dispose();
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -34,15 +52,16 @@ class _MyAppState extends State<MyApp> {
       path: const ["menu", "mangás"],
       description: "descrição",
       body: Container(
-        key: Key("Body"),
+        key: const Key("Body"),
       ),
       menu: Container(
-        key: Key("menu"),
+        key: const Key("menu"),
       ),
-      header: Container(
-        key: Key("header"),
-      ),
+      // tabBar:  TabBar(controller: _tabController,  tabs: const <Widget>[Tab(icon: Icon(Icons.access_alarm),), Tab(icon: Icon(Icons.add_comment),)]),
       actionsHeader: QualquerNome(),
+      aside: Container(
+          key: const Key("aside"),
+        ),
     ));
   }
 }
@@ -62,7 +81,7 @@ class QualquerNome extends SliverPersistentHeaderDelegate {
   double get maxExtent => 100;
 
   @override
-  double get minExtent => 50;
+  double get minExtent => 20;
 
   @override
   bool shouldRebuild(covariant SliverPersistentHeaderDelegate oldDelegate) {

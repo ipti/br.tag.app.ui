@@ -17,7 +17,7 @@ class DumbHeader extends SliverPersistentHeaderDelegate {
   double get maxExtent => 100;
 
   @override
-  double get minExtent => 50;
+  double get minExtent => 20;
 
   @override
   bool shouldRebuild(covariant SliverPersistentHeaderDelegate oldDelegate) {

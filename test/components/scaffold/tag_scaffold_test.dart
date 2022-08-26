@@ -29,6 +29,7 @@ void main() {
       final Finder resultSearch = find.text("titulo");
       expect(resultSearch, findsOneWidget);
     });
+
     testWidgets("render with render path's correct first item",
         (WidgetTester tester) async {
       final tagScaffold = TagScaffold(
@@ -86,7 +87,7 @@ void main() {
       final Finder resultSearch = find.byKey(Key("Body"));
       expect(resultSearch, findsOneWidget);
     });
-    testWidgets("render with menu", (WidgetTester tester) async {
+    testWidgets("render with body", (WidgetTester tester) async {
       final tagScaffold = TagScaffold(
         title: "titulo",
         path: ["menu", "mangás"],
@@ -100,9 +101,29 @@ void main() {
       );
 
       await tester.pumpWidget(wrapWithBaseApp(tagScaffold));
-      final Finder resultSearch = find.byKey(Key("menu"));
+      final Finder resultSearch = find.byKey(Key("Body"));
       expect(resultSearch, findsOneWidget);
     });
+    // testWidgets("render in desktop", (WidgetTester tester) async {
+    //   tester.binding.window.physicalSizeTestValue = Size(360, 760);
+    //   tester.binding.window.devicePixelRatioTestValue = 1.0;
+    //   await tester.binding.setSurfaceSize(Size(360, 760));
+    //   final tagScaffold = TagScaffold(
+    //     title: "titulo",
+    //     path: ["menu", "mangás"],
+    //     description: "descrição",
+    //     body: Container(
+    //       key: Key("Body"),
+    //     ),
+    //     menu: Container(
+    //       key: Key("menu"),
+    //     ),
+    //   );
+
+    //   await tester.pumpWidget(wrapWithBaseApp(tagScaffold));
+    //   final Finder resultSearch = find.byType(PageScrollPhysics);
+    //   expect(resultSearch, findsOneWidget);
+    // });
     testWidgets("render with actionsHeader", (WidgetTester tester) async {
       final tagScaffold = TagScaffold(
         title: "titulo",
@@ -121,5 +142,52 @@ void main() {
       final Finder resultSearch = find.byKey(Key("actionsHeader"));
       expect(resultSearch, findsOneWidget);
     });
+    testWidgets("render with aside", (WidgetTester tester) async {
+      final tagScaffold = TagScaffold(
+        title: "titulo",
+        path: ["menu", "mangás"],
+        description: "descrição",
+        body: Container(
+          key: Key("Body"),
+        ),
+        menu: Container(
+          key: Key("menu"),
+        ),
+        aside: Container(
+          key: Key("aside"),
+        ),
+      );
+
+      await tester.pumpWidget(wrapWithBaseApp(tagScaffold));
+      final Finder resultSearch = find.byKey(Key("aside"));
+      expect(resultSearch, findsOneWidget);
+    });
+    // testWidgets("render with tabBar", (WidgetTester tester) async {
+    //   final tagScaffold = TagScaffold(
+    //     title: "titulo",
+    //     path: ["menu", "mangás"],
+    //     description: "descrição",
+    //     body: Container(
+    //       key: Key("Body"),
+    //     ),
+    //     menu: Container(
+    //       key: Key("menu"),
+    //     ),
+    //     actionsHeader: DumbHeader(),
+    //     tabBar: TabBar(tabs: const <Widget>[
+    //       Tab(
+    //         icon: Icon(Icons.menu),
+    //       ),
+    //       Tab(
+    //         icon: Icon(Icons.add_comment),
+    //       )
+    //     ]),
+    //   );
+
+    //   await tester.pumpWidget(wrapWithBaseApp(tagScaffold));
+    //   final Finder resultSearch = find.byType(TabBar);
+    //   // final Finder resultSearch = find.byIcon(Icons.menu);
+    //   expect(resultSearch, findsWidgets);
+    // });
   });
 }
