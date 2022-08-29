@@ -14,16 +14,15 @@ class MyApp extends StatefulWidget {
   State<MyApp> createState() => _MyAppState();
 }
 
-class _MyAppState extends State<MyApp> with TickerProviderStateMixin {
+class _MyAppState extends State<MyApp> {
   final formkey = GlobalKey<FormState>();
 
   final controller = TextEditingController();
 
   get tabController => null;
-  
+
   @override
   void initState() {
-   
     controller.addListener(() {
       log(controller.text);
     });
@@ -47,22 +46,45 @@ class _MyAppState extends State<MyApp> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        home: TagScaffold(
-      title: "titulo",
-      path: const ["menu", "mangás"],
-      description: "descrição",
-      body: Container(
-        key: const Key("Body"),
-      ),
-      menu: Container(
-        key: const Key("menu"),
-      ),
-      // tabBar:  TabBar(controller: _tabController,  tabs: const <Widget>[Tab(icon: Icon(Icons.access_alarm),), Tab(icon: Icon(Icons.add_comment),)]),
-      actionsHeader: QualquerNome(),
-      aside: Container(
-          key: const Key("aside"),
+      home: DefaultTabController(
+        length: 2,
+        child: TagScaffold(
+          title: "titulo",
+          path: const ["menu", "mangás"],
+          description: "descrição",
+          menu: Container(
+            key: const Key("menu"),
+          ),
+          tabBar: const TabBar(tabs: [
+            Tab(
+              child: Icon(Icons.menu),
+              icon: Icon(Icons.menu),
+            ),
+            Tab(
+              child: Icon(Icons.menu),
+              icon: Icon(Icons.add_comment),
+            )
+          ]),
+          actionsHeader: QualquerNome(),
+          aside: Container(
+            key: const Key("aside"),
+            //tabBar:  TabBar(controller: _tabController,  tabs: const <Widget>[Tab(icon: Icon(Icons.access_alarm),), Tab(icon: Icon(Icons.add_comment),)]),
+          ),
+          body: TabBarView(children: [
+            Container(
+              color: Colors.red,
+              key: const Key("Body"),
+              child: const Text("data"),
+            ),
+            Container(
+              color: Colors.blue,
+              key: const Key("Body1"),
+              child: const Text("nome"),
+            ),
+          ]),
         ),
-    ));
+      ),
+    );
   }
 }
 
