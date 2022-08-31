@@ -43,8 +43,8 @@ void main() {
       );
       await tester.pumpWidget(wrapWithBaseApp(mainLayoutAdaptativy));
 
-      final Finder sizeResult = find.byKey(Key("Desktop"));
-      expect(sizeResult, findsOneWidget);
+      final Finder resultSearchSize = find.byKey(Key("Desktop"));
+      expect(resultSearchSize, findsOneWidget);
     });
     testWidgets("render right on Desktop", (WidgetTester tester) async {
       tester.binding.window.physicalSizeTestValue = Size(1440, 900);
@@ -57,8 +57,8 @@ void main() {
       );
       await tester.pumpWidget(wrapWithBaseApp(mainLayoutAdaptativy));
 
-      final Finder sizeResult = find.byKey(Key("Desktop"));
-      expect(sizeResult, findsOneWidget);
+      final Finder resultSearchSize = find.byKey(Key("Desktop"));
+      expect(resultSearchSize, findsOneWidget);
     });
     testWidgets("render appBar on mobile", (WidgetTester tester) async {
       tester.binding.window.physicalSizeTestValue = Size(360, 760);
@@ -69,8 +69,8 @@ void main() {
         key: Key("Desktop"),
       ));
       await tester.pumpWidget(wrapWithBaseApp(mainLayoutAdaptativy));
-      final Finder sizeResult = find.byKey(Key("Desktop"));
-      expect(sizeResult, findsOneWidget);
+      final Finder resultSearchSize = find.byKey(Key("Desktop"));
+      expect(resultSearchSize, findsOneWidget);
     });
   });
 }

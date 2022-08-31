@@ -45,10 +45,10 @@ void main() {
       );
 
       await tester.pumpWidget(wrapWithBaseApp(tagScaffold));
-      final Finder resultSearch = find.byWidgetPredicate(
+      final Finder resultSearchPath = find.byWidgetPredicate(
           (widget) => fromRichTextToPlainText(widget) == "menu");
 
-      expect(resultSearch, findsOneWidget);
+      expect(resultSearchPath, findsOneWidget);
     });
     testWidgets("render with render path's correct last item",
         (WidgetTester tester) async {
@@ -65,10 +65,10 @@ void main() {
       );
 
       await tester.pumpWidget(wrapWithBaseApp(tagScaffold));
-      final Finder resultSearch = find.byWidgetPredicate(
+      final Finder resultSearchPath = find.byWidgetPredicate(
           (widget) => fromRichTextToPlainText(widget) == "mangás");
 
-      expect(resultSearch, findsOneWidget);
+      expect(resultSearchPath, findsOneWidget);
     });
     testWidgets("render with body", (WidgetTester tester) async {
       final tagScaffold = TagScaffold(
@@ -84,25 +84,8 @@ void main() {
       );
 
       await tester.pumpWidget(wrapWithBaseApp(tagScaffold));
-      final Finder resultSearch = find.byKey(Key("Body"));
-      expect(resultSearch, findsOneWidget);
-    });
-    testWidgets("render with body", (WidgetTester tester) async {
-      final tagScaffold = TagScaffold(
-        title: "titulo",
-        path: ["menu", "mangás"],
-        description: "descrição",
-        body: Container(
-          key: Key("Body"),
-        ),
-        menu: Container(
-          key: Key("menu"),
-        ),
-      );
-
-      await tester.pumpWidget(wrapWithBaseApp(tagScaffold));
-      final Finder resultSearch = find.byKey(Key("Body"));
-      expect(resultSearch, findsOneWidget);
+      final Finder resultSearchBody = find.byKey(Key("Body"));
+      expect(resultSearchBody, findsOneWidget);
     });
     testWidgets("render with actionsHeader", (WidgetTester tester) async {
       final tagScaffold = TagScaffold(
@@ -119,8 +102,8 @@ void main() {
       );
 
       await tester.pumpWidget(wrapWithBaseApp(tagScaffold));
-      final Finder resultSearch = find.byKey(Key("actionsHeader"));
-      expect(resultSearch, findsOneWidget);
+      final Finder resultSearchActionsHeader = find.byKey(Key("actionsHeader"));
+      expect(resultSearchActionsHeader, findsOneWidget);
     });
     testWidgets("render with aside", (WidgetTester tester) async {
       final tagScaffold = TagScaffold(
@@ -139,8 +122,8 @@ void main() {
       );
 
       await tester.pumpWidget(wrapWithBaseApp(tagScaffold));
-      final Finder resultSearch = find.byKey(Key("aside"));
-      expect(resultSearch, findsOneWidget);
+      final Finder resultSearchAside = find.byKey(Key("aside"));
+      expect(resultSearchAside, findsOneWidget);
     });
     testWidgets("render with tabBar", (WidgetTester tester) async {
       final tagScaffold = TagScaffold(

@@ -80,7 +80,6 @@ void main() {
 
       verify(() => dumb.callWithParam1('')).called(1);
     });
-
   });
   group("When TagMask maskCPF", () {
     setUpAll(() {
@@ -156,7 +155,7 @@ void main() {
     });
   });
 
-    group("When TagMask maskCEP", () {
+  group("When TagMask maskCEP", () {
     setUpAll(() {
       TestWidgetsFlutterBinding.ensureInitialized();
     });
@@ -190,7 +189,7 @@ void main() {
 
       final Finder resultSearch = find.byType(TextField);
 
-       await tester.enterText(resultSearch, '1112223334411111');
+      await tester.enterText(resultSearch, '1112223334411111');
       await tester.pumpAndSettle();
 
       verify(() => dumb.callWithParam1('11122-233')).called(1);
@@ -229,6 +228,5 @@ void main() {
 
       verify(() => dumb.callWithParam1('')).called(1);
     });
-
   });
 }

@@ -9,11 +9,11 @@ import '../../helpers/methods/prepare_widget.dart';
 import '../../helpers/mock/dumb.dart';
 
 void main() {
-  group("When ", () {
+  group("When TagBreadcrumbItem", () {
     setUpAll(() {
       TestWidgetsFlutterBinding.ensureInitialized();
     });
-    testWidgets("TagBreadcrumbItem render", (WidgetTester tester) async {
+    testWidgets("render", (WidgetTester tester) async {
       final tagBreadcrumbItem = TagBreadcrumbItem(
         title: 'home',
       );
@@ -22,7 +22,7 @@ void main() {
 
       expect(resultSearch, findsOneWidget);
     });
-    testWidgets("TagBreadcrumbItem tap", (WidgetTester tester) async {
+    testWidgets("tap an Item", (WidgetTester tester) async {
       final dumb = MockDumb();
       final tagBreadcrumbItem = TagBreadcrumbItem(
         title: 'home',
@@ -38,7 +38,8 @@ void main() {
       await tester.pumpAndSettle();
       verify(() => dumb.call()).called(1);
     });
-    testWidgets("TagBreadcrumbItem stend", (WidgetTester tester) async {
+    testWidgets("style is formated", (WidgetTester tester) async {
+      ///TODO: Revisar esse nome com igor
       final tagBreadcrumbItem = TagBreadcrumbItem(
         title: 'home',
       );
@@ -50,12 +51,11 @@ void main() {
 
       final item = tester.widget<RichText>(resultSearch);
 
-      expect(
-          item.text.style?.fontWeight, equals(TagFontWeight.fontWeightLinks));
+      expect( item.text.style?.fontWeight, equals(TagFontWeight.fontWeightLinks));
       expect(item.text.style?.fontSize, equals(TagFontSize.fontSizeTextNormal));
       expect(item.text.style?.color, equals(TagColors.colorBaseProductNormal));
     });
-    testWidgets("TagBreadcrumbItem hover", (WidgetTester tester) async {
+    testWidgets("render with hover", (WidgetTester tester) async {
       final tagBreadcrumbItem = TagBreadcrumbItem(
         title: 'home',
       );
@@ -68,7 +68,8 @@ void main() {
       expect(item.text.style?.decoration, equals(TextDecoration.underline));
     });
 
-    testWidgets("TagBreadcrumbItem Exit", (WidgetTester tester) async {
+    testWidgets("remove the undeline when pointer is not under the text", (WidgetTester tester) async {
+      ///TODO: Revisar esse nome com igor
       final tagBreadcrumbItem = TagBreadcrumbItem(
         title: 'home',
       );

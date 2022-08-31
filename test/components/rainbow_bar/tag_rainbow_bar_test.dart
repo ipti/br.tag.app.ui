@@ -5,7 +5,7 @@ import 'package:tag_ui/tag_ui.dart';
 import '../../helpers/methods/prepare_widget.dart';
 
 void main() {
-  group("When TagRainbowBar render", () {
+  group("When TagRainbowBar ", () {
     setUpAll(() {
       TestWidgetsFlutterBinding.ensureInitialized();
     });
@@ -27,8 +27,8 @@ void main() {
         matching: find.byType(Container),
       );
 
-      final box1 = tester.widget<Container>(resultSearch.at(0));
-      expect(box1.color, equals(const Color(0xFF667DF4)));
+      final boxResult = tester.widget<Container>(resultSearch.at(0));
+      expect(boxResult.color, equals(const Color(0xFF667DF4)));
     });
     testWidgets("render color Red", (WidgetTester tester) async {
       final tagRainbowBar = TagRainbowBar();
@@ -38,8 +38,8 @@ void main() {
         matching: find.byType(Container),
       );
 
-      final box1 = tester.widget<Container>(resultSearch.at(1));
-      expect(box1.color, equals(const Color(0xFFF45A5A)));
+      final boxResult = tester.widget<Container>(resultSearch.at(1));
+      expect(boxResult.color, equals(const Color(0xFFF45A5A)));
     });
     testWidgets("render color Green", (WidgetTester tester) async {
       final tagRainbowBar = TagRainbowBar();
@@ -49,8 +49,8 @@ void main() {
         matching: find.byType(Container),
       );
 
-      final box1 = tester.widget<Container>(resultSearch.at(2));
-      expect(box1.color, equals(const Color(0xFF66D654)));
+      final boxResult = tester.widget<Container>(resultSearch.at(2));
+      expect(boxResult.color, equals(const Color(0xFF66D654)));
     });
     testWidgets("render color Yellow", (WidgetTester tester) async {
       final tagRainbowBar = TagRainbowBar();
@@ -60,8 +60,8 @@ void main() {
         matching: find.byType(Container),
       );
 
-      final box1 = tester.widget<Container>(resultSearch.at(3));
-      expect(box1.color, equals(const Color(0xFFEADA48)));
+      final boxResult = tester.widget<Container>(resultSearch.at(3));
+      expect(boxResult.color, equals(const Color(0xFFEADA48)));
     });
   });
 }

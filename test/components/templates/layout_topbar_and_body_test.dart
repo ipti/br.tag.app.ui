@@ -17,8 +17,8 @@ void main() {
         ),
       );
       await tester.pumpWidget(wrapWithBaseApp(layoutTopBarAndBody));
-      final Finder resultSearch = find.byKey(Key("Body"));
-      expect(resultSearch, findsOneWidget);
+      final Finder resultSearchKey = find.byKey(Key("Body"));
+      expect(resultSearchKey, findsOneWidget);
     });
     testWidgets("render with drawer", (WidgetTester tester) async {
       final layoutTopBarAndBody = LayoutTopBarAndBody(
@@ -28,11 +28,11 @@ void main() {
         ),
       );
       await tester.pumpWidget(wrapWithBaseApp(layoutTopBarAndBody));
-      final Finder resultSearch = find.byIcon(Icons.menu);
-      await tester.tap(resultSearch);
+      final Finder resultSearchIcon = find.byIcon(Icons.menu);
+      await tester.tap(resultSearchIcon);
       await tester.pumpAndSettle();
-      final Finder resultDrawer = find.byKey(Key("Drawer"));
-      expect(resultDrawer, findsOneWidget);
+      final Finder resultSearchDrawer = find.byKey(Key("Drawer"));
+      expect(resultSearchDrawer, findsOneWidget);
     });
     testWidgets("render with appBar", (WidgetTester tester) async {
       final layoutTopBarAndBody = LayoutTopBarAndBody(
@@ -41,8 +41,8 @@ void main() {
             key: Key("appBar"),
           ));
       await tester.pumpWidget(wrapWithBaseApp(layoutTopBarAndBody));
-      final Finder resultSearch = find.byKey(Key("appBar"));
-      expect(resultSearch, findsOneWidget);
+      final Finder resultSearchKey = find.byKey(Key("appBar"));
+      expect(resultSearchKey, findsOneWidget);
     });
     testWidgets("render with drawer and appbar", (WidgetTester tester) async {
       final layoutTopBarAndBody = LayoutTopBarAndBody(
@@ -54,14 +54,14 @@ void main() {
             key: Key("appBar"),
           ));
       await tester.pumpWidget(wrapWithBaseApp(layoutTopBarAndBody));
-      final Finder resultSearch = find.byIcon(Icons.menu);
-      await tester.tap(resultSearch);
+      final Finder resultSearchIcon = find.byIcon(Icons.menu);
+      await tester.tap(resultSearchIcon);
       await tester.pumpAndSettle();
-      final Finder resultDrawer = find.byKey(Key("Drawer"));
-      expect(resultDrawer, findsOneWidget);
+      final Finder resultSearchDrawer = find.byKey(Key("Drawer"));
+      expect(resultSearchDrawer, findsOneWidget);
       await tester.pumpWidget(wrapWithBaseApp(layoutTopBarAndBody));
-      final Finder resultAppBar = find.byKey(Key("appBar"));
-      expect(resultAppBar, findsOneWidget);
+      final Finder resultSearchAppBar = find.byKey(Key("appBar"));
+      expect(resultSearchAppBar, findsOneWidget);
     });
   });
 }

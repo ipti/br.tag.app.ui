@@ -9,36 +9,29 @@ import '../../helpers/methods/prepare_widget.dart';
 import '../../helpers/mock/dumb.dart';
 
 void main() {
-  group("When TagButton render", () {
+  group("When TagButton ", () {
     setUpAll(() {
       TestWidgetsFlutterBinding.ensureInitialized();
     });
 
-    testWidgets("Only with text ", (WidgetTester tester) async {
+    testWidgets("render only with text ", (WidgetTester tester) async {
       final tagButton = TagButton(text: "MyButton", onPressed: () {});
-
       await tester.pumpWidget(wrapWithBaseApp(tagButton));
-
       final Finder resultSearch = find.byType(TagButton);
-
       expect(resultSearch, findsOneWidget);
     });
-    testWidgets("With backgroundColor amber", (WidgetTester tester) async {
+    testWidgets("render with backgroundColor amber", (WidgetTester tester) async {
       final tagButton = TagButton(
         text: "MyButton",
         onPressed: () {},
         backgroundColor: Colors.amber,
       );
-
       await tester.pumpWidget(wrapWithBaseApp(tagButton));
-
       final Finder resultSearch = find.byType(TagButton);
-
-      final TagButton button = tester.widget<TagButton>(resultSearch);
-
-      expect(button.backgroundColor, equals(Colors.amber));
+      final TagButton  resultButton = tester.widget<TagButton>(resultSearch);
+      expect(resultButton.backgroundColor, equals(Colors.amber));
     });
-    testWidgets("with icon LOGO_PATH_SVG", (WidgetTester tester) async {
+    testWidgets("render with icon LOGO_PATH_SVG", (WidgetTester tester) async {
       final tagButton = TagButton(
         text: "MyButton",
         onPressed: () {},
@@ -51,49 +44,40 @@ void main() {
 
       expect(resultSearch, findsOneWidget);
     });
-    testWidgets("With TextButtonColor amber", (WidgetTester tester) async {
+    testWidgets("render with TextButtonColor amber", (WidgetTester tester) async {
       final tagButton = TagButton(
         text: "MyButton",
         onPressed: () {},
         textButtonColor: Colors.amber,
       );
       await tester.pumpWidget(wrapWithBaseApp(tagButton));
-
       final Finder resultSearch = find.byType(TagButton);
-
-      final TagButton button = tester.widget<TagButton>(resultSearch);
-
-      expect(button.textButtonColor, equals(Colors.amber));
+      final TagButton resultButton = tester.widget<TagButton>(resultSearch);
+      expect(resultButton.textButtonColor, equals(Colors.amber));
     });
-    testWidgets("With TextStyle bold", (WidgetTester tester) async {
+    testWidgets("render with TextStyle bold", (WidgetTester tester) async {
       final tagButton = TagButton(
         text: "MyButton",
         onPressed: () {},
         textStyle: TextStyle(fontWeight: FontWeight.bold),
       );
       await tester.pumpWidget(wrapWithBaseApp(tagButton));
-
       final Finder resultSearch = find.byType(TagButton);
-
-      final TagButton button = tester.widget<TagButton>(resultSearch);
-
-      expect(button.textStyle, equals(TextStyle(fontWeight: FontWeight.bold)));
+      final TagButton resultButton = tester.widget<TagButton>(resultSearch);
+      expect(resultButton.textStyle, equals(TextStyle(fontWeight: FontWeight.bold)));
     });
-    testWidgets("With ButtonStyle bold", (WidgetTester tester) async {
+    testWidgets("render with ButtonStyle bold", (WidgetTester tester) async {
       final tagButton = TagButton(
         text: "MyButton",
         onPressed: () {},
         buttonStyle: TagButtonStyles.secondary,
       );
       await tester.pumpWidget(wrapWithBaseApp(tagButton));
-
       final Finder resultSearch = find.byType(TagButton);
-
-      final TagButton button = tester.widget<TagButton>(resultSearch);
-
-      expect(button.buttonStyle, equals(TagButtonStyles.secondary));
+      final TagButton resultButton = tester.widget<TagButton>(resultSearch);
+      expect(resultButton.buttonStyle, equals(TagButtonStyles.secondary));
     });
-    testWidgets("tap it", (WidgetTester tester) async {
+    testWidgets("is tapped", (WidgetTester tester) async {
       final dumb = MockDumb();
       when(() => dumb.call()).thenAnswer((invocation) {});
       final tagButton = TagButton(

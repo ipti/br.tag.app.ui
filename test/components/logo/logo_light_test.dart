@@ -6,12 +6,12 @@ import 'package:tag_ui/tag_ui.dart';
 import '../../helpers/methods/prepare_widget.dart';
 
 void main() {
-  group("When LogoLightTag render", () {
+  group("When LogoLightTag ", () {
     setUpAll(() {
       TestWidgetsFlutterBinding.ensureInitialized();
     });
 
-    testWidgets("LOGO_PATH_SVG", (WidgetTester tester) async {
+    testWidgets("render LOGO_PATH_SVG", (WidgetTester tester) async {
       final logoLightTag = LogoLightTag();
 
       await tester.pumpWidget(wrapWithBaseAppAndBundle(logoLightTag));
@@ -19,7 +19,7 @@ void main() {
 
       expect(resultSearch, findsOneWidget);
     });
-    testWidgets("test color", (WidgetTester tester) async {
+    testWidgets("render with color and alignment", (WidgetTester tester) async {
       final logoLightTag = LogoLightTag(
         color: Colors.amber,
         alignment: Alignment.centerLeft,
@@ -30,15 +30,15 @@ void main() {
       await tester.pumpWidget(wrapWithBaseAppAndBundle(logoLightTag));
       final Finder resultSearch = find.byType(LogoLightTag);
 
-      final LogoLightTag cor = tester.widget<LogoLightTag>(resultSearch);
+      final LogoLightTag corResult = tester.widget<LogoLightTag>(resultSearch);
 
-      expect(cor.color, equals(Colors.amber));
-      final LogoLightTag alinhamento =
+      expect(corResult.color, equals(Colors.amber));
+      final LogoLightTag alinhamentoResult =
           tester.widget<LogoLightTag>(resultSearch);
 
-      expect(alinhamento.alignment, equals(Alignment.centerLeft));
+      expect(alinhamentoResult.alignment, equals(Alignment.centerLeft));
     });
-    testWidgets("test width and height", (WidgetTester tester) async {
+    testWidgets("render with width and height", (WidgetTester tester) async {
       final logoLightTag = LogoLightTag(
         width: 40,
         height: 40,
@@ -47,11 +47,13 @@ void main() {
       await tester.pumpWidget(wrapWithBaseAppAndBundle(logoLightTag));
       final Finder resultSearch = find.byType(LogoLightTag);
 
-      final LogoLightTag widthTest = tester.widget<LogoLightTag>(resultSearch);
-      final LogoLightTag heightTest = tester.widget<LogoLightTag>(resultSearch);
+      final LogoLightTag widthResult =
+          tester.widget<LogoLightTag>(resultSearch);
+      final LogoLightTag heightResult =
+          tester.widget<LogoLightTag>(resultSearch);
 
-      expect(widthTest.width, equals(40));
-      expect(heightTest.height, equals(40));
+      expect(widthResult.width, equals(40));
+      expect(heightResult.height, equals(40));
     });
   });
 }

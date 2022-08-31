@@ -8,19 +8,18 @@ import '../../helpers/methods/prepare_widget.dart';
 import '../../helpers/mock/dumb.dart';
 
 void main() {
-  group("When ", () {
+  group("When TagDropdownField ", () {
     setUpAll(() {
       TestWidgetsFlutterBinding.ensureInitialized();
     });
-    testWidgets("TagDropdownField render", (WidgetTester tester) async {
+    testWidgets("render", (WidgetTester tester) async {
       final tagDropdownField = TagDropdownField<dynamic>(
           onChanged: (value) {}, label: "Textinho", items: const {});
       await tester.pumpWidget(wrapWithBaseApp(tagDropdownField));
       final Finder resultSearch = find.byType(TagDropdownField);
       expect(resultSearch, findsOneWidget);
     });
-    testWidgets("TagDropdownField render with hint",
-        (WidgetTester tester) async {
+    testWidgets("render with hint", (WidgetTester tester) async {
       final tagDropdownField = TagDropdownField<dynamic>(
         onChanged: (value) {},
         label: "Textinho",
@@ -28,12 +27,10 @@ void main() {
         hint: "Dica",
       );
       await tester.pumpWidget(wrapWithBaseApp(tagDropdownField));
-      final Finder hintResult = find.text("Dica");
-      expect(hintResult, findsOneWidget);
-
+      final Finder resultSearchHint = find.text("Dica");
+      expect(resultSearchHint, findsOneWidget);
     });
-    testWidgets("TagDropdownField render with padding",
-        (WidgetTester tester) async {
+    testWidgets("render with padding", (WidgetTester tester) async {
       final tagDropdownField = TagDropdownField<dynamic>(
         onChanged: (value) {},
         label: "Textinho",
@@ -46,8 +43,7 @@ void main() {
       final paddingResult = tester.widget<TagDropdownField>(resultSearch);
       expect(paddingResult.padding, equals(EdgeInsets.all(16.0)));
     });
-    testWidgets("TagDropdownField render with items",
-        (WidgetTester tester) async {
+    testWidgets("render with items", (WidgetTester tester) async {
       final tagDropdownField = TagDropdownField(
         onChanged: (value) {},
         label: "Textinho",
@@ -61,8 +57,7 @@ void main() {
       final Finder resultSearch = find.byType(Text);
       expect(resultSearch, findsWidgets);
     });
-    testWidgets("TagDropdownField render with label",
-        (WidgetTester tester) async {
+    testWidgets("render with label", (WidgetTester tester) async {
       final tagDropdownField = TagDropdownField(
         onChanged: (value) {},
         label: "Textinho",
@@ -75,11 +70,10 @@ void main() {
       await tester.pumpWidget(wrapWithBaseApp(tagDropdownField));
       final Finder resultSearch = find.byType(TagLabel);
       expect(resultSearch, findsOneWidget);
-      final Finder labelResult = find.text("Textinho");
-      expect(labelResult, findsOneWidget);
+      final Finder resultSearchLabel = find.text("Textinho");
+      expect(resultSearchLabel, findsOneWidget);
     });
-    testWidgets("TagDropdownField render with label",
-        (WidgetTester tester) async {
+    testWidgets("render with label", (WidgetTester tester) async {
       final tagDropdownField = TagDropdownField(
         onChanged: (value) {},
         label: "Textinho",
@@ -92,11 +86,10 @@ void main() {
       await tester.pumpWidget(wrapWithBaseApp(tagDropdownField));
       final Finder resultSearch = find.byType(TagLabel);
       expect(resultSearch, findsOneWidget);
-      final Finder labelResult = find.text("Textinho");
-      expect(labelResult, findsOneWidget);
+      final Finder resultSearchLabel = find.text("Textinho");
+      expect(resultSearchLabel, findsOneWidget);
     });
-    testWidgets("TagDropdownField render whit value",
-        (WidgetTester tester) async {
+    testWidgets("render whit value", (WidgetTester tester) async {
       final tagDropdownField = TagDropdownField<String>(
         onChanged: (value) {},
         label: "Textinho",
@@ -110,8 +103,8 @@ void main() {
       await tester.pumpWidget(wrapWithBaseApp(tagDropdownField));
       final Finder resultSearch = find.byType(Text);
       expect(resultSearch, findsWidgets);
-      final Finder valueResult = find.text("valor1");
-      expect(valueResult, findsOneWidget);
+      final Finder resultSearchValue = find.text("valor1");
+      expect(resultSearchValue, findsOneWidget);
     });
     testWidgets("when value is changed", (WidgetTester tester) async {
       final dumb = MockDumb();

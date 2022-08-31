@@ -33,8 +33,8 @@ void main() {
       );
       await tester.pumpWidget(wrapWithBaseApp(showOnDesktop));
 
-      final Finder sizeResult = find.byKey(Key("Desktop"));
-      expect(sizeResult, findsOneWidget);
+      final Finder resultSearchSizeResult = find.byKey(Key("Desktop"));
+      expect(resultSearchSizeResult, findsOneWidget);
     });
   });
 }

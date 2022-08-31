@@ -6,7 +6,7 @@ import 'package:tag_ui/src/strings/file_paths.dart';
 import '../../helpers/methods/prepare_widget.dart';
 
 void main() {
-  group("When Icon ", () {
+  group("When TagIcon ", () {
     setUpAll(() {
       TestWidgetsFlutterBinding.ensureInitialized();
     });
@@ -19,7 +19,7 @@ void main() {
       final Finder resultSearch = find.byType(SvgPicture);
       expect(resultSearch, findsOneWidget);
     });
-    testWidgets("render true", (WidgetTester tester) async {
+    testWidgets("render desabled true", (WidgetTester tester) async {
       final tagIcon = TagIcon(
         defaultVersionPath: FilePaths.LOGO_LIGHT_PATH_SVG,
         disabledVersionPath: FilePaths.LOGO_GREY_PATH_SVG,

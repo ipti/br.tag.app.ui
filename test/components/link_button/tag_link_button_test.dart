@@ -4,18 +4,18 @@ import 'package:tag_ui/tag_ui.dart';
 import '../../helpers/methods/prepare_widget.dart';
 
 void main() {
-  group("When TagLinkButton render", () {
+  group("When TagLinkButton ", () {
     setUpAll(() {
       TestWidgetsFlutterBinding.ensureInitialized();
+      ///TODO: Revisar se precisa alguma coisa nesse
     });
-    testWidgets("With backgroundColor amber", (WidgetTester tester) async {
+    testWidgets("render", (WidgetTester tester) async {
       final tagLinkButton = TagLinkButton(
         text: "MyButton",
         onPressed: () {},
       );
       await tester.pumpWidget(wrapWithBaseApp(tagLinkButton));
       final Finder resultSearch = find.text("MyButton");
-
       expect(resultSearch, findsOneWidget);
     });
   });

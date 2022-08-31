@@ -24,7 +24,7 @@ void main() {
       final Finder resultSearch = find.byType(AppBar);
       expect(resultSearch, findsOneWidget);
     });
-    testWidgets("custom key", (WidgetTester tester) async {
+    testWidgets("render with custom key", (WidgetTester tester) async {
       final tagAppBar = MaterialApp(
         home: Scaffold(
           appBar: TagAppBar(
@@ -35,8 +35,8 @@ void main() {
       );
 
       await tester.pumpWidget(tagAppBar);
-      final Finder resultSearch = find.byKey(Key("APP_BAR_KEY"));
-      expect(resultSearch, findsOneWidget);
+      final Finder resultSearchKey = find.byKey(Key("APP_BAR_KEY"));
+      expect(resultSearchKey, findsOneWidget);
     });
     testWidgets("render with text ", (WidgetTester tester) async {
       final tagAppBar = MaterialApp(
@@ -47,8 +47,8 @@ void main() {
         ),
       );
       await tester.pumpWidget(wrapWithBaseApp(tagAppBar));
-      final Finder resultSearch = find.text("titulo");
-      expect(resultSearch, findsWidgets);
+      final Finder resultSearchTitle = find.text("titulo");
+      expect(resultSearchTitle, findsWidgets);
     });
     testWidgets("render with logo ", (WidgetTester tester) async {
       final tagAppBar = MaterialApp(
@@ -57,10 +57,11 @@ void main() {
         ),
       );
       await tester.pumpWidget(wrapWithBaseAppAndBundle(tagAppBar));
-      final Finder resultSearch = find.byType(TagLogo);
-      expect(resultSearch, findsOneWidget);
+      final Finder resultSearchLogo = find.byType(TagLogo);
+      expect(resultSearchLogo, findsOneWidget);
     });
-    testWidgets("leading was menu button", (WidgetTester tester) async {
+    testWidgets("buton menu is lead", (WidgetTester tester) async {
+      ///TODO: Revisar esse nome com igor
       final tagAppBar = MaterialApp(
         home: Scaffold(
           drawer: Container(key: Key('drawer')),
@@ -70,11 +71,11 @@ void main() {
         ),
       );
       await tester.pumpWidget(tagAppBar);
-      final Finder resultSearch = find.byIcon(Icons.menu);
-      await tester.tap(resultSearch);
+      final Finder resultSearchIcon = find.byIcon(Icons.menu);
+      await tester.tap(resultSearchIcon);
       await tester.pumpAndSettle();
-      final Finder drawerSearch = find.byKey(Key('drawer'));
-      expect(drawerSearch, findsOneWidget);
+      final Finder resultSearchDrawer = find.byKey(Key('drawer'));
+      expect(resultSearchDrawer, findsOneWidget);
     });
     testWidgets("child is called", (WidgetTester tester) async {
       final tagAppBar = TagAppBar();
@@ -82,7 +83,8 @@ void main() {
       expect(child, equals(tagAppBar));
     });
 
-    testWidgets("leading was back button", (WidgetTester tester) async {
+    testWidgets("buton back is leading", (WidgetTester tester) async {
+      ///TODO: Revisar esse nome com igor
       final navigatorMock = MockNavigator();
       when(() => navigatorMock.pop()).thenAnswer((_) async {
         return null;
@@ -98,14 +100,12 @@ void main() {
         ),
       );
       await tester.pumpWidget(tagAppBar);
-      final Finder resultSearch = find.byIcon(Icons.arrow_back);
-      await tester.tap(resultSearch);
+      final Finder resultSearchIcon = find.byIcon(Icons.arrow_back);
+      await tester.tap(resultSearchIcon);
       await tester.pumpAndSettle();
 
-      expect(resultSearch, findsOneWidget);
+      expect(resultSearchIcon, findsOneWidget);
       verify(() => navigatorMock.pop()).called(1);
     });
-
-   
   });
 }

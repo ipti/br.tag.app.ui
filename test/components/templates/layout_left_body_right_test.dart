@@ -10,7 +10,7 @@ void main() {
       TestWidgetsFlutterBinding.ensureInitialized();
     });
 
-    testWidgets("render with LayoutLeftBodyRight", (WidgetTester tester) async {
+    testWidgets("render", (WidgetTester tester) async {
       final layoutLeftBodyRight = LayoutLeftBodyRight(
         body: Container(),
       );
@@ -25,8 +25,8 @@ void main() {
         ),
       );
       await tester.pumpWidget(wrapWithBaseApp(layoutLeftBodyRight));
-      final Finder resultSearch = find.byKey(Key("Body"));
-      expect(resultSearch, findsOneWidget);
+      final Finder resultSearchKey = find.byKey(Key("Body"));
+      expect(resultSearchKey, findsOneWidget);
     });
     testWidgets("render right", (WidgetTester tester) async {
       final layoutLeftBodyRight = LayoutLeftBodyRight(
@@ -38,8 +38,8 @@ void main() {
         ),
       );
       await tester.pumpWidget(wrapWithBaseApp(layoutLeftBodyRight));
-      final Finder resultSearch = find.byKey(Key("Right"));
-      expect(resultSearch, findsOneWidget);
+      final Finder resultSearchKey = find.byKey(Key("Right"));
+      expect(resultSearchKey, findsOneWidget);
     });
     testWidgets("render left", (WidgetTester tester) async {
       final layoutLeftBodyRight = LayoutLeftBodyRight(
@@ -51,8 +51,8 @@ void main() {
         ),
       );
       await tester.pumpWidget(wrapWithBaseApp(layoutLeftBodyRight));
-      final Finder resultSearch = find.byKey(Key("Left"));
-      expect(resultSearch, findsOneWidget);
+      final Finder resultSearchKey = find.byKey(Key("Left"));
+      expect(resultSearchKey, findsOneWidget);
     });
     testWidgets("render left and right", (WidgetTester tester) async {
       final layoutLeftBodyRight = LayoutLeftBodyRight(
@@ -67,10 +67,10 @@ void main() {
         ),
       );
       await tester.pumpWidget(wrapWithBaseApp(layoutLeftBodyRight));
-      final Finder resultSearchL = find.byKey(Key("Left"));
-      expect(resultSearchL, findsOneWidget);
-      final Finder resultSearchR = find.byKey(Key("Right"));
-      expect(resultSearchR, findsOneWidget);
+      final Finder resultSearchLeft = find.byKey(Key("Left"));
+      expect(resultSearchLeft, findsOneWidget);
+      final Finder resultSearchRight = find.byKey(Key("Right"));
+      expect(resultSearchRight, findsOneWidget);
     });
   });
 }

@@ -43,8 +43,7 @@ void main() {
       expect(resultSearch, findsOneWidget);
     });
 
-    testWidgets("render mobile find column",
-        (WidgetTester tester) async {
+    testWidgets("render mobile find column", (WidgetTester tester) async {
       tester.binding.window.physicalSizeTestValue = Size(360, 760);
       tester.binding.window.devicePixelRatioTestValue = 1.0;
       await tester.binding.setSurfaceSize(Size(360, 760));
@@ -55,8 +54,7 @@ void main() {
       final Finder resultSearch = find.byType(Column);
       expect(resultSearch, findsOneWidget);
     });
-    testWidgets("render mobile find row",
-        (WidgetTester tester) async {
+    testWidgets("render mobile find row", (WidgetTester tester) async {
       tester.binding.window.physicalSizeTestValue = Size(360, 760);
       tester.binding.window.devicePixelRatioTestValue = 1.0;
       await tester.binding.setSurfaceSize(Size(360, 760));
@@ -67,6 +65,5 @@ void main() {
       final Finder resultSearch = find.byType(Row);
       expect(resultSearch, findsOneWidget);
     });
-
   });
 }

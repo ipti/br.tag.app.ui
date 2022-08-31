@@ -6,12 +6,12 @@ import 'package:tag_ui/tag_ui.dart';
 import '../../helpers/methods/prepare_widget.dart';
 
 void main() {
-  group("When TagLogo render", () {
+  group("When TagLogo ", () {
     setUpAll(() {
       TestWidgetsFlutterBinding.ensureInitialized();
     });
 
-    testWidgets("LOGO_PATH_SVG", (WidgetTester tester) async {
+    testWidgets("render LOGO_PATH_SVG", (WidgetTester tester) async {
       final tagLogo = TagLogo();
 
       await tester.pumpWidget(wrapWithBaseAppAndBundle(tagLogo));
@@ -19,7 +19,7 @@ void main() {
 
       expect(resultSearch, findsOneWidget);
     });
-    testWidgets("test color", (WidgetTester tester) async {
+    testWidgets("render with color and alignment", (WidgetTester tester) async {
       final tagLogo = TagLogo(
         color: Colors.amber,
         alignment: Alignment.centerLeft,
@@ -30,14 +30,14 @@ void main() {
       await tester.pumpWidget(wrapWithBaseAppAndBundle(tagLogo));
       final Finder resultSearch = find.byType(TagLogo);
 
-      final TagLogo cor = tester.widget<TagLogo>(resultSearch);
+      final TagLogo corResult = tester.widget<TagLogo>(resultSearch);
 
-      expect(cor.color, equals(Colors.amber));
-      final TagLogo alinhamento = tester.widget<TagLogo>(resultSearch);
+      expect(corResult.color, equals(Colors.amber));
+      final TagLogo alinhamentoResult = tester.widget<TagLogo>(resultSearch);
 
-      expect(alinhamento.alignment, equals(Alignment.centerLeft));
+      expect(alinhamentoResult.alignment, equals(Alignment.centerLeft));
     });
-    testWidgets("test width and height", (WidgetTester tester) async {
+    testWidgets("render with width and height", (WidgetTester tester) async {
       final tagLogo = TagLogo(
         width: 40,
         height: 40,
@@ -46,11 +46,11 @@ void main() {
       await tester.pumpWidget(wrapWithBaseAppAndBundle(tagLogo));
       final Finder resultSearch = find.byType(TagLogo);
 
-      final TagLogo widthTest = tester.widget<TagLogo>(resultSearch);
-      final TagLogo heightTest = tester.widget<TagLogo>(resultSearch);
+      final TagLogo widthResult = tester.widget<TagLogo>(resultSearch);
+      final TagLogo heightResult = tester.widget<TagLogo>(resultSearch);
 
-      expect(widthTest.width, equals(40));
-      expect(heightTest.height, equals(40));
+      expect(widthResult.width, equals(40));
+      expect(heightResult.height, equals(40));
     });
   });
 }

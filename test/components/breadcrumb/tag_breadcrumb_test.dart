@@ -12,11 +12,11 @@ import '../../helpers/methods/prepare_widget.dart';
 import '../../helpers/methods/rich_text_to_plain.dart';
 
 void main() {
-  group("When ", () {
+  group("When TagBreadcrumb ", () {
     setUpAll(() {
       TestWidgetsFlutterBinding.ensureInitialized();
     });
-    testWidgets("TagBreadcrumb render", (WidgetTester tester) async {
+    testWidgets("render", (WidgetTester tester) async {
       final tagBreadcrumb = TagBreadcrumb(
         paths: [],
       );
@@ -24,7 +24,7 @@ void main() {
       final Finder resultSearch = find.byType(TagBreadcrumb);
       expect(resultSearch, findsOneWidget);
     });
-    testWidgets("TagBreadcrumb render all items", (WidgetTester tester) async {
+    testWidgets("render all items", (WidgetTester tester) async {
       final tagBreadcrumb = TagBreadcrumb(
         paths: ["menu", "mangás", "Aventura"],
       );
@@ -35,8 +35,7 @@ void main() {
       expect(resultSearch, findsNWidgets(3));
     });
 
-    testWidgets("TagBreadcrumb render the correct first item",
-        (WidgetTester tester) async {
+    testWidgets("render the correct first item",(WidgetTester tester) async {
       final tagBreadcrumb = TagBreadcrumb(
         paths: ["Menu", "Mangás", "Aventura"],
       );
@@ -49,8 +48,7 @@ void main() {
       expect(resultSearch, findsOneWidget);
     });
 
-    testWidgets("TagBreadcrumb render the correct last item",
-        (WidgetTester tester) async {
+    testWidgets("render the correct last item",(WidgetTester tester) async {
       final tagBreadcrumb = TagBreadcrumb(
         paths: ["Menu", "Mangás", "Aventura"],
       );

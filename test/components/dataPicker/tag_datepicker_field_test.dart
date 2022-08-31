@@ -29,8 +29,8 @@ void main() {
       await tester.pumpWidget(wrapWithBaseApp(tagDatePickerField));
       final Finder resultSearch = find.byType(TagDatePickerField);
       expect(resultSearch, findsOneWidget);
-      final Finder labelResult = find.text("Textinho");
-      expect(labelResult, findsOneWidget);
+      final Finder resultSearchLabel = find.text("Textinho");
+      expect(resultSearchLabel, findsOneWidget);
     });
     testWidgets("render with hint", (WidgetTester tester) async {
       final tagDatePickerField = TagDatePickerField(
@@ -39,24 +39,10 @@ void main() {
         hint: "textinhoHint",
       );
       await tester.pumpWidget(wrapWithBaseApp(tagDatePickerField));
-      final Finder hintResult = find.text("textinhoHint");
-      expect(hintResult, findsOneWidget);
+      final Finder resultSearcHint = find.text("textinhoHint");
+      expect(resultSearcHint, findsOneWidget);
     });
 
-    
-    
-    testWidgets("render with inputType", (WidgetTester tester) async {
-      final tagDatePickerField = TagDatePickerField(
-        label: "Textinho",
-        onChanged: (value) {},
-        inputType: TextInputType.text,
-      );
-      await tester.pumpWidget(wrapWithBaseApp(tagDatePickerField));
-      final Finder resultSearch = find.byType(TagDatePickerField);
-      expect(resultSearch, findsOneWidget);
-      final inputTypeResult = tester.widget<TagDatePickerField>(resultSearch);
-      expect(inputTypeResult.inputType, equals(TextInputType.text));
-    });
     testWidgets("render with inputType", (WidgetTester tester) async {
       final tagDatePickerField = TagDatePickerField(
         label: "Textinho",
@@ -70,10 +56,9 @@ void main() {
       expect(inputTypeResult.inputType, equals(TextInputType.text));
     });
 
-// ===========
-    testWidgets("with controller change value", (WidgetTester tester) async {
+    testWidgets("render with controller change value", (WidgetTester tester) async {
+      ///TODO: Revisar esse nome com igor: esse puxa pelo textField e o outro peloDatapicker
       final controller = TextEditingController(text: "");
-
       final tagTextField = TagDatePickerField(
         label: "Label",
         controller: controller,
@@ -88,10 +73,11 @@ void main() {
     testWidgets("render with controller change value",
         (WidgetTester tester) async {
       final controller = TextEditingController();
+
       final tagDatePickerField = TagDatePickerField(
-        label: "Textinho",
-        onChanged: (value) {},
+        label: "Label",
         controller: controller,
+        onChanged: (value) {},
       );
       await tester.pumpWidget(wrapWithBaseApp(tagDatePickerField));
       final Finder resultSearch = find.byType(TagDatePickerField);
@@ -99,7 +85,7 @@ void main() {
       await tester.pump();
       expect(controller.text, equals('27/12/1973'));
     });
-    testWidgets("when values change", (WidgetTester tester) async {
+    testWidgets("render when values change", (WidgetTester tester) async {
       final dumb = MockDumb();
       when(() => dumb.callWithParam1(any())).thenAnswer((invocation) {});
       final tagTextField = TagDatePickerField(
@@ -124,10 +110,10 @@ void main() {
       await tester.pumpWidget(wrapWithBaseApp(tagDatePickerField));
       final Finder resultSearch = find.byType(TagDatePickerField);
       expect(resultSearch, findsOneWidget);
-      final Finder valueResult = find.text("27121973");
-      expect(valueResult, findsOneWidget);
+      final Finder searchValueResult = find.text("27121973");
+      expect(searchValueResult, findsOneWidget);
     });
-    testWidgets("when text is edited", (WidgetTester tester) async {
+    testWidgets("render when text is edited", (WidgetTester tester) async {
       final dumb = MockDumb();
       when(() => dumb.call()).thenAnswer((invocation) {});
       final tagTextField = TagDatePickerField(
@@ -144,7 +130,7 @@ void main() {
       await tester.pumpAndSettle();
       verify(() => dumb.call()).called(1);
     });
-    testWidgets("when text is invalid", (WidgetTester tester) async {
+    testWidgets("render when text is invalid", (WidgetTester tester) async {
       final tagTextField = TagDatePickerField(
         label: "Label",
         value: "",
