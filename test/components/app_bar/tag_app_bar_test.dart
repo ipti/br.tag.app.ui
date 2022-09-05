@@ -38,7 +38,7 @@ void main() {
       final Finder resultSearchKey = find.byKey(Key("APP_BAR_KEY"));
       expect(resultSearchKey, findsOneWidget);
     });
-    testWidgets("render with text ", (WidgetTester tester) async {
+    testWidgets("with custom title", (WidgetTester tester) async {
       final tagAppBar = MaterialApp(
         home: Scaffold(
           appBar: TagAppBar(
@@ -48,9 +48,9 @@ void main() {
       );
       await tester.pumpWidget(wrapWithBaseApp(tagAppBar));
       final Finder resultSearchTitle = find.text("titulo");
-      expect(resultSearchTitle, findsWidgets);
+      expect(resultSearchTitle, findsOneWidget);
     });
-    testWidgets("render with logo ", (WidgetTester tester) async {
+    testWidgets("render with default logo", (WidgetTester tester) async {
       final tagAppBar = MaterialApp(
         home: Scaffold(
           appBar: TagAppBar(),
@@ -60,8 +60,8 @@ void main() {
       final Finder resultSearchLogo = find.byType(TagLogo);
       expect(resultSearchLogo, findsOneWidget);
     });
-    testWidgets("buton menu is lead", (WidgetTester tester) async {
-      ///TODO: Revisar esse nome com igor
+    testWidgets("tap into leading when as a Menu", (WidgetTester tester) async {
+   
       final tagAppBar = MaterialApp(
         home: Scaffold(
           drawer: Container(key: Key('drawer')),
@@ -77,13 +77,13 @@ void main() {
       final Finder resultSearchDrawer = find.byKey(Key('drawer'));
       expect(resultSearchDrawer, findsOneWidget);
     });
-    testWidgets("child is called", (WidgetTester tester) async {
+    testWidgets("has a child propety", (WidgetTester tester) async {
       final tagAppBar = TagAppBar();
       final child = tagAppBar.child;
       expect(child, equals(tagAppBar));
     });
 
-    testWidgets("buton back is leading", (WidgetTester tester) async {
+    testWidgets("tap into leading when as a Back", (WidgetTester tester) async {
       ///TODO: Revisar esse nome com igor
       final navigatorMock = MockNavigator();
       when(() => navigatorMock.pop()).thenAnswer((_) async {

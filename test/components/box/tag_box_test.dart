@@ -17,7 +17,7 @@ void main() {
       final Finder resultSearch = find.byType(TagBox);
       expect(resultSearch, findsOneWidget);
     });
-    testWidgets("render with minHeight and minWidth",
+    testWidgets("render with custom values for minHeight and minWidth",
         (WidgetTester tester) async {
       final tagBox = TagBox(
         child: Text("Texto"),

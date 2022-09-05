@@ -94,11 +94,9 @@ class _SliverAppBarDelegate extends SliverPersistentHeaderDelegate {
     );
   }
 
-  // coverage:ignore-start
   @override
   bool shouldRebuild(_SliverAppBarDelegate oldDelegate) =>
-      false; // coverage:ignore-line
-  // coverage:ignore-end
+      false;
 }
 
 class _SliverHeaderDelegate extends SliverPersistentHeaderDelegate {
@@ -136,7 +134,6 @@ class _SliverHeaderDelegate extends SliverPersistentHeaderDelegate {
   }
 
   @override
-  // coverage:ignore-line
   bool shouldRebuild(_SliverHeaderDelegate oldDelegate) {
     return false;
   }
@@ -169,6 +166,5 @@ class _SliverHeaderBreadcrumbDelegate extends SliverPersistentHeaderDelegate {
   }
 
   @override
-  // coverage:ignore-line
   bool shouldRebuild(_SliverHeaderBreadcrumbDelegate oldDelegate) => false;
 }

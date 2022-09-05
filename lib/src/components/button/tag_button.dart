@@ -103,9 +103,7 @@ class _ButtonIconText extends StatelessWidget {
     return ElevatedButton.icon(
       style: defaultButtonStyle,
       onPressed: onPressed,
-      icon: SvgPicture.asset(
-        icon!,
-      ),
+      icon: SvgPicture.asset( icon!,),
       label: Text(text, style: defaultTextStyle),
     );
   }
