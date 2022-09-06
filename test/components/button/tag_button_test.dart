@@ -25,12 +25,15 @@ void main() {
       final tagButton = TagButton(
         text: "MyButton",
         onPressed: () {},
-        backgroundColor: Colors.amber,
+        backgroundColor: Color(0xFFFFC107),
       );
       await tester.pumpWidget(wrapWithBaseApp(tagButton));
-      final Finder resultSearch = find.byType(TagButton);
-      final TagButton resultButton = tester.widget<TagButton>(resultSearch);
-      expect(resultButton.backgroundColor, equals(Colors.amber));
+
+      final Material material = tester.widget<Material>(find.descendant(
+        of: find.byType(ElevatedButton),
+        matching: find.byType(Material),
+      ));
+      expect(material.color, Color(0xFFFFC107));
     });
     testWidgets("render with icon LOGO_PATH_SVG", (WidgetTester tester) async {
       final tagButton = TagButton(
@@ -50,12 +53,15 @@ void main() {
       final tagButton = TagButton(
         text: "MyButton",
         onPressed: () {},
-        textButtonColor: Colors.amber,
+        textButtonColor: Color(0xFFFFC107),
       );
       await tester.pumpWidget(wrapWithBaseApp(tagButton));
-      final Finder resultSearch = find.byType(TagButton);
-      final TagButton resultButton = tester.widget<TagButton>(resultSearch);
-      expect(resultButton.textButtonColor, equals(Colors.amber));
+      final Finder resultSearch = find.descendant(
+        of: find.byType(ElevatedButton),
+        matching: find.byType(Text),
+      );
+      final resultButton = tester.widget<Text>(resultSearch);
+      expect(resultButton.style!.color, equals( Color(0xFFFFC107)));
     });
     testWidgets("render with TextStyle", (WidgetTester tester) async {
       final tagButton = TagButton(
@@ -63,14 +69,13 @@ void main() {
           onPressed: () {},
           textStyle: TagTextStyles.textButtonPrimary);
       await tester.pumpWidget(wrapWithBaseApp(tagButton));
-      final Finder resultSearch = find.byType(ElevatedButton);
-      final ElevatedButton resultButton =
-          tester.widget<ElevatedButton>(resultSearch);
-      expect(resultButton.child, equals(TagTextStyles.textButtonPrimary));
-      //No debugger mostra que style está dentro de child, mas porque eu não tenho acesso? 
-
+      final Finder resultSearch = find.descendant(
+        of: find.byType(ElevatedButton),
+        matching: find.byType(Text),
+      );
+      final resultButton = tester.widget<Text>(resultSearch);
+      expect(resultButton.style, equals(TagTextStyles.textButtonPrimary));
     });
-
     testWidgets("render with ButtonStyle", (WidgetTester tester) async {
       final tagButton = TagButton(
         text: "MyButton",

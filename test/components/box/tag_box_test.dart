@@ -14,7 +14,7 @@ void main() {
         child: Text("Texto"),
       );
       await tester.pumpWidget(wrapWithBaseApp(tagBox));
-      final Finder resultSearch = find.byType(TagBox);
+      final Finder resultSearch = find.text("Texto");
       expect(resultSearch, findsOneWidget);
     });
     testWidgets("render with custom values for minHeight and minWidth",
@@ -25,11 +25,11 @@ void main() {
         minWidth: 0,
       );
       await tester.pumpWidget(wrapWithBaseApp(tagBox));
-      final Finder resultSearch = find.byType(TagBox);
-      final TagBox resultBox = tester.widget<TagBox>(resultSearch);
+      final Finder resultSearch = find.byType(Container);
+      final Container resultBox = tester.widget<Container>(resultSearch);
 
-      expect(resultBox.minHeight, equals(0));
-      expect(resultBox.minWidth, equals(0));
+      expect(resultBox.constraints!.minHeight, equals(0));
+      expect(resultBox.constraints!.minWidth, equals(0));
     });
     testWidgets("render with background and padding",
         (WidgetTester tester) async {
@@ -40,11 +40,11 @@ void main() {
       );
       await tester.pumpWidget(wrapWithBaseApp(tagBox));
 
-      final Finder resultSearch = find.byType(TagBox);
+      final Finder resultSearch = find.byType(Container);
+      final Container resultBox = tester.widget<Container>(resultSearch);
 
-      final TagBox resultBox = tester.widget<TagBox>(resultSearch);
-
-      expect(resultBox.background, equals(Color(0xAA)));
+      expect(
+          (resultBox.decoration as BoxDecoration).color, equals(Color(0xAA)));
       expect(resultBox.padding, equals(EdgeInsets.all(16.0)));
     });
   });
