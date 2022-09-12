@@ -11,7 +11,7 @@ void main() {
     setUpAll(() {
       TestWidgetsFlutterBinding.ensureInitialized();
     });
-    testWidgets("Render", (WidgetTester tester) async {
+    testWidgets("render", (WidgetTester tester) async {
       final tagNumberField = TagNumberField(
         onChanged: () {},
       );

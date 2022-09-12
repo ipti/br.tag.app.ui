@@ -12,15 +12,15 @@ void main() {
     setUpAll(() {
       TestWidgetsFlutterBinding.ensureInitialized();
     });
-    testWidgets("Render", (WidgetTester tester) async {
+    testWidgets("render", (WidgetTester tester) async {
       final tagTextField = TagTextField(label: "TextinhoLabel");
       await tester.pumpWidget(wrapWithBaseApp(tagTextField));
       final Finder resultSearch = find.byType(TextField);
       expect(resultSearch, findsOneWidget);
-      final Finder labelResult = find.text("TextinhoLabel");
-      expect(labelResult, findsOneWidget);
+      final Finder resultSearchLabel = find.text("TextinhoLabel");
+      expect(resultSearchLabel, findsOneWidget);
     });
-    testWidgets("Render whit hint", (WidgetTester tester) async {
+    testWidgets("render whit hint", (WidgetTester tester) async {
       final tagTextField = TagTextField(
         label: "Label",
         hint: "TextinhoHint",
@@ -28,10 +28,10 @@ void main() {
       await tester.pumpWidget(wrapWithBaseApp(tagTextField));
       final Finder resultSearch = find.byType(TextField);
       expect(resultSearch, findsOneWidget);
-      final Finder hintResult = find.text("TextinhoHint");
-      expect(hintResult, findsOneWidget);
+      final Finder resultSearchHint = find.text("TextinhoHint");
+      expect(resultSearchHint, findsOneWidget);
     });
-    testWidgets("Render whit inputType", (WidgetTester tester) async {
+    testWidgets("render whit inputType", (WidgetTester tester) async {
       final tagTextField = TagTextField(
         label: "Label",
         inputType: TextInputType.text,
@@ -39,10 +39,11 @@ void main() {
       await tester.pumpWidget(wrapWithBaseApp(tagTextField));
       final Finder resultSearch = find.byType(TextField);
       expect(resultSearch, findsOneWidget);
-      final TextField inputResult = tester.widget<TextField>(resultSearch);
-      expect(inputResult.keyboardType, equals(TextInputType.text));
+      final TextField resultSearchInput =
+          tester.widget<TextField>(resultSearch);
+      expect(resultSearchInput.keyboardType, equals(TextInputType.text));
     });
-    testWidgets("Render whit obscureText", (WidgetTester tester) async {
+    testWidgets("render whit obscureText", (WidgetTester tester) async {
       final tagTextField = TagTextField(
         label: "Label",
         obscureText: true,
@@ -50,10 +51,11 @@ void main() {
       await tester.pumpWidget(wrapWithBaseApp(tagTextField));
       final Finder resultSearch = find.byType(TextField);
       expect(resultSearch, findsOneWidget);
-      final TextField obscureResult = tester.widget<TextField>(resultSearch);
-      expect(obscureResult.obscureText, equals(true));
+      final TextField resultSearchObscure =
+          tester.widget<TextField>(resultSearch);
+      expect(resultSearchObscure.obscureText, equals(true));
     });
-    testWidgets("Render whit value", (WidgetTester tester) async {
+    testWidgets("render whit value", (WidgetTester tester) async {
       final tagTextField = TagTextField(
         label: "Label",
         value: "TextinhoValor",
@@ -61,10 +63,11 @@ void main() {
       await tester.pumpWidget(wrapWithBaseApp(tagTextField));
       final Finder resultSearch = find.byType(TextField);
       expect(resultSearch, findsOneWidget);
-      final Finder valorResult = find.text("TextinhoValor");
-      expect(valorResult, findsOneWidget);
+      final Finder resultSearchValor = find.text("TextinhoValor");
+      expect(resultSearchValor, findsOneWidget);
     });
-    testWidgets("with maxLines and minLines", (WidgetTester tester) async {
+    testWidgets("render with maxLines and minLines",
+        (WidgetTester tester) async {
       final tagTextField = TagTextField(
         label: "Label",
         minLines: 1,
@@ -73,23 +76,25 @@ void main() {
       await tester.pumpWidget(wrapWithBaseApp(tagTextField));
       final Finder resultSearch = find.byType(TextField);
       expect(resultSearch, findsOneWidget);
-      final TextField maxMinResult = tester.widget<TextField>(resultSearch);
+      final TextField resultSearcLines = tester.widget<TextField>(resultSearch);
 
-      expect(maxMinResult.maxLines, equals(1));
-      expect(maxMinResult.minLines, equals(1));
+      expect(resultSearcLines.maxLines, equals(1));
+      expect(resultSearcLines.minLines, equals(1));
     });
-    testWidgets("Render with padding", (WidgetTester tester) async {
+    testWidgets("render with padding", (WidgetTester tester) async {
       final tagTextField = TagTextField(
         label: "Label",
         padding: EdgeInsets.all(16.0),
       );
       await tester.pumpWidget(wrapWithBaseApp(tagTextField));
       final Finder resultSearch = find.byType(TagTextField);
-      final TagTextField input = tester.widget<TagTextField>(resultSearch);
-      expect(input.padding, equals(EdgeInsets.all(16.0)));
+      final TagTextField resultSearchInput =
+          tester.widget<TagTextField>(resultSearch);
+      expect(resultSearchInput.padding, equals(EdgeInsets.all(16.0)));
     });
-    testWidgets("with controller change value", (WidgetTester tester) async {
-      final controller = TextEditingController();
+    testWidgets("render with controller change value",
+        (WidgetTester tester) async {
+      final controller = TextEditingController(text: "");
 
       final tagTextField = TagTextField(
         label: "Label",
@@ -102,7 +107,8 @@ void main() {
       await tester.pump();
       expect(controller.text, equals('TextinhoControler'));
     });
-    testWidgets("when values change", (WidgetTester tester) async {
+    testWidgets("render when values change", (WidgetTester tester) async {
+      ///TODO: Revisar esse nome com igor
       final dumb = MockDumb();
       when(() => dumb.callWithParam1(any())).thenAnswer((invocation) {});
       final tagTextField = TagTextField(
@@ -118,7 +124,7 @@ void main() {
 
       verify(() => dumb.callWithParam1('TextinhoOnChange')).called(1);
     });
-    testWidgets("when text is edited", (WidgetTester tester) async {
+    testWidgets("render when text is edited", (WidgetTester tester) async {
       final dumb = MockDumb();
       when(() => dumb.call()).thenAnswer((invocation) {});
       final tagTextField = TagTextField(
@@ -134,7 +140,7 @@ void main() {
       await tester.pumpAndSettle();
       verify(() => dumb.call()).called(2);
     });
-    testWidgets("when text is invalid", (WidgetTester tester) async {
+    testWidgets("render when text is invalid", (WidgetTester tester) async {
       final controller = TextEditingController();
 
       final tagTextField = TagTextField(
@@ -153,11 +159,12 @@ void main() {
       await tester.testTextInput.receiveAction(TextInputAction.done);
       await tester.pumpAndSettle();
 
-      final Finder errorMessageSearch = find.text("Por favor retorne um valor");
+      final Finder resultSearchErrorMessage =
+          find.text("Por favor retorne um valor");
 
-      expect(errorMessageSearch, findsOneWidget);
+      expect(resultSearchErrorMessage, findsOneWidget);
     });
-    testWidgets("with maxLength", (WidgetTester tester) async {
+    testWidgets("render with maxLength", (WidgetTester tester) async {
       final tagTextField = TagTextField(
         label: "Label",
         maxLength: 10,
@@ -165,38 +172,41 @@ void main() {
       await tester.pumpWidget(wrapWithBaseApp(tagTextField));
       final Finder resultSearch = find.byType(TextField);
       expect(resultSearch, findsOneWidget);
-      final TextField maxLengthResult = tester.widget<TextField>(resultSearch);
+      final TextField resultSearchMaxLength =
+          tester.widget<TextField>(resultSearch);
 
-      expect(maxLengthResult.maxLength, equals(10));
+      expect(resultSearchMaxLength.maxLength, equals(10));
     });
-    testWidgets("with formatters digit number", (WidgetTester tester) async {
-      final controller = TextEditingController();
-      final tagTextField = TagTextField(
-          label: "Label",
-          controller: controller,
-          formatters: <TextInputFormatter>[
-            FilteringTextInputFormatter.digitsOnly
-          ]);
-      await tester.pumpWidget(wrapWithBaseApp(tagTextField));
-      final Finder resultSearch = find.byType(TextField);
-      await tester.enterText(resultSearch, '12');
-      await tester.pumpAndSettle();
-      expect(find.text('12'), findsOneWidget);
-    });
-     testWidgets("with formatters digit ", (WidgetTester tester) async {
-      final controller = TextEditingController();
-      final tagTextField = TagTextField(
-          label: "Label",
-          controller: controller,
-          formatters: <TextInputFormatter>[
-            FilteringTextInputFormatter.digitsOnly
-          ]);
-      await tester.pumpWidget(wrapWithBaseApp(tagTextField));
-      final Finder resultSearch = find.byType(TextField);
-      await tester.enterText(resultSearch, 'aa');
-      await tester.pumpAndSettle();
-      expect(find.text(''), findsOneWidget);
-    });
-    // The WhitelistingTextInputFormatter.digitsOnly is deprecated. use FilteringTextInputFormatter.digitsOnly
+
+    group("render with formatter", (() {
+      testWidgets("with formatters digit number", (WidgetTester tester) async {
+        final controller = TextEditingController();
+        final tagTextField = TagTextField(
+            label: "Label",
+            controller: controller,
+            formatters: <TextInputFormatter>[
+              FilteringTextInputFormatter.digitsOnly
+            ]);
+        await tester.pumpWidget(wrapWithBaseApp(tagTextField));
+        final Finder resultSearch = find.byType(TextField);
+        await tester.enterText(resultSearch, '12');
+        await tester.pumpAndSettle();
+        expect(find.text('12'), findsOneWidget);
+      });
+      testWidgets("render with formatters digit ", (WidgetTester tester) async {
+        final controller = TextEditingController();
+        final tagTextField = TagTextField(
+            label: "Label",
+            controller: controller,
+            formatters: <TextInputFormatter>[
+              FilteringTextInputFormatter.digitsOnly
+            ]);
+        await tester.pumpWidget(wrapWithBaseApp(tagTextField));
+        final Finder resultSearch = find.byType(TextField);
+        await tester.enterText(resultSearch, 'aa');
+        await tester.pumpAndSettle();
+        expect(find.text(''), findsOneWidget);
+      });
+    }));
   });
 }

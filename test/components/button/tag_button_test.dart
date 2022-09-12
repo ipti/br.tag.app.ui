@@ -9,36 +9,33 @@ import '../../helpers/methods/prepare_widget.dart';
 import '../../helpers/mock/dumb.dart';
 
 void main() {
-  group("When TagButton render", () {
+  group("When TagButton ", () {
     setUpAll(() {
       TestWidgetsFlutterBinding.ensureInitialized();
     });
 
-    testWidgets("Only with text ", (WidgetTester tester) async {
+    testWidgets("render only with text ", (WidgetTester tester) async {
       final tagButton = TagButton(text: "MyButton", onPressed: () {});
-
       await tester.pumpWidget(wrapWithBaseApp(tagButton));
-
       final Finder resultSearch = find.byType(TagButton);
-
       expect(resultSearch, findsOneWidget);
     });
-    testWidgets("With backgroundColor amber", (WidgetTester tester) async {
+    testWidgets("render with backgroundColor amber",
+        (WidgetTester tester) async {
       final tagButton = TagButton(
         text: "MyButton",
         onPressed: () {},
-        backgroundColor: Colors.amber,
+        backgroundColor: Color(0xFFFFC107),
       );
-
       await tester.pumpWidget(wrapWithBaseApp(tagButton));
 
-      final Finder resultSearch = find.byType(TagButton);
-
-      final TagButton button = tester.widget<TagButton>(resultSearch);
-
-      expect(button.backgroundColor, equals(Colors.amber));
+      final Material material = tester.widget<Material>(find.descendant(
+        of: find.byType(ElevatedButton),
+        matching: find.byType(Material),
+      ));
+      expect(material.color, Color(0xFFFFC107));
     });
-    testWidgets("with icon LOGO_PATH_SVG", (WidgetTester tester) async {
+    testWidgets("render with icon LOGO_PATH_SVG", (WidgetTester tester) async {
       final tagButton = TagButton(
         text: "MyButton",
         onPressed: () {},
@@ -51,49 +48,47 @@ void main() {
 
       expect(resultSearch, findsOneWidget);
     });
-    testWidgets("With TextButtonColor amber", (WidgetTester tester) async {
+    testWidgets("render with TextButtonColor amber",
+        (WidgetTester tester) async {
       final tagButton = TagButton(
         text: "MyButton",
         onPressed: () {},
-        textButtonColor: Colors.amber,
+        textButtonColor: Color(0xFFFFC107),
       );
       await tester.pumpWidget(wrapWithBaseApp(tagButton));
-
-      final Finder resultSearch = find.byType(TagButton);
-
-      final TagButton button = tester.widget<TagButton>(resultSearch);
-
-      expect(button.textButtonColor, equals(Colors.amber));
+      final Finder resultSearch = find.descendant(
+        of: find.byType(ElevatedButton),
+        matching: find.byType(Text),
+      );
+      final resultButton = tester.widget<Text>(resultSearch);
+      expect(resultButton.style!.color, equals( Color(0xFFFFC107)));
     });
-    testWidgets("With TextStyle bold", (WidgetTester tester) async {
+    testWidgets("render with TextStyle", (WidgetTester tester) async {
+      final tagButton = TagButton(
+          text: "MyButton",
+          onPressed: () {},
+          textStyle: TagTextStyles.textButtonPrimary);
+      await tester.pumpWidget(wrapWithBaseApp(tagButton));
+      final Finder resultSearch = find.descendant(
+        of: find.byType(ElevatedButton),
+        matching: find.byType(Text),
+      );
+      final resultButton = tester.widget<Text>(resultSearch);
+      expect(resultButton.style, equals(TagTextStyles.textButtonPrimary));
+    });
+    testWidgets("render with ButtonStyle", (WidgetTester tester) async {
       final tagButton = TagButton(
         text: "MyButton",
         onPressed: () {},
-        textStyle: TextStyle(fontWeight: FontWeight.bold),
+        buttonStyle: TagButtonStyles.primary,
       );
       await tester.pumpWidget(wrapWithBaseApp(tagButton));
-
-      final Finder resultSearch = find.byType(TagButton);
-
-      final TagButton button = tester.widget<TagButton>(resultSearch);
-
-      expect(button.textStyle, equals(TextStyle(fontWeight: FontWeight.bold)));
+      final Finder resultSearch = find.byType(ElevatedButton);
+      final ElevatedButton resultButton =
+          tester.widget<ElevatedButton>(resultSearch);
+      expect(resultButton.style, equals(TagButtonStyles.primary));
     });
-    testWidgets("With ButtonStyle bold", (WidgetTester tester) async {
-      final tagButton = TagButton(
-        text: "MyButton",
-        onPressed: () {},
-        buttonStyle: TagButtonStyles.secondary,
-      );
-      await tester.pumpWidget(wrapWithBaseApp(tagButton));
-
-      final Finder resultSearch = find.byType(TagButton);
-
-      final TagButton button = tester.widget<TagButton>(resultSearch);
-
-      expect(button.buttonStyle, equals(TagButtonStyles.secondary));
-    });
-    testWidgets("tap it", (WidgetTester tester) async {
+    testWidgets("is tapped", (WidgetTester tester) async {
       final dumb = MockDumb();
       when(() => dumb.call()).thenAnswer((invocation) {});
       final tagButton = TagButton(

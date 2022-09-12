@@ -9,6 +9,7 @@ class TagScaffold extends StatelessWidget {
   final Widget menu;
   final Widget? aside;
   final Widget? header;
+  //não utilizado
   final SliverPersistentHeaderDelegate? actionsHeader;
 
   final TabBar? tabBar;
@@ -94,9 +95,8 @@ class _SliverAppBarDelegate extends SliverPersistentHeaderDelegate {
   }
 
   @override
-  bool shouldRebuild(_SliverAppBarDelegate oldDelegate) {
-    return false;
-  }
+  bool shouldRebuild(_SliverAppBarDelegate oldDelegate) =>
+      false;
 }
 
 class _SliverHeaderDelegate extends SliverPersistentHeaderDelegate {
@@ -166,7 +166,5 @@ class _SliverHeaderBreadcrumbDelegate extends SliverPersistentHeaderDelegate {
   }
 
   @override
-  bool shouldRebuild(_SliverHeaderBreadcrumbDelegate oldDelegate) {
-    return false;
-  }
+  bool shouldRebuild(_SliverHeaderBreadcrumbDelegate oldDelegate) => false;
 }

@@ -6,12 +6,12 @@ import 'package:tag_ui/tag_ui.dart';
 import '../../helpers/methods/prepare_widget.dart';
 
 void main() {
-  group("When LogoGreyTag render", () {
+  group("When LogoGreyTag ", () {
     setUpAll(() {
       TestWidgetsFlutterBinding.ensureInitialized();
     });
 
-    testWidgets("LOGO_PATH_SVG", (WidgetTester tester) async {
+    testWidgets("render LOGO_PATH_SVG", (WidgetTester tester) async {
       final logoGreyTag = LogoGreyTag();
 
       await tester.pumpWidget(wrapWithBaseAppAndBundle(logoGreyTag));
@@ -19,7 +19,7 @@ void main() {
 
       expect(resultSearch, findsOneWidget);
     });
-    testWidgets("test color", (WidgetTester tester) async {
+    testWidgets("render with color and alignment", (WidgetTester tester) async {
       final logoGreyTag = LogoGreyTag(
         color: Colors.amber,
         alignment: Alignment.centerLeft,
@@ -30,14 +30,15 @@ void main() {
       await tester.pumpWidget(wrapWithBaseAppAndBundle(logoGreyTag));
       final Finder resultSearch = find.byType(LogoGreyTag);
 
-      final LogoGreyTag cor = tester.widget<LogoGreyTag>(resultSearch);
+      final LogoGreyTag corResult = tester.widget<LogoGreyTag>(resultSearch);
 
-      expect(cor.color, equals(Colors.amber));
-      final LogoGreyTag alinhamento = tester.widget<LogoGreyTag>(resultSearch);
+      expect(corResult.color, equals(Colors.amber));
+      final LogoGreyTag alinhamentoResult =
+          tester.widget<LogoGreyTag>(resultSearch);
 
-      expect(alinhamento.alignment, equals(Alignment.centerLeft));
+      expect(alinhamentoResult.alignment, equals(Alignment.centerLeft));
     });
-    testWidgets("test width and height", (WidgetTester tester) async {
+    testWidgets("render with width and height", (WidgetTester tester) async {
       final logoGreyTag = LogoGreyTag(
         width: 40,
         height: 40,
@@ -46,11 +47,13 @@ void main() {
       await tester.pumpWidget(wrapWithBaseAppAndBundle(logoGreyTag));
       final Finder resultSearch = find.byType(LogoGreyTag);
 
-      final LogoGreyTag widthTest = tester.widget<LogoGreyTag>(resultSearch);
-      final LogoGreyTag heightTest = tester.widget<LogoGreyTag>(resultSearch);
+      final LogoGreyTag widthTestResult =
+          tester.widget<LogoGreyTag>(resultSearch);
+      final LogoGreyTag heightTestResult =
+          tester.widget<LogoGreyTag>(resultSearch);
 
-      expect(widthTest.width, equals(40));
-      expect(heightTest.height, equals(40));
+      expect(widthTestResult.width, equals(40));
+      expect(heightTestResult.height, equals(40));
     });
   });
 }

@@ -6,11 +6,11 @@ import '../../helpers/methods/prepare_widget.dart';
 import '../../helpers/mock/dumb.dart';
 
 void main() {
-  group("When TagCheckbox render", () {
+  group("When TagCheckbox ", () {
     setUpAll(() {
       TestWidgetsFlutterBinding.ensureInitialized();
     });
-    testWidgets("With VALUE false ", (WidgetTester tester) async {
+    testWidgets("render with VALUE false ", (WidgetTester tester) async {
       final tagCheckbox = TagCheckbox(
         onChanged: (valor) {},
         label: "MyCheckbox",
@@ -24,7 +24,7 @@ void main() {
 
       expect(checkbox.value, equals(false));
     });
-    testWidgets("when value changed", (WidgetTester tester) async {
+    testWidgets("render when value changed", (WidgetTester tester) async {
       final dumb = MockDumb();
       when(() => dumb.callWithParam1(any())).thenAnswer((invocation) {});
       final tagCheckbox = TagCheckbox(
@@ -45,7 +45,7 @@ void main() {
 
       verify(() => dumb.callWithParam1(any(that: isFalse))).called(1);
     });
-    testWidgets("With DISABLED true", (WidgetTester tester) async {
+    testWidgets("render with DISABLED true", (WidgetTester tester) async {
       final dumb = MockDumb();
       when(() => dumb.callWithParam1(any())).thenAnswer((invocation) {});
       final tagCheckbox = TagCheckbox(
@@ -62,7 +62,7 @@ void main() {
 
       verifyNever(() => dumb.callWithParam1(any()));
     });
-    testWidgets("Only with text", (WidgetTester tester) async {
+    testWidgets("render only with text", (WidgetTester tester) async {
       final tagCheckbox = TagCheckbox(
         onChanged: (bool? valor) {},
         label: "MyCheckbox",
@@ -74,7 +74,8 @@ void main() {
 
       expect(resultSearch, findsOneWidget);
     });
-    testWidgets("when value changed  in checkbox", (WidgetTester tester) async {
+    testWidgets("render when value changed  in checkbox",
+        (WidgetTester tester) async {
       final dumb = MockDumb();
       when(() => dumb.callWithParam1(any())).thenAnswer((invocation) {});
       final tagCheckbox = TagCheckbox(

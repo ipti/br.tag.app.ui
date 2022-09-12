@@ -4,11 +4,11 @@ import 'package:tag_ui/src/components/components.dart';
 import '../../helpers/methods/prepare_widget.dart';
 
 void main() {
-  group("When ", () {
+  group("When TagMenu", () {
     setUpAll(() {
       TestWidgetsFlutterBinding.ensureInitialized();
     });
-    testWidgets("TagMenu render", (WidgetTester tester) async {
+    testWidgets("render", (WidgetTester tester) async {
       final tagMenu = TagMenu(
         items: [],
       );
@@ -16,7 +16,7 @@ void main() {
       final Finder resultSearch = find.byType(TagMenu);
       expect(resultSearch, findsOneWidget);
     });
-    testWidgets("TagMenu with itens", (WidgetTester tester) async {
+    testWidgets("render with itens", (WidgetTester tester) async {
       final tagMenu = TagMenu(
         items: [
           for (var i = 0; i < 30; i++)
