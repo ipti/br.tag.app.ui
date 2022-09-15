@@ -5,6 +5,7 @@ export 'button/tag_button.dart';
 export 'checkbox/tag_checkbox.dart';
 export 'data_table/tag_data_table.dart';
 export 'datepicker/tag_datepicker_field.dart';
+export 'empty/tag_empty.dart';
 export 'dropdown/tag_dropdown_field.dart';
 export 'headings/heading.dart';
 export 'icons/tag_icon.dart';
