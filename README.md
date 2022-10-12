@@ -1,6 +1,7 @@
+[![codecov](https://codecov.io/github/ipti/br.tag.app.ui/branch/develop/graph/badge.svg?token=JO1FQQBPX5)](https://codecov.io/github/ipti/br.tag.app.ui)
 # tag_ui
 
-A new Flutter package project.
+TAG design system 
 
 ## Getting Started
 
