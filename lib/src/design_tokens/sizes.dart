@@ -1,0 +1,34 @@
+ class TagSizes {
+  static const double widthIconSmall = 16;
+  static const double heightIconSmall = 16;
+  static const double widthIconMedium = 24;
+  static const double heightIconMedium = 24;
+  static const double widthIconLarge = 32;
+  static const double heightIconLarge = 32;
+  static const double heightInputNormal = 40;
+  static const double heightInputLarge = 52;
+  static const double heightInputSmall = 32;
+  static const double heightButtonNormal = 44;
+  static const double heightButtonLarge = 52;
+  static const double heightButtonSmall = 32;
+  static const double heightRadioButton = 20;
+  static const double widthRadioButton = 20;
+  static const double heightCheckbox = 20;
+  static const double widthCheckbox = 20;
+  static const double widthCountryFlag = 24;
+  static const double heightBadge = 24;
+  static const double widthBadgeCircled = 24;
+  static const double heightIllustrationSmall = 90;
+  static const double heightIllustrationMedium = 200;
+  static const double heightServiceLogoSmall = 12;
+  static const double heightServiceLogoMedium = 28;
+  static const double heightServiceLogoLarge = 56;
+  static const double heightSeparator = 1;
+  static const double heightInputGroupSeparatorSmall = 16;
+  static const double heightInputGroupSeparatorNormal = 24;
+  static const double widthModalSmall = 540;
+  static const double widthModalNormal = 740;
+  static const double widthModalLarge = 1280;
+  static const double widthStopoverArrow = 36;
+  static const double heightStopoverArrow = 7;
+}

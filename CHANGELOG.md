@@ -67,3 +67,10 @@
 * fix: correção de debounce no input
 * fix: remoção de widgets desnecessários em RowToColumn
 
+## [0.26.0] - Adding empty widget and multi fixes
+
+### Novas Features
+* feat: empty widget
+### Correções
+* ![BREAKING] fix: removing PageDefault, use TagScaffold instead
+* a lot of fixes

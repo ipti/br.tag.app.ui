@@ -20,7 +20,7 @@ jobs:
       # - name: Analyze
         # run: flutter analyze
       - name: Import files to coverage
-        run: sh test/helpers/scripts/coverage_imports.sh tag_ui
+        run: sh test/helpers/scripts/coverage.sh tag_ui
       - name: Run tests
         run: flutter test --coverage
       - name: Upload Coverage to Codecov

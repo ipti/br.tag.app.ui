@@ -1,6 +1,6 @@
 name: tag_ui
 description: Componentes de interface de usuário do TAG (Tecnologia de apoio a gestão).
-version: 0.23.2
+version: 0.26.0
 repository: https://github.com/ipti/br.tag.app.ui
 
 environment:
@@ -17,6 +17,8 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  mockingjay: ^0.3.0
+  mocktail: ^0.3.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
