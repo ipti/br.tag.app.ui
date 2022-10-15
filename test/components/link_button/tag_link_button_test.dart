@@ -7,6 +7,7 @@ void main() {
   group("When TagLinkButton ", () {
     setUpAll(() {
       TestWidgetsFlutterBinding.ensureInitialized();
+
       ///TODO: Revisar se precisa alguma coisa nesse
     });
     testWidgets("render", (WidgetTester tester) async {

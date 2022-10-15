@@ -9,7 +9,7 @@ environment:
 
 dependencies:
   mask_text_input_formatter: ^2.3.0  
-  flutter_svg: ^0.22.0
+  flutter_svg: ^1.0.3
   equatable: ^2.0.3  
   flutter:
     sdk: flutter

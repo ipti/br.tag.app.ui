@@ -56,4 +56,5 @@ import 'package:tag_ui/src/responsive_helpers/responsive_helpers.dart';
 import 'package:tag_ui/src/responsive_helpers/show_on_desktop.dart';
 import 'package:tag_ui/src/responsive_helpers/toggle_mobile_desktop.dart';
 import 'package:tag_ui/src/strings/file_paths.dart';
-void main(){}
+
+void main() {}

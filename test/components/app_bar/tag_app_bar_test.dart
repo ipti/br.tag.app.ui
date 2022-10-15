@@ -61,7 +61,6 @@ void main() {
       expect(resultSearchLogo, findsOneWidget);
     });
     testWidgets("tap into leading when as a Menu", (WidgetTester tester) async {
-   
       final tagAppBar = MaterialApp(
         home: Scaffold(
           drawer: Container(key: Key('drawer')),
