@@ -95,8 +95,7 @@ class _SliverAppBarDelegate extends SliverPersistentHeaderDelegate {
   }
 
   @override
-  bool shouldRebuild(_SliverAppBarDelegate oldDelegate) =>
-      false;
+  bool shouldRebuild(_SliverAppBarDelegate oldDelegate) => false;
 }
 
 class _SliverHeaderDelegate extends SliverPersistentHeaderDelegate {

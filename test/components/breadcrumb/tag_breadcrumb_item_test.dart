@@ -39,7 +39,6 @@ void main() {
       verify(() => dumb.call()).called(1);
     });
     testWidgets("style is formated", (WidgetTester tester) async {
-      ///TODO: Revisar esse nome com igor
       final tagBreadcrumbItem = TagBreadcrumbItem(
         title: 'home',
       );
@@ -51,7 +50,8 @@ void main() {
 
       final item = tester.widget<RichText>(resultSearch);
 
-      expect( item.text.style?.fontWeight, equals(TagFontWeight.fontWeightLinks));
+      expect(
+          item.text.style?.fontWeight, equals(TagFontWeight.fontWeightLinks));
       expect(item.text.style?.fontSize, equals(TagFontSize.fontSizeTextNormal));
       expect(item.text.style?.color, equals(TagColors.colorBaseProductNormal));
     });
@@ -68,8 +68,8 @@ void main() {
       expect(item.text.style?.decoration, equals(TextDecoration.underline));
     });
 
-    testWidgets("remove the undeline when pointer is not under the text", (WidgetTester tester) async {
-      ///TODO: Revisar esse nome com igor
+    testWidgets("remove the undeline when pointer is not under the text",
+        (WidgetTester tester) async {
       final tagBreadcrumbItem = TagBreadcrumbItem(
         title: 'home',
       );

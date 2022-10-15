@@ -61,7 +61,6 @@ void main() {
       expect(resultSearchLogo, findsOneWidget);
     });
     testWidgets("tap into leading when as a Menu", (WidgetTester tester) async {
-   
       final tagAppBar = MaterialApp(
         home: Scaffold(
           drawer: Container(key: Key('drawer')),
@@ -84,7 +83,6 @@ void main() {
     });
 
     testWidgets("tap into leading when as a Back", (WidgetTester tester) async {
-      ///TODO: Revisar esse nome com igor
       final navigatorMock = MockNavigator();
       when(() => navigatorMock.pop()).thenAnswer((_) async {
         return null;

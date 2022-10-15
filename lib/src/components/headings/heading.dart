@@ -52,7 +52,7 @@ class Heading extends StatelessWidget {
       fontSize: TagFontSize.fontSizeHeadingTitle2,
       fontWeight: TagFontWeight.fontWeightHeadingTitle2,
     );
-    TextStyle textStyleTitle3 = TextStyle( 
+    TextStyle textStyleTitle3 = TextStyle(
       color: color,
       fontSize: TagFontSize.fontSizeHeadingTitle3,
       fontWeight: TagFontWeight.fontWeightHeadingTitle3,

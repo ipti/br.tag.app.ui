@@ -108,7 +108,6 @@ void main() {
       expect(controller.text, equals('TextinhoControler'));
     });
     testWidgets("render when values change", (WidgetTester tester) async {
-      ///TODO: Revisar esse nome com igor
       final dumb = MockDumb();
       when(() => dumb.callWithParam1(any())).thenAnswer((invocation) {});
       final tagTextField = TagTextField(

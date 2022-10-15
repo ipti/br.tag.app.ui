@@ -35,7 +35,7 @@ void main() {
       expect(resultSearch, findsNWidgets(3));
     });
 
-    testWidgets("render the correct first item",(WidgetTester tester) async {
+    testWidgets("render the correct first item", (WidgetTester tester) async {
       final tagBreadcrumb = TagBreadcrumb(
         paths: ["Menu", "Mangás", "Aventura"],
       );
@@ -48,7 +48,7 @@ void main() {
       expect(resultSearch, findsOneWidget);
     });
 
-    testWidgets("render the correct last item",(WidgetTester tester) async {
+    testWidgets("render the correct last item", (WidgetTester tester) async {
       final tagBreadcrumb = TagBreadcrumb(
         paths: ["Menu", "Mangás", "Aventura"],
       );

@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:tag_ui/tag_ui.dart';
 
-import '../helpers/methods/SizeDestopMobile.dart';
 import '../helpers/methods/prepare_widget.dart';
 
 void main() {
@@ -44,7 +43,6 @@ void main() {
       tester.binding.window.devicePixelRatioTestValue = 1.0;
       await tester.binding.setSurfaceSize(Size(1440, 900));
       // await screenSizeDesktop(tester);
-      ///TODO tentar fazer a modularização do tamanho da tela
       final toggleMobileDesktop = ToggleMobileDesktop(
         mobile: Container(
           key: Key("Mobile"),

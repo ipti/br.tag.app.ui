@@ -12,7 +12,6 @@ import 'package:tag_ui/src/components/rainbow_bar/tag_rainbow_bar.dart';
 import 'package:tag_ui/src/components/text_field/tag_text_field.dart';
 import 'package:tag_ui/src/components/data_table/tag_data_table.dart';
 import 'package:tag_ui/src/components/app_bar/tag_app_bar.dart';
-import 'package:tag_ui/src/components/app_bar/objeto.dart';
 import 'package:tag_ui/src/components/icons/tag_icon.dart';
 import 'package:tag_ui/src/components/breadcrumb/tag_breadcrumb_item.dart';
 import 'package:tag_ui/src/components/breadcrumb/tag_breadcrumb.dart';
@@ -56,4 +55,5 @@ import 'package:tag_ui/src/responsive_helpers/responsive_helpers.dart';
 import 'package:tag_ui/src/responsive_helpers/show_on_desktop.dart';
 import 'package:tag_ui/src/responsive_helpers/toggle_mobile_desktop.dart';
 import 'package:tag_ui/src/strings/file_paths.dart';
-void main(){}
+
+void main() {}

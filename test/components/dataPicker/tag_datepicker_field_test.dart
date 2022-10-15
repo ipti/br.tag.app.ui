@@ -56,8 +56,8 @@ void main() {
       expect(inputTypeResult.inputType, equals(TextInputType.text));
     });
 
-    testWidgets("render with controller change value", (WidgetTester tester) async {
-      ///TODO: Revisar esse nome com igor: esse puxa pelo textField e o outro peloDatapicker
+    testWidgets("render with controller change value",
+        (WidgetTester tester) async {
       final controller = TextEditingController(text: "");
       final tagTextField = TagDatePickerField(
         label: "Label",
