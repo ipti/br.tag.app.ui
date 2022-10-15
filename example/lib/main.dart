@@ -32,6 +32,6 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        home: Material(child: TagEmpty(onPressedRetry: () => print(""))));
+        home: Material(child: TagEmpty(onPressedRetry: () => log(""))));
   }
 }

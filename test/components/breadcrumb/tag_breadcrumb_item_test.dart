@@ -39,7 +39,6 @@ void main() {
       verify(() => dumb.call()).called(1);
     });
     testWidgets("style is formated", (WidgetTester tester) async {
-      ///TODO: Revisar esse nome com igor
       final tagBreadcrumbItem = TagBreadcrumbItem(
         title: 'home',
       );
@@ -71,7 +70,6 @@ void main() {
 
     testWidgets("remove the undeline when pointer is not under the text",
         (WidgetTester tester) async {
-      ///TODO: Revisar esse nome com igor
       final tagBreadcrumbItem = TagBreadcrumbItem(
         title: 'home',
       );

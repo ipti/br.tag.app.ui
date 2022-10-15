@@ -58,7 +58,6 @@ void main() {
 
     testWidgets("render with controller change value",
         (WidgetTester tester) async {
-      ///TODO: Revisar esse nome com igor: esse puxa pelo textField e o outro peloDatapicker
       final controller = TextEditingController(text: "");
       final tagTextField = TagDatePickerField(
         label: "Label",
