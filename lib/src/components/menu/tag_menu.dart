@@ -4,9 +4,9 @@ import 'i_tag_menu_item.dart';
 
 class TagMenu extends StatelessWidget {
   const TagMenu({
-    Key? key,
+    super.key,
     required this.items,
-  }) : super(key: key);
+  });
 
   final List<ITagMenuItem> items;
 

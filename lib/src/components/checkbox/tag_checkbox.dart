@@ -7,12 +7,12 @@ class TagCheckbox extends StatefulWidget {
   /// is requeired use [label] and the event of change [onChanged]
 
   const TagCheckbox({
-    Key? key,
+    super.key,
     required this.onChanged,
     this.value = false,
     this.disabled = false,
     required this.label,
-  }) : super(key: key);
+  });
 
   final void Function(bool? isChecked) onChanged;
   final bool? value;
@@ -47,7 +47,10 @@ class _TagCheckboxState extends State<TagCheckbox> {
       onTap: () => change(),
       child: Row(
         children: [
-          Checkbox(value: _value, onChanged: (value) => change(value)),
+          Checkbox(
+            value: _value,
+            onChanged: (value) => change(value),
+          ),
           Expanded(
             child: TagLabel(widget.label),
           ),

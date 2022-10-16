@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class TagRainbowBar extends StatelessWidget {
-  const TagRainbowBar({Key? key}) : super(key: key);
+  const TagRainbowBar({super.key});
 
   @override
   Widget build(BuildContext context) {

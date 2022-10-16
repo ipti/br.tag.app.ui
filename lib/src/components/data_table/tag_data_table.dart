@@ -3,12 +3,12 @@ import 'package:tag_ui/tag_ui.dart';
 
 class TagDataTable extends StatelessWidget {
   const TagDataTable({
-    Key? key,
+    super.key,
     required this.columns,
     required this.source,
     this.onTapRow,
     this.bodyHeight,
-  }) : super(key: key);
+  });
 
   final List<DataColumn> columns;
   final DataTableSource source;
@@ -28,12 +28,11 @@ class TagDataTable extends StatelessWidget {
 
 class _TagTable extends StatelessWidget {
   const _TagTable({
-    Key? key,
     required this.columns,
     required this.source,
     this.onTapRow,
     this.bodyHeight,
-  }) : super(key: key);
+  });
 
   final List<DataColumn> columns;
   final DataTableSource source;
@@ -102,10 +101,9 @@ class _SliverheaderDelegate extends SliverPersistentHeaderDelegate {
 
 class _TableBody extends StatelessWidget {
   const _TableBody({
-    Key? key,
     required this.source,
     required this.onTapRow,
-  }) : super(key: key);
+  });
 
   final DataTableSource source;
   final void Function(int rowIndex)? onTapRow;
@@ -145,22 +143,29 @@ class _TableBody extends StatelessWidget {
   }
 
   List<Widget> _mapCellsChild(DataRow data) {
-    final cells = data.cells.map((e) => _Cell(child: e.child));
+    final cells = data.cells.map(
+      (e) => _Cell(child: e.child),
+    );
+
     return cells.toList();
   }
 }
 
 class _TableHead extends StatelessWidget {
   const _TableHead({
-    Key? key,
     required this.columns,
-  }) : super(key: key);
+  });
 
   final List<DataColumn> columns;
 
   @override
   Widget build(BuildContext context) {
-    final headers = columns.map((e) => _Header(child: e.label)).toList();
+    final headers = columns
+        .map(
+          (e) => _Header(child: e.label),
+        )
+        .toList();
+
     return Row(
       children: [...headers, SizedBox(width: 50)],
     );
@@ -169,11 +174,10 @@ class _TableHead extends StatelessWidget {
 
 class _TableRow extends StatelessWidget {
   const _TableRow({
-    Key? key,
     required this.onTapRow,
     required this.children,
     required this.index,
-  }) : super(key: key);
+  });
 
   final int index;
   final void Function(int index)? onTapRow;
@@ -214,9 +218,8 @@ class _TableRow extends StatelessWidget {
 
 class _Cell extends StatelessWidget {
   const _Cell({
-    Key? key,
     required this.child,
-  }) : super(key: key);
+  });
 
   final Widget child;
   @override
@@ -232,9 +235,8 @@ class _Cell extends StatelessWidget {
 
 class _Header extends StatelessWidget {
   const _Header({
-    Key? key,
     required this.child,
-  }) : super(key: key);
+  });
 
   final Widget child;
   @override

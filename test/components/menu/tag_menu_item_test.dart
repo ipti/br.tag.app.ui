@@ -20,7 +20,9 @@ void main() {
         route: "",
         onTap: (rota) {},
       );
-      await tester.pumpWidget(wrapWithBaseApp(tagMenuItem));
+      await tester.pumpWidget(
+        wrapWithBaseApp(tagMenuItem),
+      );
       final Finder resultSearch = find.byType(TagMenuItem);
       expect(resultSearch, findsOneWidget);
     });
@@ -30,7 +32,9 @@ void main() {
         route: "",
         onTap: (route) {},
       );
-      await tester.pumpWidget(wrapWithBaseApp(tagMenuItem));
+      await tester.pumpWidget(
+        wrapWithBaseApp(tagMenuItem),
+      );
       final Finder resultSearch = find.text("titulo");
       expect(resultSearch, findsOneWidget);
     });
@@ -43,13 +47,17 @@ void main() {
             defaultVersionPath: FilePaths.LOGO_LIGHT_PATH_SVG,
             disabledVersionPath: FilePaths.LOGO_GREY_PATH_SVG),
       );
-      await tester.pumpWidget(wrapWithBaseAppAndBundle(tagMenuItem));
+      await tester.pumpWidget(
+        wrapWithBaseAppAndBundle(tagMenuItem),
+      );
       final Finder resultSearch = find.byType(SvgPicture);
       expect(resultSearch, findsOneWidget);
     });
     testWidgets("is tapped", (WidgetTester tester) async {
       final dumb = MockDumb();
-      when(() => dumb.callWithParam1(any())).thenAnswer((invocation) {});
+      when(() => dumb.callWithParam1(
+            any(),
+          )).thenAnswer((invocation) {});
       final tagMenuItem = TagMenuItem(
         title: "titulo",
         route: "/rota",
@@ -58,12 +66,16 @@ void main() {
         },
       );
 
-      await tester.pumpWidget(wrapWithBaseApp(tagMenuItem));
+      await tester.pumpWidget(
+        wrapWithBaseApp(tagMenuItem),
+      );
       final Finder resultSearch = find.byType(TagMenuItem);
 
       await tester.tap(resultSearch);
       await tester.pumpAndSettle();
-      verify(() => dumb.callWithParam1("/rota")).called(1);
+      verify(
+        () => dumb.callWithParam1("/rota"),
+      ).called(1);
     });
   });
 }

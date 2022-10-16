@@ -3,10 +3,10 @@ import 'package:tag_ui/tag_ui.dart';
 
 class TagAppBar extends StatelessWidget implements PreferredSize {
   const TagAppBar({
-    Key? key,
+    super.key,
     this.title = const TagLogo(alignment: Alignment.centerLeft),
     this.leading = const TagAppBarMenuIconButton(),
-  }) : super(key: key);
+  });
 
   final Widget title;
   final Widget leading;
@@ -40,8 +40,8 @@ class TagAppBar extends StatelessWidget implements PreferredSize {
 
 class TagAppBarMenuIconButton extends StatelessWidget {
   const TagAppBarMenuIconButton({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -57,8 +57,8 @@ class TagAppBarMenuIconButton extends StatelessWidget {
 
 class TagAppBarBackIconButton extends StatelessWidget {
   const TagAppBarBackIconButton({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -74,9 +74,9 @@ class TagAppBarBackIconButton extends StatelessWidget {
 
 class TagAppbarTitle extends StatelessWidget {
   const TagAppbarTitle({
-    Key? key,
+    super.key,
     required this.title,
-  }) : super(key: key);
+  });
 
   final Widget? title;
 

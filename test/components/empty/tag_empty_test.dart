@@ -12,7 +12,9 @@ void main() {
     });
     testWidgets("render with default values", (WidgetTester tester) async {
       final tagEmpty = TagEmpty();
-      await tester.pumpWidget(wrapWithBaseApp(tagEmpty));
+      await tester.pumpWidget(
+        wrapWithBaseApp(tagEmpty),
+      );
       final Finder titleSearch = find.text("Essa lista está vazia");
       final Finder descriptionSearch = find
           .text("Você está sem conexão ou nenhum dado foi cadastrado ainda");
@@ -21,7 +23,9 @@ void main() {
     });
     testWidgets("render with onPressedRetry", (WidgetTester tester) async {
       final tagEmpty = TagEmpty(onPressedRetry: () {});
-      await tester.pumpWidget(wrapWithBaseApp(tagEmpty));
+      await tester.pumpWidget(
+        wrapWithBaseApp(tagEmpty),
+      );
       final Finder titleSearch = find.text("Essa lista está vazia");
       final Finder descriptionSearch = find
           .text("Você está sem conexão ou nenhum dado foi cadastrado ainda");
@@ -34,15 +38,21 @@ void main() {
 
     testWidgets("has tapped on retry button", (WidgetTester tester) async {
       final dumb = MockDumb();
-      final tagEmpty = TagEmpty(onPressedRetry: () => dumb.call());
-      await tester.pumpWidget(wrapWithBaseApp(tagEmpty));
+      final tagEmpty = TagEmpty(
+        onPressedRetry: () => dumb.call(),
+      );
+      await tester.pumpWidget(
+        wrapWithBaseApp(tagEmpty),
+      );
 
       final Finder retryButtonSearch = find.byType(TagButton);
       expect(retryButtonSearch, findsOneWidget);
 
       await tester.tap(retryButtonSearch);
 
-      verify(() => dumb.call()).called(1);
+      verify(
+        () => dumb.call(),
+      ).called(1);
     });
   });
 }

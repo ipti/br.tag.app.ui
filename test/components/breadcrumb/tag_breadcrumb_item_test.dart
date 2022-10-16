@@ -17,7 +17,9 @@ void main() {
       final tagBreadcrumbItem = TagBreadcrumbItem(
         title: 'home',
       );
-      await tester.pumpWidget(wrapWithBaseApp(tagBreadcrumbItem));
+      await tester.pumpWidget(
+        wrapWithBaseApp(tagBreadcrumbItem),
+      );
       final Finder resultSearch = find.byType(TagBreadcrumbItem);
 
       expect(resultSearch, findsOneWidget);
@@ -30,19 +32,27 @@ void main() {
           dumb.call();
         },
       );
-      when(() => dumb.call()).thenAnswer((invocation) {});
-      await tester.pumpWidget(wrapWithBaseApp(tagBreadcrumbItem));
+      when(
+        () => dumb.call(),
+      ).thenAnswer((invocation) {});
+      await tester.pumpWidget(
+        wrapWithBaseApp(tagBreadcrumbItem),
+      );
       final Finder resultSearch = find.byType(TagBreadcrumbItem);
 
       await tester.tap(resultSearch);
       await tester.pumpAndSettle();
-      verify(() => dumb.call()).called(1);
+      verify(
+        () => dumb.call(),
+      ).called(1);
     });
     testWidgets("style is formated", (WidgetTester tester) async {
       final tagBreadcrumbItem = TagBreadcrumbItem(
         title: 'home',
       );
-      await tester.pumpWidget(wrapWithBaseApp(tagBreadcrumbItem));
+      await tester.pumpWidget(
+        wrapWithBaseApp(tagBreadcrumbItem),
+      );
       final Finder resultSearch = find.byType(RichText);
 
       await tester.tap(resultSearch);
@@ -51,21 +61,36 @@ void main() {
       final item = tester.widget<RichText>(resultSearch);
 
       expect(
-          item.text.style?.fontWeight, equals(TagFontWeight.fontWeightLinks));
-      expect(item.text.style?.fontSize, equals(TagFontSize.fontSizeTextNormal));
-      expect(item.text.style?.color, equals(TagColors.colorBaseProductNormal));
+        item.text.style?.fontWeight,
+        equals(TagFontWeight.fontWeightLinks),
+      );
+      expect(
+        item.text.style?.fontSize,
+        equals(TagFontSize.fontSizeTextNormal),
+      );
+      expect(
+        item.text.style?.color,
+        equals(TagColors.colorBaseProductNormal),
+      );
     });
     testWidgets("render with hover", (WidgetTester tester) async {
       final tagBreadcrumbItem = TagBreadcrumbItem(
         title: 'home',
       );
-      await tester.pumpWidget(wrapWithBaseApp(tagBreadcrumbItem));
+      await tester.pumpWidget(
+        wrapWithBaseApp(tagBreadcrumbItem),
+      );
       final Finder resultSearch = find.byType(TagBreadcrumbItem);
 
       await hoverAutoRemove(tester, resultSearch);
 
-      final item = tester.widget<RichText>(find.byType(RichText));
-      expect(item.text.style?.decoration, equals(TextDecoration.underline));
+      final item = tester.widget<RichText>(
+        find.byType(RichText),
+      );
+      expect(
+        item.text.style?.decoration,
+        equals(TextDecoration.underline),
+      );
     });
 
     testWidgets("remove the undeline when pointer is not under the text",
@@ -73,15 +98,22 @@ void main() {
       final tagBreadcrumbItem = TagBreadcrumbItem(
         title: 'home',
       );
-      await tester.pumpWidget(wrapWithBaseApp(tagBreadcrumbItem));
+      await tester.pumpWidget(
+        wrapWithBaseApp(tagBreadcrumbItem),
+      );
       final Finder resultSearch = find.byType(TagBreadcrumbItem);
       final gestureIn = await hoverIn(tester, resultSearch);
       await gestureIn.removePointer();
       await tester.pumpAndSettle();
 
-      final item = tester.widget<RichText>(find.byType(RichText));
+      final item = tester.widget<RichText>(
+        find.byType(RichText),
+      );
       expect(
-          item.text.style?.decoration, isNot(equals(TextDecoration.underline)));
+          item.text.style?.decoration,
+          isNot(
+            equals(TextDecoration.underline),
+          ));
     });
   });
 }

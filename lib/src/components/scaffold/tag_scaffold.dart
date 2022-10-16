@@ -15,7 +15,7 @@ class TagScaffold extends StatelessWidget {
   final TabBar? tabBar;
 
   const TagScaffold({
-    Key? key,
+    super.key,
     required this.title,
     required this.path,
     required this.description,
@@ -25,7 +25,7 @@ class TagScaffold extends StatelessWidget {
     this.header,
     this.tabBar,
     this.actionsHeader,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -36,12 +36,14 @@ class TagScaffold extends StatelessWidget {
           alignment: Alignment.topLeft,
           child: LayoutBuilder(builder: (context, contraints) {
             final isDesktop = MediaQuery.of(context).size.width > 992;
+
             return NestedScrollView(
               body: body,
               physics: ScrollPhysics(
-                  parent: isDesktop
-                      ? PageScrollPhysics()
-                      : AlwaysScrollableScrollPhysics()),
+                parent: isDesktop
+                    ? PageScrollPhysics()
+                    : AlwaysScrollableScrollPhysics(),
+              ),
               headerSliverBuilder: (context, innerBoxIsScrolled) => [
                 SliverPersistentHeader(
                   delegate: _SliverHeaderBreadcrumbDelegate(
@@ -123,10 +125,11 @@ class _SliverHeaderDelegate extends SliverPersistentHeaderDelegate {
         mainAxisSize: MainAxisSize.max,
         children: [
           Flexible(
-              child: Heading(
-            text: title,
-            type: HeadingType.Title1,
-          )),
+            child: Heading(
+              text: title,
+              type: HeadingType.Title1,
+            ),
+          ),
         ],
       ),
     );

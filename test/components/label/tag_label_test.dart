@@ -12,15 +12,23 @@ void main() {
 
     testWidgets("is render with text", (WidgetTester tester) async {
       final tagLabel = TagLabel("Texto");
-      await tester.pumpWidget(wrapWithBaseApp(tagLabel));
+      await tester.pumpWidget(
+        wrapWithBaseApp(tagLabel),
+      );
       final Finder resultSearch = find.text("Texto");
       final textoLabelResult = tester.widget<Text>(resultSearch);
-      expect(textoLabelResult.style?.fontSize,
-          equals(TagFontSize.fontSizeFormLabel));
-      expect(textoLabelResult.style?.height,
-          equals(TagLineHeight.lineHeightHeading));
-      expect(textoLabelResult.style?.fontWeight,
-          equals(TagFontWeight.fontWeightNormal));
+      expect(
+        textoLabelResult.style?.fontSize,
+        equals(TagFontSize.fontSizeFormLabel),
+      );
+      expect(
+        textoLabelResult.style?.height,
+        equals(TagLineHeight.lineHeightHeading),
+      );
+      expect(
+        textoLabelResult.style?.fontWeight,
+        equals(TagFontWeight.fontWeightNormal),
+      );
     });
   });
 }

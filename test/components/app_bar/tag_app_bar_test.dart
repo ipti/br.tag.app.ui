@@ -35,7 +35,9 @@ void main() {
       );
 
       await tester.pumpWidget(tagAppBar);
-      final Finder resultSearchKey = find.byKey(Key("APP_BAR_KEY"));
+      final Finder resultSearchKey = find.byKey(
+        Key("APP_BAR_KEY"),
+      );
       expect(resultSearchKey, findsOneWidget);
     });
     testWidgets("with custom title", (WidgetTester tester) async {
@@ -46,7 +48,9 @@ void main() {
           ),
         ),
       );
-      await tester.pumpWidget(wrapWithBaseApp(tagAppBar));
+      await tester.pumpWidget(
+        wrapWithBaseApp(tagAppBar),
+      );
       final Finder resultSearchTitle = find.text("titulo");
       expect(resultSearchTitle, findsOneWidget);
     });
@@ -56,14 +60,18 @@ void main() {
           appBar: TagAppBar(),
         ),
       );
-      await tester.pumpWidget(wrapWithBaseAppAndBundle(tagAppBar));
+      await tester.pumpWidget(
+        wrapWithBaseAppAndBundle(tagAppBar),
+      );
       final Finder resultSearchLogo = find.byType(TagLogo);
       expect(resultSearchLogo, findsOneWidget);
     });
     testWidgets("tap into leading when as a Menu", (WidgetTester tester) async {
       final tagAppBar = MaterialApp(
         home: Scaffold(
-          drawer: Container(key: Key('drawer')),
+          drawer: Container(
+            key: Key('drawer'),
+          ),
           appBar: TagAppBar(
             leading: TagAppBarMenuIconButton(),
           ),
@@ -73,18 +81,25 @@ void main() {
       final Finder resultSearchIcon = find.byIcon(Icons.menu);
       await tester.tap(resultSearchIcon);
       await tester.pumpAndSettle();
-      final Finder resultSearchDrawer = find.byKey(Key('drawer'));
+      final Finder resultSearchDrawer = find.byKey(
+        Key('drawer'),
+      );
       expect(resultSearchDrawer, findsOneWidget);
     });
     testWidgets("has a child propety", (WidgetTester tester) async {
       final tagAppBar = TagAppBar();
       final child = tagAppBar.child;
-      expect(child, equals(tagAppBar));
+      expect(
+        child,
+        equals(tagAppBar),
+      );
     });
 
     testWidgets("tap into leading when as a Back", (WidgetTester tester) async {
       final navigatorMock = MockNavigator();
-      when(() => navigatorMock.pop()).thenAnswer((_) async {
+      when(
+        () => navigatorMock.pop(),
+      ).thenAnswer((_) async {
         return null;
       });
       final tagAppBar = MaterialApp(
@@ -103,7 +118,9 @@ void main() {
       await tester.pumpAndSettle();
 
       expect(resultSearchIcon, findsOneWidget);
-      verify(() => navigatorMock.pop()).called(1);
+      verify(
+        () => navigatorMock.pop(),
+      ).called(1);
     });
   });
 }

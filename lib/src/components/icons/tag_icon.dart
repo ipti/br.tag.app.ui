@@ -5,11 +5,11 @@ import 'package:tag_ui/tag_ui.dart';
 // ignore: must_be_immutable
 class TagIcon extends StatefulWidget {
   TagIcon({
-    Key? key,
+    super.key,
     required this.defaultVersionPath,
     required this.disabledVersionPath,
     this.disabled = false,
-  }) : super(key: key);
+  });
 
   final String defaultVersionPath;
   final String disabledVersionPath;
@@ -25,6 +25,7 @@ class _TagIconState extends State<TagIcon> {
     final path = widget.disabled
         ? widget.disabledVersionPath
         : widget.defaultVersionPath;
+
     return Container(
       constraints: BoxConstraints(
         maxHeight: TagSizes.heightIconLarge,

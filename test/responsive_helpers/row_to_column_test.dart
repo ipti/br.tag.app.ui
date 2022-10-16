@@ -14,7 +14,9 @@ void main() {
       final rowToColumn = RowToColumn(
         children: [],
       );
-      await tester.pumpWidget(wrapWithBaseApp(rowToColumn));
+      await tester.pumpWidget(
+        wrapWithBaseApp(rowToColumn),
+      );
       final Finder resultSearch = find.byType(RowToColumn);
       expect(resultSearch, findsOneWidget);
     });
@@ -22,11 +24,15 @@ void main() {
         (WidgetTester tester) async {
       tester.binding.window.physicalSizeTestValue = Size(1440, 760);
       tester.binding.window.devicePixelRatioTestValue = 1.0;
-      await tester.binding.setSurfaceSize(Size(1440, 900));
+      await tester.binding.setSurfaceSize(
+        Size(1440, 900),
+      );
       final rowToColumn = RowToColumn(
         children: [Container()],
       );
-      await tester.pumpWidget(wrapWithBaseApp(rowToColumn));
+      await tester.pumpWidget(
+        wrapWithBaseApp(rowToColumn),
+      );
       final Finder resultSearch = find.byType(Column);
       expect(resultSearch, findsNothing);
     });
@@ -34,11 +40,15 @@ void main() {
     testWidgets("render desktop find row", (WidgetTester tester) async {
       tester.binding.window.physicalSizeTestValue = Size(1440, 760);
       tester.binding.window.devicePixelRatioTestValue = 1.0;
-      await tester.binding.setSurfaceSize(Size(1440, 900));
+      await tester.binding.setSurfaceSize(
+        Size(1440, 900),
+      );
       final rowToColumn = RowToColumn(
         children: [Container()],
       );
-      await tester.pumpWidget(wrapWithBaseApp(rowToColumn));
+      await tester.pumpWidget(
+        wrapWithBaseApp(rowToColumn),
+      );
       final Finder resultSearch = find.byType(Row);
       expect(resultSearch, findsOneWidget);
     });
@@ -46,22 +56,30 @@ void main() {
     testWidgets("render mobile find column", (WidgetTester tester) async {
       tester.binding.window.physicalSizeTestValue = Size(360, 760);
       tester.binding.window.devicePixelRatioTestValue = 1.0;
-      await tester.binding.setSurfaceSize(Size(360, 760));
+      await tester.binding.setSurfaceSize(
+        Size(360, 760),
+      );
       final rowToColumn = RowToColumn(
         children: [Container()],
       );
-      await tester.pumpWidget(wrapWithBaseApp(rowToColumn));
+      await tester.pumpWidget(
+        wrapWithBaseApp(rowToColumn),
+      );
       final Finder resultSearch = find.byType(Column);
       expect(resultSearch, findsOneWidget);
     });
     testWidgets("render mobile find row", (WidgetTester tester) async {
       tester.binding.window.physicalSizeTestValue = Size(360, 760);
       tester.binding.window.devicePixelRatioTestValue = 1.0;
-      await tester.binding.setSurfaceSize(Size(360, 760));
+      await tester.binding.setSurfaceSize(
+        Size(360, 760),
+      );
       final rowToColumn = RowToColumn(
         children: [Container()],
       );
-      await tester.pumpWidget(wrapWithBaseApp(rowToColumn));
+      await tester.pumpWidget(
+        wrapWithBaseApp(rowToColumn),
+      );
       final Finder resultSearch = find.byType(Row);
       expect(resultSearch, findsOneWidget);
     });

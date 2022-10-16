@@ -5,7 +5,7 @@ import 'package:tag_ui/tag_ui.dart';
 
 class TagDropdownField<T> extends StatelessWidget {
   TagDropdownField({
-    Key? key,
+    super.key,
     required this.onChanged,
     required this.label,
     required this.items,
@@ -15,7 +15,7 @@ class TagDropdownField<T> extends StatelessWidget {
     this.validator,
     this.controller,
     this.autovalidateMode = AutovalidateMode.onUserInteraction,
-  }) : super(key: key);
+  });
 
   final AutovalidateMode autovalidateMode;
   final TextEditingController? controller;
@@ -36,6 +36,7 @@ class TagDropdownField<T> extends StatelessWidget {
           value: item.key,
         ),
     ];
+
     return Padding(
       padding: padding,
       child: Column(
@@ -60,7 +61,9 @@ class TagDropdownField<T> extends StatelessWidget {
               decoration: buildInputDecoration(hint),
               validator: validator,
               onChanged: onChanged,
-              onTap: () => FocusScope.of(context).requestFocus(FocusNode()),
+              onTap: () => FocusScope.of(context).requestFocus(
+                FocusNode(),
+              ),
             ),
           ),
         ],

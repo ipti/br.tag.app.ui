@@ -4,9 +4,9 @@ import 'package:tag_ui/tag_ui.dart';
 
 class TagNumberField extends StatefulWidget {
   const TagNumberField({
-    Key? key,
+    super.key,
     required this.onChanged,
-  }) : super(key: key);
+  });
 
   final Function onChanged;
 
@@ -79,10 +79,9 @@ class _TagNumberFieldState extends State<TagNumberField> {
 
 class _TextNumberField extends StatelessWidget {
   const _TextNumberField({
-    Key? key,
     required this.controller,
     required this.onChanged,
-  }) : super(key: key);
+  });
 
   final TextEditingController controller;
   final Function onChanged;
@@ -113,10 +112,9 @@ class _TextNumberField extends StatelessWidget {
 
 class _NumberFieldButton extends StatelessWidget {
   const _NumberFieldButton({
-    Key? key,
     required this.onPressed,
     required this.icon,
-  }) : super(key: key);
+  });
 
   final Function onPressed;
   final IconData icon;
@@ -131,7 +129,9 @@ class _NumberFieldButton extends StatelessWidget {
         maxHeight: 40,
       ),
       child: Container(
-        decoration: BoxDecoration(borderRadius: BorderRadius.circular(8)),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(8),
+        ),
         child: TextButton(
           style: ButtonStyle(
             backgroundColor: MaterialStateProperty.all(

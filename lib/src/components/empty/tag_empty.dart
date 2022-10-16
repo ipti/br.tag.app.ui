@@ -3,9 +3,9 @@ import 'package:tag_ui/tag_ui.dart';
 
 class TagEmpty extends StatelessWidget {
   const TagEmpty({
-    Key? key,
+    super.key,
     this.onPressedRetry,
-  }) : super(key: key);
+  });
 
   final void Function()? onPressedRetry;
 

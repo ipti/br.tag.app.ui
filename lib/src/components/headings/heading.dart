@@ -13,11 +13,11 @@ enum HeadingType {
 
 class Heading extends StatelessWidget {
   const Heading({
-    Key? key,
+    super.key,
     required this.text,
     required this.type,
     this.color = TagColors.colorBaseInkNormal,
-  }) : super(key: key);
+  });
 
   final String text;
   final HeadingType type;

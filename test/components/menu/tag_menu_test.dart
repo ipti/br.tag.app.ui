@@ -12,7 +12,9 @@ void main() {
       final tagMenu = TagMenu(
         items: [],
       );
-      await tester.pumpWidget(wrapWithBaseApp(tagMenu));
+      await tester.pumpWidget(
+        wrapWithBaseApp(tagMenu),
+      );
       final Finder resultSearch = find.byType(TagMenu);
       expect(resultSearch, findsOneWidget);
     });
@@ -27,7 +29,9 @@ void main() {
             ),
         ],
       );
-      await tester.pumpWidget(wrapWithBaseApp(tagMenu));
+      await tester.pumpWidget(
+        wrapWithBaseApp(tagMenu),
+      );
       final Finder resultSearch = find.byType(TagMenuItem);
       expect(resultSearch, findsWidgets);
     });

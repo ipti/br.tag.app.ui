@@ -4,12 +4,12 @@ import 'package:tag_ui/src/strings/file_paths.dart';
 
 class LogoGreyTag extends StatelessWidget {
   const LogoGreyTag({
-    Key? key,
+    super.key,
     this.color,
     this.width,
     this.height,
     this.alignment = Alignment.centerLeft,
-  }) : super(key: key);
+  });
 
   final Color? color;
   final double? width;

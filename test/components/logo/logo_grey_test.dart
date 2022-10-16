@@ -14,7 +14,9 @@ void main() {
     testWidgets("render LOGO_PATH_SVG", (WidgetTester tester) async {
       final logoGreyTag = LogoGreyTag();
 
-      await tester.pumpWidget(wrapWithBaseAppAndBundle(logoGreyTag));
+      await tester.pumpWidget(
+        wrapWithBaseAppAndBundle(logoGreyTag),
+      );
       final Finder resultSearch = find.byType(SvgPicture);
 
       expect(resultSearch, findsOneWidget);
@@ -27,16 +29,24 @@ void main() {
         height: 40,
       );
 
-      await tester.pumpWidget(wrapWithBaseAppAndBundle(logoGreyTag));
+      await tester.pumpWidget(
+        wrapWithBaseAppAndBundle(logoGreyTag),
+      );
       final Finder resultSearch = find.byType(LogoGreyTag);
 
       final LogoGreyTag corResult = tester.widget<LogoGreyTag>(resultSearch);
 
-      expect(corResult.color, equals(Colors.amber));
+      expect(
+        corResult.color,
+        equals(Colors.amber),
+      );
       final LogoGreyTag alinhamentoResult =
           tester.widget<LogoGreyTag>(resultSearch);
 
-      expect(alinhamentoResult.alignment, equals(Alignment.centerLeft));
+      expect(
+        alinhamentoResult.alignment,
+        equals(Alignment.centerLeft),
+      );
     });
     testWidgets("render with width and height", (WidgetTester tester) async {
       final logoGreyTag = LogoGreyTag(
@@ -44,7 +54,9 @@ void main() {
         height: 40,
       );
 
-      await tester.pumpWidget(wrapWithBaseAppAndBundle(logoGreyTag));
+      await tester.pumpWidget(
+        wrapWithBaseAppAndBundle(logoGreyTag),
+      );
       final Finder resultSearch = find.byType(LogoGreyTag);
 
       final LogoGreyTag widthTestResult =
@@ -52,8 +64,14 @@ void main() {
       final LogoGreyTag heightTestResult =
           tester.widget<LogoGreyTag>(resultSearch);
 
-      expect(widthTestResult.width, equals(40));
-      expect(heightTestResult.height, equals(40));
+      expect(
+        widthTestResult.width,
+        equals(40),
+      );
+      expect(
+        heightTestResult.height,
+        equals(40),
+      );
     });
   });
 }

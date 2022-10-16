@@ -3,8 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:tag_ui/tag_ui.dart';
 
 class TagLinkButton extends StatelessWidget {
-  const TagLinkButton({Key? key, required this.text, required this.onPressed})
-      : super(key: key);
+  const TagLinkButton({super.key, required this.text, required this.onPressed});
 
   final String text;
   final Function onPressed;
@@ -18,11 +17,11 @@ class TagLinkButton extends StatelessWidget {
     );
 
     final elevatedButtonTheme = TextButton.styleFrom(
+      foregroundColor: TagColors.colorBaseProductNormal,
       elevation: 0,
       textStyle: textStyle,
       padding: TagSpancing.paddingButtonNormal,
       minimumSize: Size(double.infinity, TagSizes.heightButtonNormal),
-      primary: TagColors.colorBaseProductNormal,
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.all(
           Radius.circular(

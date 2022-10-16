@@ -16,7 +16,9 @@ void main() {
         label: "Textinho",
         onChanged: (value) {},
       );
-      await tester.pumpWidget(wrapWithBaseApp(tagDatePickerField));
+      await tester.pumpWidget(
+        wrapWithBaseApp(tagDatePickerField),
+      );
       final Finder resultSearch = find.byType(TagDatePickerField);
 
       expect(resultSearch, findsOneWidget);
@@ -26,7 +28,9 @@ void main() {
         label: "Textinho",
         onChanged: (value) {},
       );
-      await tester.pumpWidget(wrapWithBaseApp(tagDatePickerField));
+      await tester.pumpWidget(
+        wrapWithBaseApp(tagDatePickerField),
+      );
       final Finder resultSearch = find.byType(TagDatePickerField);
       expect(resultSearch, findsOneWidget);
       final Finder resultSearchLabel = find.text("Textinho");
@@ -38,7 +42,9 @@ void main() {
         onChanged: (value) {},
         hint: "textinhoHint",
       );
-      await tester.pumpWidget(wrapWithBaseApp(tagDatePickerField));
+      await tester.pumpWidget(
+        wrapWithBaseApp(tagDatePickerField),
+      );
       final Finder resultSearcHint = find.text("textinhoHint");
       expect(resultSearcHint, findsOneWidget);
     });
@@ -49,11 +55,16 @@ void main() {
         onChanged: (value) {},
         inputType: TextInputType.text,
       );
-      await tester.pumpWidget(wrapWithBaseApp(tagDatePickerField));
+      await tester.pumpWidget(
+        wrapWithBaseApp(tagDatePickerField),
+      );
       final Finder resultSearch = find.byType(TagDatePickerField);
       expect(resultSearch, findsOneWidget);
       final inputTypeResult = tester.widget<TagDatePickerField>(resultSearch);
-      expect(inputTypeResult.inputType, equals(TextInputType.text));
+      expect(
+        inputTypeResult.inputType,
+        equals(TextInputType.text),
+      );
     });
 
     testWidgets("render with controller change value",
@@ -64,11 +75,16 @@ void main() {
         controller: controller,
         onChanged: (value) {},
       );
-      await tester.pumpWidget(wrapWithBaseApp(tagTextField));
+      await tester.pumpWidget(
+        wrapWithBaseApp(tagTextField),
+      );
       final Finder resultSearch = find.byType(TextField);
       await tester.enterText(resultSearch, '19041995');
       await tester.pump();
-      expect(controller.text, equals('19/04/1995'));
+      expect(
+        controller.text,
+        equals('19/04/1995'),
+      );
     });
     testWidgets("render with controller change value",
         (WidgetTester tester) async {
@@ -79,27 +95,38 @@ void main() {
         controller: controller,
         onChanged: (value) {},
       );
-      await tester.pumpWidget(wrapWithBaseApp(tagDatePickerField));
+      await tester.pumpWidget(
+        wrapWithBaseApp(tagDatePickerField),
+      );
       final Finder resultSearch = find.byType(TagDatePickerField);
       await tester.enterText(resultSearch, '27121973');
       await tester.pump();
-      expect(controller.text, equals('27/12/1973'));
+      expect(
+        controller.text,
+        equals('27/12/1973'),
+      );
     });
     testWidgets("render when values change", (WidgetTester tester) async {
       final dumb = MockDumb();
-      when(() => dumb.callWithParam1(any())).thenAnswer((invocation) {});
+      when(() => dumb.callWithParam1(
+            any(),
+          )).thenAnswer((invocation) {});
       final tagTextField = TagDatePickerField(
         label: "Label",
         onChanged: (value) => dumb.callWithParam1(value),
       );
-      await tester.pumpWidget(wrapWithBaseApp(tagTextField));
+      await tester.pumpWidget(
+        wrapWithBaseApp(tagTextField),
+      );
 
       final Finder resultSearch = find.byType(TextField);
 
       await tester.enterText(resultSearch, '19041995');
       await tester.pumpAndSettle();
 
-      verify(() => dumb.callWithParam1('19/04/1995')).called(1);
+      verify(
+        () => dumb.callWithParam1('19/04/1995'),
+      ).called(1);
     });
     testWidgets("render with value", (WidgetTester tester) async {
       final tagDatePickerField = TagDatePickerField(
@@ -107,7 +134,9 @@ void main() {
         onChanged: (value) {},
         value: "27121973",
       );
-      await tester.pumpWidget(wrapWithBaseApp(tagDatePickerField));
+      await tester.pumpWidget(
+        wrapWithBaseApp(tagDatePickerField),
+      );
       final Finder resultSearch = find.byType(TagDatePickerField);
       expect(resultSearch, findsOneWidget);
       final Finder searchValueResult = find.text("27121973");
@@ -115,20 +144,26 @@ void main() {
     });
     testWidgets("render when text is edited", (WidgetTester tester) async {
       final dumb = MockDumb();
-      when(() => dumb.call()).thenAnswer((invocation) {});
+      when(
+        () => dumb.call(),
+      ).thenAnswer((invocation) {});
       final tagTextField = TagDatePickerField(
         label: "Label",
         onChanged: (_) {},
         onEditingComplete: () => dumb.call(),
       );
-      await tester.pumpWidget(wrapWithBaseApp(tagTextField));
+      await tester.pumpWidget(
+        wrapWithBaseApp(tagTextField),
+      );
       final Finder resultSearch = find.byType(TagDatePickerField);
 
       await tester.enterText(resultSearch, '19041995');
       await tester.pumpAndSettle();
       await tester.testTextInput.receiveAction(TextInputAction.done);
       await tester.pumpAndSettle();
-      verify(() => dumb.call()).called(1);
+      verify(
+        () => dumb.call(),
+      ).called(1);
     });
     testWidgets("render when text is invalid", (WidgetTester tester) async {
       final tagTextField = TagDatePickerField(
@@ -138,7 +173,9 @@ void main() {
         validator: (value) =>
             (value?.isEmpty ?? true) ? "Por favor retorne um valor" : null,
       );
-      await tester.pumpWidget(wrapWithBaseApp(tagTextField));
+      await tester.pumpWidget(
+        wrapWithBaseApp(tagTextField),
+      );
       final Finder resultSearch = find.byType(TextField);
       await tester.enterText(resultSearch, '19041995');
       await tester.pumpAndSettle();

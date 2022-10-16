@@ -4,11 +4,13 @@ import 'package:flutter/material.dart';
 import 'package:tag_ui/tag_ui.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    const MyApp(),
+  );
 }
 
 class MyApp extends StatefulWidget {
-  const MyApp({Key? key}) : super(key: key);
+  const MyApp({super.key});
 
   @override
   State<MyApp> createState() => _MyAppState();
@@ -32,6 +34,10 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        home: Material(child: TagEmpty(onPressedRetry: () => log(""))));
+      home: Material(
+          child: TagEmpty(
+        onPressedRetry: () => log(""),
+      )),
+    );
   }
 }

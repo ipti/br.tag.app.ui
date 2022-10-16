@@ -8,9 +8,12 @@ class DataSource extends DataTableSource {
   @override
   DataRow? getRow(int index) {
     if (nullrow) return null;
+
     return DataRow(cells: [
       DataCell(
-        Text(index.toString()),
+        Text(
+          index.toString(),
+        ),
       ),
       DataCell(
         Text(data[index]),

@@ -16,7 +16,9 @@ void main() {
           key: Key("Desktop"),
         ),
       );
-      await tester.pumpWidget(wrapWithBaseApp(showOnDesktop));
+      await tester.pumpWidget(
+        wrapWithBaseApp(showOnDesktop),
+      );
 
       final Finder resultSearch = find.byType(ShowOnDesktop);
 
@@ -25,15 +27,21 @@ void main() {
     testWidgets("render on desktop", (WidgetTester tester) async {
       tester.binding.window.physicalSizeTestValue = Size(1440, 900);
       tester.binding.window.devicePixelRatioTestValue = 1.0;
-      await tester.binding.setSurfaceSize(Size(1440, 900));
+      await tester.binding.setSurfaceSize(
+        Size(1440, 900),
+      );
       final showOnDesktop = ShowOnDesktop(
         child: Container(
           key: Key("Desktop"),
         ),
       );
-      await tester.pumpWidget(wrapWithBaseApp(showOnDesktop));
+      await tester.pumpWidget(
+        wrapWithBaseApp(showOnDesktop),
+      );
 
-      final Finder resultSearchSizeResult = find.byKey(Key("Desktop"));
+      final Finder resultSearchSizeResult = find.byKey(
+        Key("Desktop"),
+      );
       expect(resultSearchSizeResult, findsOneWidget);
     });
   });

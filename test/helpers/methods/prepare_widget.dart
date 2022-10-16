@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -39,6 +38,7 @@ class TestAssetBundle extends CachingAssetBundle {
     if (key.endsWith('assets/logo/logo_grey_tag.svg')) {
       return _fakeBytes;
     }
+
     return ByteData(0);
   }
 }

@@ -25,7 +25,9 @@ void main() {
         ),
       );
 
-      await tester.pumpWidget(wrapWithBaseApp(tagScaffold));
+      await tester.pumpWidget(
+        wrapWithBaseApp(tagScaffold),
+      );
       final Finder resultSearch = find.text("titulo");
       expect(resultSearch, findsOneWidget);
     });
@@ -44,7 +46,9 @@ void main() {
         ),
       );
 
-      await tester.pumpWidget(wrapWithBaseApp(tagScaffold));
+      await tester.pumpWidget(
+        wrapWithBaseApp(tagScaffold),
+      );
       final Finder resultSearchPath = find.byWidgetPredicate(
           (widget) => fromRichTextToPlainText(widget) == "menu");
 
@@ -64,7 +68,9 @@ void main() {
         ),
       );
 
-      await tester.pumpWidget(wrapWithBaseApp(tagScaffold));
+      await tester.pumpWidget(
+        wrapWithBaseApp(tagScaffold),
+      );
       final Finder resultSearchPath = find.byWidgetPredicate(
           (widget) => fromRichTextToPlainText(widget) == "mangás");
 
@@ -83,8 +89,12 @@ void main() {
         ),
       );
 
-      await tester.pumpWidget(wrapWithBaseApp(tagScaffold));
-      final Finder resultSearchBody = find.byKey(Key("Body"));
+      await tester.pumpWidget(
+        wrapWithBaseApp(tagScaffold),
+      );
+      final Finder resultSearchBody = find.byKey(
+        Key("Body"),
+      );
       expect(resultSearchBody, findsOneWidget);
     });
     testWidgets("render with actionsHeader", (WidgetTester tester) async {
@@ -101,8 +111,12 @@ void main() {
         actionsHeader: DumbHeader(),
       );
 
-      await tester.pumpWidget(wrapWithBaseApp(tagScaffold));
-      final Finder resultSearchActionsHeader = find.byKey(Key("actionsHeader"));
+      await tester.pumpWidget(
+        wrapWithBaseApp(tagScaffold),
+      );
+      final Finder resultSearchActionsHeader = find.byKey(
+        Key("actionsHeader"),
+      );
       expect(resultSearchActionsHeader, findsOneWidget);
     });
     testWidgets("render with aside", (WidgetTester tester) async {
@@ -121,8 +135,12 @@ void main() {
         ),
       );
 
-      await tester.pumpWidget(wrapWithBaseApp(tagScaffold));
-      final Finder resultSearchAside = find.byKey(Key("aside"));
+      await tester.pumpWidget(
+        wrapWithBaseApp(tagScaffold),
+      );
+      final Finder resultSearchAside = find.byKey(
+        Key("aside"),
+      );
       expect(resultSearchAside, findsOneWidget);
     });
     testWidgets("render with tabBar", (WidgetTester tester) async {
@@ -147,10 +165,12 @@ void main() {
         ]),
       );
 
-      await tester.pumpWidget(wrapWithBaseApp(DefaultTabController(
-        child: tagScaffold,
-        length: 2,
-      )));
+      await tester.pumpWidget(wrapWithBaseApp(
+        DefaultTabController(
+          child: tagScaffold,
+          length: 2,
+        ),
+      ));
       final Finder resultSearchTab = find.byType(Tab);
       expect(resultSearchTab, findsWidgets);
       final Finder resultSearchTabMenu = find.byIcon(Icons.menu);
@@ -163,7 +183,9 @@ void main() {
     testWidgets("render scroll in mobile", (WidgetTester tester) async {
       tester.binding.window.physicalSizeTestValue = Size(360, 760);
       tester.binding.window.devicePixelRatioTestValue = 1.0;
-      await tester.binding.setSurfaceSize(Size(360, 900));
+      await tester.binding.setSurfaceSize(
+        Size(360, 900),
+      );
       final tagScaffold = TagScaffold(
         title: "titulo",
         path: ["menu", "mangás"],
@@ -193,27 +215,39 @@ void main() {
         ]),
       );
 
-      await tester.pumpWidget(wrapWithBaseApp(DefaultTabController(
-        child: tagScaffold,
-        length: 2,
-      )));
+      await tester.pumpWidget(wrapWithBaseApp(
+        DefaultTabController(
+          child: tagScaffold,
+          length: 2,
+        ),
+      ));
       final Finder resultSearchTab = find.byType(Tab);
       expect(resultSearchTab, findsWidgets);
       final Finder resultSearchTabMenu = find.text("data");
       final positionInitial = tester.getCenter(resultSearchTabMenu);
 
       expect(resultSearchTabMenu, findsOneWidget);
-      await tester.drag(resultSearchTabMenu, const Offset(0, -100));
+      await tester.drag(
+        resultSearchTabMenu,
+        const Offset(0, -100),
+      );
       await tester.pumpAndSettle();
 
-      final positionFinal = tester.getCenter(find.text("data"));
+      final positionFinal = tester.getCenter(
+        find.text("data"),
+      );
 
-      expect(positionInitial.dy, greaterThan(positionFinal.dy));
+      expect(
+        positionInitial.dy,
+        greaterThan(positionFinal.dy),
+      );
     });
     testWidgets("render no scroll in desktop", (WidgetTester tester) async {
       tester.binding.window.physicalSizeTestValue = Size(1440, 760);
       tester.binding.window.devicePixelRatioTestValue = 1.0;
-      await tester.binding.setSurfaceSize(Size(1440, 900));
+      await tester.binding.setSurfaceSize(
+        Size(1440, 900),
+      );
       final tagScaffold = TagScaffold(
         title: "titulo",
         path: ["menu", "mangás"],
@@ -243,10 +277,12 @@ void main() {
         ]),
       );
 
-      await tester.pumpWidget(wrapWithBaseApp(DefaultTabController(
-        child: tagScaffold,
-        length: 2,
-      )));
+      await tester.pumpWidget(wrapWithBaseApp(
+        DefaultTabController(
+          child: tagScaffold,
+          length: 2,
+        ),
+      ));
       final Finder resultSearchTab = find.byType(Tab);
       expect(resultSearchTab, findsWidgets);
       final Finder resultSearchTabMenu = find.text("data");
@@ -254,12 +290,20 @@ void main() {
 
       expect(resultSearchTabMenu, findsOneWidget);
 
-      await tester.drag(resultSearchTabMenu, const Offset(0, -100));
+      await tester.drag(
+        resultSearchTabMenu,
+        const Offset(0, -100),
+      );
       await tester.pumpAndSettle();
 
-      final positionFinal = tester.getCenter(find.text("data"));
+      final positionFinal = tester.getCenter(
+        find.text("data"),
+      );
 
-      expect(positionInitial.dy, equals(positionFinal.dy));
+      expect(
+        positionInitial.dy,
+        equals(positionFinal.dy),
+      );
     });
   });
 }

@@ -17,7 +17,9 @@ void main() {
         ),
         desktop: Container(key: Key("Desktop"), width: 992),
       );
-      await tester.pumpWidget(wrapWithBaseApp(toggleMobileDesktop));
+      await tester.pumpWidget(
+        wrapWithBaseApp(toggleMobileDesktop),
+      );
 
       final Finder resultSearch = find.byType(ToggleMobileDesktop);
 
@@ -26,22 +28,32 @@ void main() {
     testWidgets("render mobile", (WidgetTester tester) async {
       tester.binding.window.physicalSizeTestValue = Size(360, 760);
       tester.binding.window.devicePixelRatioTestValue = 1.0;
-      await tester.binding.setSurfaceSize(Size(360, 900));
+      await tester.binding.setSurfaceSize(
+        Size(360, 900),
+      );
       final toggleMobileDesktop = ToggleMobileDesktop(
         mobile: Container(
           key: Key("Mobile"),
         ),
-        desktop: Container(key: Key("Desktop")),
+        desktop: Container(
+          key: Key("Desktop"),
+        ),
       );
-      await tester.pumpWidget(wrapWithBaseApp(toggleMobileDesktop));
-      final Finder resultSearchSizeResult = find.byKey(Key("Mobile"));
+      await tester.pumpWidget(
+        wrapWithBaseApp(toggleMobileDesktop),
+      );
+      final Finder resultSearchSizeResult = find.byKey(
+        Key("Mobile"),
+      );
 
       expect(resultSearchSizeResult, findsOneWidget);
     });
     testWidgets("render desktop", (WidgetTester tester) async {
       tester.binding.window.physicalSizeTestValue = Size(1440, 900);
       tester.binding.window.devicePixelRatioTestValue = 1.0;
-      await tester.binding.setSurfaceSize(Size(1440, 900));
+      await tester.binding.setSurfaceSize(
+        Size(1440, 900),
+      );
       // await screenSizeDesktop(tester);
       final toggleMobileDesktop = ToggleMobileDesktop(
         mobile: Container(
@@ -51,8 +63,12 @@ void main() {
           key: Key("Desktop"),
         ),
       );
-      await tester.pumpWidget(wrapWithBaseApp(toggleMobileDesktop));
-      final Finder resultSearchSizeResult = find.byKey(Key("Desktop"));
+      await tester.pumpWidget(
+        wrapWithBaseApp(toggleMobileDesktop),
+      );
+      final Finder resultSearchSizeResult = find.byKey(
+        Key("Desktop"),
+      );
       expect(resultSearchSizeResult, findsOneWidget);
     });
   });

@@ -4,7 +4,7 @@ import 'package:tag_ui/tag_ui.dart';
 
 class TagButton extends StatelessWidget {
   const TagButton({
-    Key? key,
+    super.key,
     required this.text,
     required this.onPressed,
     this.backgroundColor,
@@ -12,7 +12,7 @@ class TagButton extends StatelessWidget {
     this.icon,
     this.textStyle,
     this.textButtonColor,
-  }) : super(key: key);
+  });
 
   final Function() onPressed;
   final String text;
@@ -60,12 +60,11 @@ class TagButton extends StatelessWidget {
 
 class _ButtonText extends StatelessWidget {
   const _ButtonText({
-    Key? key,
     required this.text,
     required this.defaultTextStyle,
     required this.onPressed,
     required this.defaultButtonStyle,
-  }) : super(key: key);
+  });
 
   final String text;
   final TextStyle defaultTextStyle;
@@ -84,13 +83,12 @@ class _ButtonText extends StatelessWidget {
 
 class _ButtonIconText extends StatelessWidget {
   const _ButtonIconText({
-    Key? key,
     required this.defaultButtonStyle,
     required this.onPressed,
     required this.icon,
     required this.text,
     required this.defaultTextStyle,
-  }) : super(key: key);
+  });
 
   final ButtonStyle defaultButtonStyle;
   final Function() onPressed;

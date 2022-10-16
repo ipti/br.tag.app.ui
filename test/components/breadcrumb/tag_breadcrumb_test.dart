@@ -20,7 +20,9 @@ void main() {
       final tagBreadcrumb = TagBreadcrumb(
         paths: [],
       );
-      await tester.pumpWidget(wrapWithBaseApp(tagBreadcrumb));
+      await tester.pumpWidget(
+        wrapWithBaseApp(tagBreadcrumb),
+      );
       final Finder resultSearch = find.byType(TagBreadcrumb);
       expect(resultSearch, findsOneWidget);
     });
@@ -28,11 +30,16 @@ void main() {
       final tagBreadcrumb = TagBreadcrumb(
         paths: ["menu", "mangás", "Aventura"],
       );
-      await tester.pumpWidget(wrapWithBaseApp(tagBreadcrumb));
+      await tester.pumpWidget(
+        wrapWithBaseApp(tagBreadcrumb),
+      );
 
       final Finder resultSearch = find.byType(TagBreadcrumbItem);
 
-      expect(resultSearch, findsNWidgets(3));
+      expect(
+        resultSearch,
+        findsNWidgets(3),
+      );
     });
 
     testWidgets("render the correct first item", (WidgetTester tester) async {
@@ -40,7 +47,9 @@ void main() {
         paths: ["Menu", "Mangás", "Aventura"],
       );
 
-      await tester.pumpWidget(wrapWithBaseApp(tagBreadcrumb));
+      await tester.pumpWidget(
+        wrapWithBaseApp(tagBreadcrumb),
+      );
 
       final Finder resultSearch = find.byWidgetPredicate(
           (widget) => fromRichTextToPlainText(widget) == "Menu");
@@ -53,7 +62,9 @@ void main() {
         paths: ["Menu", "Mangás", "Aventura"],
       );
 
-      await tester.pumpWidget(wrapWithBaseApp(tagBreadcrumb));
+      await tester.pumpWidget(
+        wrapWithBaseApp(tagBreadcrumb),
+      );
 
       final Finder resultSearch = find.byWidgetPredicate(
           (widget) => fromRichTextToPlainText(widget) == "Aventura");

@@ -7,14 +7,14 @@ enum MenuItemState { Normal, Hover, Click, Disabled }
 
 class TagMenuItem extends StatelessWidget implements ITagMenuItem {
   const TagMenuItem({
-    Key? key,
+    super.key,
     required this.title,
     required this.route,
     required this.onTap,
     this.icon,
     this.isActive = false,
     this.menuItemState,
-  }) : super(key: key);
+  });
 
   final String title;
   final String route;
@@ -47,8 +47,9 @@ class TagMenuItem extends StatelessWidget implements ITagMenuItem {
                 height: 24,
                 width: 4,
                 decoration: BoxDecoration(
-                  borderRadius:
-                      BorderRadius.horizontal(right: Radius.circular(8)),
+                  borderRadius: BorderRadius.horizontal(
+                    right: Radius.circular(8),
+                  ),
                   color: indicatorColor,
                 ),
               ),

@@ -13,7 +13,9 @@ void main() {
         text: "MyButton",
         onPressed: () {},
       );
-      await tester.pumpWidget(wrapWithBaseApp(tagLinkButton));
+      await tester.pumpWidget(
+        wrapWithBaseApp(tagLinkButton),
+      );
       final Finder resultSearch = find.text("MyButton");
       expect(resultSearch, findsOneWidget);
     });

@@ -10,7 +10,7 @@ import '../shared/field_constraints.dart';
 
 class TagTextField extends StatefulWidget {
   const TagTextField({
-    Key? key,
+    super.key,
     required this.label,
     this.hint,
     this.controller,
@@ -25,7 +25,7 @@ class TagTextField extends StatefulWidget {
     this.maxLines = 1,
     this.minLines = 1,
     this.padding = TagSpancing.paddingTextField,
-  }) : super(key: key);
+  });
 
   final String? hint;
   final String label;
@@ -47,12 +47,18 @@ class TagTextField extends StatefulWidget {
 }
 
 class _TagTextFieldState extends State<TagTextField> {
-  final _debouncer = Debouncer(delay: Duration(milliseconds: 250));
+  final _debouncer = Debouncer(
+    delay: Duration(milliseconds: 250),
+  );
   void _onValueChanged(String value) {
     if (widget.onChanged != null) {
-      _debouncer.call(() => widget.onChanged!(value));
+      _debouncer.call(
+        () => widget.onChanged!(value),
+      );
     } else if (widget.onEditingComplete != null) {
-      _debouncer.call(() => widget.onEditingComplete!());
+      _debouncer.call(
+        () => widget.onEditingComplete!(),
+      );
     }
   }
 

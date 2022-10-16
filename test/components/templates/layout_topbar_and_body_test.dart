@@ -16,8 +16,12 @@ void main() {
           key: Key("Body"),
         ),
       );
-      await tester.pumpWidget(wrapWithBaseApp(layoutTopBarAndBody));
-      final Finder resultSearchKey = find.byKey(Key("Body"));
+      await tester.pumpWidget(
+        wrapWithBaseApp(layoutTopBarAndBody),
+      );
+      final Finder resultSearchKey = find.byKey(
+        Key("Body"),
+      );
       expect(resultSearchKey, findsOneWidget);
     });
     testWidgets("render with drawer", (WidgetTester tester) async {
@@ -27,40 +31,58 @@ void main() {
           key: Key("Drawer"),
         ),
       );
-      await tester.pumpWidget(wrapWithBaseApp(layoutTopBarAndBody));
+      await tester.pumpWidget(
+        wrapWithBaseApp(layoutTopBarAndBody),
+      );
       final Finder resultSearchIcon = find.byIcon(Icons.menu);
       await tester.tap(resultSearchIcon);
       await tester.pumpAndSettle();
-      final Finder resultSearchDrawer = find.byKey(Key("Drawer"));
+      final Finder resultSearchDrawer = find.byKey(
+        Key("Drawer"),
+      );
       expect(resultSearchDrawer, findsOneWidget);
     });
     testWidgets("render with appBar", (WidgetTester tester) async {
       final layoutTopBarAndBody = LayoutTopBarAndBody(
-          body: Container(),
-          appBar: TagAppBar(
-            key: Key("appBar"),
-          ));
-      await tester.pumpWidget(wrapWithBaseApp(layoutTopBarAndBody));
-      final Finder resultSearchKey = find.byKey(Key("appBar"));
+        body: Container(),
+        appBar: TagAppBar(
+          key: Key("appBar"),
+        ),
+      );
+      await tester.pumpWidget(
+        wrapWithBaseApp(layoutTopBarAndBody),
+      );
+      final Finder resultSearchKey = find.byKey(
+        Key("appBar"),
+      );
       expect(resultSearchKey, findsOneWidget);
     });
     testWidgets("render with drawer and appbar", (WidgetTester tester) async {
       final layoutTopBarAndBody = LayoutTopBarAndBody(
-          body: Container(),
-          drawer: Drawer(
-            key: Key("Drawer"),
-          ),
-          appBar: TagAppBar(
-            key: Key("appBar"),
-          ));
-      await tester.pumpWidget(wrapWithBaseApp(layoutTopBarAndBody));
+        body: Container(),
+        drawer: Drawer(
+          key: Key("Drawer"),
+        ),
+        appBar: TagAppBar(
+          key: Key("appBar"),
+        ),
+      );
+      await tester.pumpWidget(
+        wrapWithBaseApp(layoutTopBarAndBody),
+      );
       final Finder resultSearchIcon = find.byIcon(Icons.menu);
       await tester.tap(resultSearchIcon);
       await tester.pumpAndSettle();
-      final Finder resultSearchDrawer = find.byKey(Key("Drawer"));
+      final Finder resultSearchDrawer = find.byKey(
+        Key("Drawer"),
+      );
       expect(resultSearchDrawer, findsOneWidget);
-      await tester.pumpWidget(wrapWithBaseApp(layoutTopBarAndBody));
-      final Finder resultSearchAppBar = find.byKey(Key("appBar"));
+      await tester.pumpWidget(
+        wrapWithBaseApp(layoutTopBarAndBody),
+      );
+      final Finder resultSearchAppBar = find.byKey(
+        Key("appBar"),
+      );
       expect(resultSearchAppBar, findsOneWidget);
     });
   });

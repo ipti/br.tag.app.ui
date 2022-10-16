@@ -14,9 +14,13 @@ void main() {
     testWidgets("render with LayoutTopBarAndBody", (WidgetTester tester) async {
       tester.binding.window.physicalSizeTestValue = Size(360, 760);
       tester.binding.window.devicePixelRatioTestValue = 1.0;
-      await tester.binding.setSurfaceSize(Size(360, 760));
+      await tester.binding.setSurfaceSize(
+        Size(360, 760),
+      );
       final mainLayoutAdaptativy = MainLayoutAdaptativy();
-      await tester.pumpWidget(wrapWithBaseApp(mainLayoutAdaptativy));
+      await tester.pumpWidget(
+        wrapWithBaseApp(mainLayoutAdaptativy),
+      );
       final Finder resultSearch = find.byType(LayoutTopBarAndBody);
 
       expect(resultSearch, findsOneWidget);
@@ -24,9 +28,13 @@ void main() {
     testWidgets("render with LayoutLeftBodyRight", (WidgetTester tester) async {
       tester.binding.window.physicalSizeTestValue = Size(1440, 900);
       tester.binding.window.devicePixelRatioTestValue = 1.0;
-      await tester.binding.setSurfaceSize(Size(1440, 900));
+      await tester.binding.setSurfaceSize(
+        Size(1440, 900),
+      );
       final mainLayoutAdaptativy = MainLayoutAdaptativy();
-      await tester.pumpWidget(wrapWithBaseApp(mainLayoutAdaptativy));
+      await tester.pumpWidget(
+        wrapWithBaseApp(mainLayoutAdaptativy),
+      );
 
       final Finder resultSearch = find.byType(LayoutLeftBodyRight);
 
@@ -35,41 +43,60 @@ void main() {
     testWidgets("render left on Desktop ", (WidgetTester tester) async {
       tester.binding.window.physicalSizeTestValue = Size(1440, 900);
       tester.binding.window.devicePixelRatioTestValue = 1.0;
-      await tester.binding.setSurfaceSize(Size(1440, 900));
+      await tester.binding.setSurfaceSize(
+        Size(1440, 900),
+      );
       final mainLayoutAdaptativy = MainLayoutAdaptativy(
         left: Container(
           key: Key("Desktop"),
         ),
       );
-      await tester.pumpWidget(wrapWithBaseApp(mainLayoutAdaptativy));
+      await tester.pumpWidget(
+        wrapWithBaseApp(mainLayoutAdaptativy),
+      );
 
-      final Finder resultSearchSize = find.byKey(Key("Desktop"));
+      final Finder resultSearchSize = find.byKey(
+        Key("Desktop"),
+      );
       expect(resultSearchSize, findsOneWidget);
     });
     testWidgets("render right on Desktop", (WidgetTester tester) async {
       tester.binding.window.physicalSizeTestValue = Size(1440, 900);
       tester.binding.window.devicePixelRatioTestValue = 1.0;
-      await tester.binding.setSurfaceSize(Size(1440, 900));
+      await tester.binding.setSurfaceSize(
+        Size(1440, 900),
+      );
       final mainLayoutAdaptativy = MainLayoutAdaptativy(
         right: Container(
           key: Key("Desktop"),
         ),
       );
-      await tester.pumpWidget(wrapWithBaseApp(mainLayoutAdaptativy));
+      await tester.pumpWidget(
+        wrapWithBaseApp(mainLayoutAdaptativy),
+      );
 
-      final Finder resultSearchSize = find.byKey(Key("Desktop"));
+      final Finder resultSearchSize = find.byKey(
+        Key("Desktop"),
+      );
       expect(resultSearchSize, findsOneWidget);
     });
     testWidgets("render appBar on mobile", (WidgetTester tester) async {
       tester.binding.window.physicalSizeTestValue = Size(360, 760);
       tester.binding.window.devicePixelRatioTestValue = 1.0;
-      await tester.binding.setSurfaceSize(Size(360, 760));
+      await tester.binding.setSurfaceSize(
+        Size(360, 760),
+      );
       final mainLayoutAdaptativy = MainLayoutAdaptativy(
-          appBar: TagAppBar(
-        key: Key("Desktop"),
-      ));
-      await tester.pumpWidget(wrapWithBaseApp(mainLayoutAdaptativy));
-      final Finder resultSearchSize = find.byKey(Key("Desktop"));
+        appBar: TagAppBar(
+          key: Key("Desktop"),
+        ),
+      );
+      await tester.pumpWidget(
+        wrapWithBaseApp(mainLayoutAdaptativy),
+      );
+      final Finder resultSearchSize = find.byKey(
+        Key("Desktop"),
+      );
       expect(resultSearchSize, findsOneWidget);
     });
   });

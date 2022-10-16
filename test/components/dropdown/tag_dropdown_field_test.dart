@@ -15,7 +15,9 @@ void main() {
     testWidgets("render", (WidgetTester tester) async {
       final tagDropdownField = TagDropdownField<dynamic>(
           onChanged: (value) {}, label: "Textinho", items: const {});
-      await tester.pumpWidget(wrapWithBaseApp(tagDropdownField));
+      await tester.pumpWidget(
+        wrapWithBaseApp(tagDropdownField),
+      );
       final Finder resultSearch = find.byType(TagDropdownField);
       expect(resultSearch, findsOneWidget);
     });
@@ -26,7 +28,9 @@ void main() {
         items: const {},
         hint: "Dica",
       );
-      await tester.pumpWidget(wrapWithBaseApp(tagDropdownField));
+      await tester.pumpWidget(
+        wrapWithBaseApp(tagDropdownField),
+      );
       final Finder resultSearchHint = find.text("Dica");
       expect(resultSearchHint, findsOneWidget);
     });
@@ -37,11 +41,17 @@ void main() {
         items: const {},
         padding: EdgeInsets.all(16.0),
       );
-      await tester.pumpWidget(wrapWithBaseApp(tagDropdownField));
+      await tester.pumpWidget(
+        wrapWithBaseApp(tagDropdownField),
+      );
       final Finder resultSearch = find.byType(TagDropdownField);
       expect(resultSearch, findsWidgets);
       final paddingResult = tester.widget<TagDropdownField>(resultSearch);
-      expect(paddingResult.padding, equals(EdgeInsets.all(16.0)));
+      expect(
+          paddingResult.padding,
+          equals(
+            EdgeInsets.all(16.0),
+          ));
     });
     testWidgets("render with items", (WidgetTester tester) async {
       final tagDropdownField = TagDropdownField(
@@ -53,7 +63,9 @@ void main() {
           'chave3': 'valor3'
         },
       );
-      await tester.pumpWidget(wrapWithBaseApp(tagDropdownField));
+      await tester.pumpWidget(
+        wrapWithBaseApp(tagDropdownField),
+      );
       final Finder resultSearch = find.byType(Text);
       expect(resultSearch, findsWidgets);
     });
@@ -67,7 +79,9 @@ void main() {
           'chave3': 'valor3'
         },
       );
-      await tester.pumpWidget(wrapWithBaseApp(tagDropdownField));
+      await tester.pumpWidget(
+        wrapWithBaseApp(tagDropdownField),
+      );
       final Finder resultSearch = find.byType(TagLabel);
       expect(resultSearch, findsOneWidget);
       final Finder resultSearchLabel = find.text("Textinho");
@@ -83,7 +97,9 @@ void main() {
           'chave3': 'valor3'
         },
       );
-      await tester.pumpWidget(wrapWithBaseApp(tagDropdownField));
+      await tester.pumpWidget(
+        wrapWithBaseApp(tagDropdownField),
+      );
       final Finder resultSearch = find.byType(TagLabel);
       expect(resultSearch, findsOneWidget);
       final Finder resultSearchLabel = find.text("Textinho");
@@ -100,7 +116,9 @@ void main() {
         },
         value: "chave1",
       );
-      await tester.pumpWidget(wrapWithBaseApp(tagDropdownField));
+      await tester.pumpWidget(
+        wrapWithBaseApp(tagDropdownField),
+      );
       final Finder resultSearch = find.byType(Text);
       expect(resultSearch, findsWidgets);
       final Finder resultSearchValue = find.text("valor1");
@@ -108,7 +126,9 @@ void main() {
     });
     testWidgets("when value is changed", (WidgetTester tester) async {
       final dumb = MockDumb();
-      when(() => dumb.callWithParam1(any())).thenAnswer((invocation) {});
+      when(() => dumb.callWithParam1(
+            any(),
+          )).thenAnswer((invocation) {});
 
       final tagDropdownField = TagDropdownField<String>(
         onChanged: (value) {
@@ -127,14 +147,18 @@ void main() {
         items: const [],
       ).runtimeType;
 
-      await tester.pumpWidget(wrapWithBaseApp(tagDropdownField));
+      await tester.pumpWidget(
+        wrapWithBaseApp(tagDropdownField),
+      );
       final Finder resultSearch = find.byType(dropdownButtonType);
       await tester.tap(resultSearch);
       await tester.pumpAndSettle();
       await tester.tap(find.text('valor1').last);
       await tester.pumpAndSettle();
 
-      verify(() => dumb.callWithParam1("chave1")).called(1);
+      verify(
+        () => dumb.callWithParam1("chave1"),
+      ).called(1);
     });
 
     testWidgets("when text is invalid", (WidgetTester tester) async {
@@ -157,7 +181,9 @@ void main() {
         items: const [],
       ).runtimeType;
 
-      await tester.pumpWidget(wrapWithBaseApp(tagDropdownField));
+      await tester.pumpWidget(
+        wrapWithBaseApp(tagDropdownField),
+      );
       final Finder resultSearch = find.byType(dropdownButtonType);
       await tester.tap(resultSearch);
       await tester.pumpAndSettle();

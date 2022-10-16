@@ -3,13 +3,12 @@ import 'package:flutter/material.dart';
 
 class TagBox extends StatelessWidget {
   const TagBox(
-      {Key? key,
+      {super.key,
       required this.child,
       this.minHeight = 0,
       this.minWidth = 0,
       this.background,
-      this.padding})
-      : super(key: key);
+      this.padding});
 
   final Widget child;
   final double minHeight;

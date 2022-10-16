@@ -15,7 +15,9 @@ void main() {
         defaultVersionPath: FilePaths.LOGO_LIGHT_PATH_SVG,
         disabledVersionPath: FilePaths.LOGO_GREY_PATH_SVG,
       );
-      await tester.pumpWidget(wrapWithBaseAppAndBundle(tagIcon));
+      await tester.pumpWidget(
+        wrapWithBaseAppAndBundle(tagIcon),
+      );
       final Finder resultSearch = find.byType(SvgPicture);
       expect(resultSearch, findsOneWidget);
     });
@@ -25,7 +27,9 @@ void main() {
         disabledVersionPath: FilePaths.LOGO_GREY_PATH_SVG,
         disabled: true,
       );
-      await tester.pumpWidget(wrapWithBaseAppAndBundle(tagIcon));
+      await tester.pumpWidget(
+        wrapWithBaseAppAndBundle(tagIcon),
+      );
       final Finder resultSearch = find.byType(SvgPicture);
       expect(resultSearch, findsOneWidget);
     });

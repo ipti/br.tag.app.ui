@@ -3,12 +3,12 @@ import 'package:tag_ui/tag_ui.dart';
 
 class RowToColumn extends StatelessWidget {
   const RowToColumn({
-    Key? key,
+    super.key,
     required this.children,
     this.rowCrossAxisAlignment = CrossAxisAlignment.start,
     this.columnCrossAxisAlignment = CrossAxisAlignment.start,
     this.spaceColumns = 16,
-  }) : super(key: key);
+  });
 
   final List<Widget> children;
   final double? spaceColumns;
@@ -23,6 +23,7 @@ class RowToColumn extends StatelessWidget {
           ..addAll([child, SizedBox(width: spaceColumns)])
           ..removeLast();
       });
+
       return ConstrainedBox(
         constraints: constraints.copyWith(
           minWidth: 50,
@@ -45,10 +46,9 @@ class RowToColumn extends StatelessWidget {
 
 class _WhenDesktop extends StatelessWidget {
   const _WhenDesktop({
-    Key? key,
     required this.rowCrossAxisAlignment,
     required this.items,
-  }) : super(key: key);
+  });
 
   final CrossAxisAlignment rowCrossAxisAlignment;
   final List<Widget> items;
@@ -64,11 +64,10 @@ class _WhenDesktop extends StatelessWidget {
 
 class _WhenMobile extends StatelessWidget {
   const _WhenMobile({
-    Key? key,
     required this.columnCrossAxisAlignment,
     required this.items,
     required this.rowCrossAxisAlignment,
-  }) : super(key: key);
+  });
 
   final CrossAxisAlignment columnCrossAxisAlignment;
   final List<Widget> items;

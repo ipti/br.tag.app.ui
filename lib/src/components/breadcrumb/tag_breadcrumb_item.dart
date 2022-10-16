@@ -4,11 +4,11 @@ import 'package:tag_ui/tag_ui.dart';
 
 class TagBreadcrumbItem extends StatefulWidget {
   const TagBreadcrumbItem({
-    Key? key,
+    super.key,
     required this.title,
     this.action,
     this.isLast = false,
-  }) : super(key: key);
+  });
 
   final String title;
   final void Function()? action;

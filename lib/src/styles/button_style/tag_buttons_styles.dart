@@ -4,9 +4,9 @@ import 'package:tag_ui/tag_ui.dart';
 abstract class TagButtonStyles {
   static ButtonStyle primary = ElevatedButton.styleFrom(
     elevation: 0,
+    backgroundColor: TagColors.colorBaseProductNormal,
     padding: TagSpancing.paddingButtonNormal,
     minimumSize: const Size(40, TagSizes.heightButtonNormal),
-    primary: TagColors.colorBaseProductNormal,
     shape: const RoundedRectangleBorder(
       borderRadius: BorderRadius.all(
         Radius.circular(
@@ -18,9 +18,9 @@ abstract class TagButtonStyles {
 
   static ButtonStyle secondary = ElevatedButton.styleFrom(
     elevation: 0,
+    backgroundColor: TagColors.colorBaseCloudNormal,
     padding: TagSpancing.paddingButtonNormal,
     minimumSize: const Size(40, TagSizes.heightButtonNormal),
-    primary: TagColors.colorBaseCloudNormal,
     shape: const RoundedRectangleBorder(
       borderRadius: BorderRadius.all(
         Radius.circular(

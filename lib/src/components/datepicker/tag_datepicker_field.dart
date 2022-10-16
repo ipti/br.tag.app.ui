@@ -7,7 +7,7 @@ import '../shared/tag_input_decoration.dart';
 
 class TagDatePickerField extends StatefulWidget {
   TagDatePickerField({
-    Key? key,
+    super.key,
     required this.onChanged,
     required this.label,
     this.hint,
@@ -17,7 +17,7 @@ class TagDatePickerField extends StatefulWidget {
     this.onEditingComplete,
     this.value,
     this.padding = TagSpancing.paddingTextField,
-  }) : super(key: key);
+  });
 
   final String? hint;
   final String label;
@@ -76,7 +76,7 @@ class _TagDatePickerFieldState extends State<TagDatePickerField> {
   //       context: context,
   //       initialDate: selectedDate,
   //       firstDate: DateTime(2015, 8),
-  //       lastDate: DateTime(2101));
+  //       lastDate: DateTime(2101),);
   //   if (picked != null && picked != selectedDate)
   //     widget.controller.text = picked.toString();
   // }

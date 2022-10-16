@@ -4,8 +4,7 @@ import 'layout_topbar_and_body.dart';
 
 class MainLayoutAdaptativy extends StatelessWidget {
   const MainLayoutAdaptativy(
-      {Key? key, this.left, this.body, this.right, this.appBar})
-      : super(key: key);
+      {super.key, this.left, this.body, this.right, this.appBar});
 
   final Widget? left;
   final Widget? body;
@@ -24,6 +23,7 @@ class MainLayoutAdaptativy extends StatelessWidget {
             right: right,
           );
         }
+
         return SizedBox(
           height: constraints.maxHeight,
           width: constraints.maxWidth,

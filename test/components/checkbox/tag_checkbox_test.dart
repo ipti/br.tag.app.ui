@@ -17,50 +17,69 @@ void main() {
         value: false,
       );
 
-      await tester.pumpWidget(wrapWithBaseApp(tagCheckbox));
+      await tester.pumpWidget(
+        wrapWithBaseApp(tagCheckbox),
+      );
 
       final Finder resultSearch = find.byType(TagCheckbox);
       final TagCheckbox checkbox = tester.widget<TagCheckbox>(resultSearch);
 
-      expect(checkbox.value, equals(false));
+      expect(
+        checkbox.value,
+        equals(false),
+      );
     });
     testWidgets("render when value changed", (WidgetTester tester) async {
       final dumb = MockDumb();
-      when(() => dumb.callWithParam1(any())).thenAnswer((invocation) {});
+      when(() => dumb.callWithParam1(
+            any(),
+          )).thenAnswer((invocation) {});
       final tagCheckbox = TagCheckbox(
         onChanged: (value) => dumb.callWithParam1(value),
         label: "MyCheckbox",
       );
 
-      await tester.pumpWidget(wrapWithBaseApp(tagCheckbox));
+      await tester.pumpWidget(
+        wrapWithBaseApp(tagCheckbox),
+      );
 
       final Finder resultSearch = find.byType(TagCheckbox);
       await tester.tap(resultSearch);
       await tester.pumpAndSettle();
 
-      verify(() => dumb.callWithParam1(any(that: isTrue))).called(1);
+      verify(() => dumb.callWithParam1(
+            any(that: isTrue),
+          )).called(1);
 
       await tester.tap(resultSearch);
       await tester.pumpAndSettle();
 
-      verify(() => dumb.callWithParam1(any(that: isFalse))).called(1);
+      verify(() => dumb.callWithParam1(
+            any(that: isFalse),
+          )).called(1);
     });
     testWidgets("render with DISABLED true", (WidgetTester tester) async {
       final dumb = MockDumb();
-      when(() => dumb.callWithParam1(any())).thenAnswer((invocation) {});
+      when(() => dumb.callWithParam1(
+            any(),
+          )).thenAnswer((invocation) {});
       final tagCheckbox = TagCheckbox(
         onChanged: (value) => dumb.callWithParam1(value),
         label: "MyCheckbox",
         disabled: true,
       );
 
-      await tester.pumpWidget(wrapWithBaseApp(tagCheckbox));
+      await tester.pumpWidget(
+        wrapWithBaseApp(tagCheckbox),
+      );
 
       final Finder resultSearch = find.byType(TagCheckbox);
       await tester.tap(resultSearch);
       await tester.pumpAndSettle();
 
-      verifyNever(() => dumb.callWithParam1(any()));
+      verifyNever(() => dumb.callWithParam1(
+            any(),
+          ));
     });
     testWidgets("render only with text", (WidgetTester tester) async {
       final tagCheckbox = TagCheckbox(
@@ -68,7 +87,9 @@ void main() {
         label: "MyCheckbox",
       );
 
-      await tester.pumpWidget(wrapWithBaseApp(tagCheckbox));
+      await tester.pumpWidget(
+        wrapWithBaseApp(tagCheckbox),
+      );
 
       final Finder resultSearch = find.byType(TagCheckbox);
 
@@ -77,13 +98,17 @@ void main() {
     testWidgets("render when value changed  in checkbox",
         (WidgetTester tester) async {
       final dumb = MockDumb();
-      when(() => dumb.callWithParam1(any())).thenAnswer((invocation) {});
+      when(() => dumb.callWithParam1(
+            any(),
+          )).thenAnswer((invocation) {});
       final tagCheckbox = TagCheckbox(
         onChanged: (value) => dumb.callWithParam1(value),
         label: "MyCheckbox",
       );
 
-      await tester.pumpWidget(wrapWithBaseApp(tagCheckbox));
+      await tester.pumpWidget(
+        wrapWithBaseApp(tagCheckbox),
+      );
 
       final Finder resultSearch = find.byType(Checkbox);
       await tester.tap(resultSearch);
@@ -93,8 +118,12 @@ void main() {
       await tester.pumpAndSettle();
 
       verifyInOrder([
-        () => dumb.callWithParam1(any(that: isTrue)),
-        () => dumb.callWithParam1(any(that: isFalse))
+        () => dumb.callWithParam1(
+              any(that: isTrue),
+            ),
+        () => dumb.callWithParam1(
+              any(that: isFalse),
+            )
       ]);
     });
   });

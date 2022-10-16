@@ -4,8 +4,8 @@ import 'package:tag_ui/tag_ui.dart';
 class TagLabel extends StatelessWidget {
   const TagLabel(
     this.text, {
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   final String text;
 

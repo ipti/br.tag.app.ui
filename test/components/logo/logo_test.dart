@@ -14,7 +14,9 @@ void main() {
     testWidgets("render LOGO_PATH_SVG", (WidgetTester tester) async {
       final tagLogo = TagLogo();
 
-      await tester.pumpWidget(wrapWithBaseAppAndBundle(tagLogo));
+      await tester.pumpWidget(
+        wrapWithBaseAppAndBundle(tagLogo),
+      );
       final Finder resultSearch = find.byType(SvgPicture);
 
       expect(resultSearch, findsOneWidget);
@@ -27,15 +29,23 @@ void main() {
         height: 40,
       );
 
-      await tester.pumpWidget(wrapWithBaseAppAndBundle(tagLogo));
+      await tester.pumpWidget(
+        wrapWithBaseAppAndBundle(tagLogo),
+      );
       final Finder resultSearch = find.byType(TagLogo);
 
       final TagLogo corResult = tester.widget<TagLogo>(resultSearch);
 
-      expect(corResult.color, equals(Colors.amber));
+      expect(
+        corResult.color,
+        equals(Colors.amber),
+      );
       final TagLogo alinhamentoResult = tester.widget<TagLogo>(resultSearch);
 
-      expect(alinhamentoResult.alignment, equals(Alignment.centerLeft));
+      expect(
+        alinhamentoResult.alignment,
+        equals(Alignment.centerLeft),
+      );
     });
     testWidgets("render with width and height", (WidgetTester tester) async {
       final tagLogo = TagLogo(
@@ -43,14 +53,22 @@ void main() {
         height: 40,
       );
 
-      await tester.pumpWidget(wrapWithBaseAppAndBundle(tagLogo));
+      await tester.pumpWidget(
+        wrapWithBaseAppAndBundle(tagLogo),
+      );
       final Finder resultSearch = find.byType(TagLogo);
 
       final TagLogo widthResult = tester.widget<TagLogo>(resultSearch);
       final TagLogo heightResult = tester.widget<TagLogo>(resultSearch);
 
-      expect(widthResult.width, equals(40));
-      expect(heightResult.height, equals(40));
+      expect(
+        widthResult.width,
+        equals(40),
+      );
+      expect(
+        heightResult.height,
+        equals(40),
+      );
     });
   });
 }

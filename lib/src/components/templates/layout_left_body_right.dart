@@ -4,11 +4,11 @@ import 'package:tag_ui/tag_ui.dart';
 
 class LayoutLeftBodyRight extends StatelessWidget {
   const LayoutLeftBodyRight({
-    Key? key,
+    super.key,
     required this.body,
     this.left,
     this.right,
-  }) : super(key: key);
+  });
 
   final Widget? left;
   final Widget? body;
@@ -30,8 +30,7 @@ class LayoutLeftBodyRight extends StatelessWidget {
 }
 
 class _LayoutPages extends StatelessWidget {
-  const _LayoutPages({Key? key, this.left, this.center, this.right})
-      : super(key: key);
+  const _LayoutPages({this.left, this.center, this.right});
 
   final Widget? left;
   final Widget? center;
@@ -43,7 +42,10 @@ class _LayoutPages extends StatelessWidget {
       child: Row(
         mainAxisSize: MainAxisSize.max,
         children: [
-          Flexible(flex: 4, child: left ?? Container()),
+          Flexible(
+            flex: 4,
+            child: left ?? Container(),
+          ),
           Flexible(
             flex: right != null ? 12 : 16,
             child: Padding(
@@ -51,7 +53,11 @@ class _LayoutPages extends StatelessWidget {
               child: center,
             ),
           ),
-          if (right != null) Flexible(flex: 4, child: right ?? Container()),
+          if (right != null)
+            Flexible(
+              flex: 4,
+              child: right ?? Container(),
+            ),
         ],
       ),
     );
