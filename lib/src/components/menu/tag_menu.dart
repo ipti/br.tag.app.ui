@@ -3,12 +3,11 @@ import 'package:tag_ui/tag_ui.dart';
 import 'i_tag_menu_item.dart';
 
 class TagMenu extends StatelessWidget {
-  const TagMenu({
-    super.key,
-    required this.items,
-  });
+  const TagMenu(
+      {super.key, required this.items, required this.currentPathMenu});
 
   final List<ITagMenuItem> items;
+  final String currentPathMenu;
 
   @override
   Widget build(BuildContext context) {

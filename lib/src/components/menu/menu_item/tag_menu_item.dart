@@ -5,22 +5,17 @@ import '../i_tag_menu_item.dart';
 
 enum MenuItemState { Normal, Hover, Click, Disabled }
 
-class TagMenuItem extends StatelessWidget implements ITagMenuItem {
+class TagMenuItem extends ITagMenuItem {
   const TagMenuItem({
-    super.key,
-    required this.title,
-    required this.route,
-    required this.onTap,
+    required super.title,
+    required super.route,
+    required super.onTap,
+    super.isActive = false,
     this.icon,
-    this.isActive = false,
     this.menuItemState,
   });
 
-  final String title;
-  final String route;
   final TagIcon? icon;
-  final bool isActive;
-  final void Function(String route) onTap;
   final MenuItemState? menuItemState;
 
   @override
