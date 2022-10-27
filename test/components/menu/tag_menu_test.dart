@@ -10,6 +10,7 @@ void main() {
     });
     testWidgets("render", (WidgetTester tester) async {
       final tagMenu = TagMenu(
+        currentPathMenu: '',
         items: [],
       );
       await tester.pumpWidget(
@@ -20,6 +21,7 @@ void main() {
     });
     testWidgets("render with itens", (WidgetTester tester) async {
       final tagMenu = TagMenu(
+        currentPathMenu: '',
         items: [
           for (var i = 0; i < 30; i++)
             TagMenuItem(
